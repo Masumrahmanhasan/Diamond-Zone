@@ -1,0 +1,851 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ol,
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+    margin: 0;
+    padding: 0;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+input{
+    border: none;
+}
+
+input:focus {
+    box-shadow: none;
+    outline: unset;
+}
+
+select,option{
+    border: none;
+}
+
+select,option:focus{
+    outline: none;
+}
+
+textarea:focus {
+    box-shadow: none;
+    outline: unset;
+}
+
+select:focus {
+    box-shadow: none;
+}
+
+
+/* =============== COMMON CSS FOR WEB SITE =============== */
+:root {
+    --bg_color: #2A296F;
+    --bg_color2: #c3d4f0;
+    --bdr_color: #777;
+    --text_color: #2c3137;
+}
+
+body {
+    font-family: 'PT Sans', sans-serif !important;
+    background: var(--bg_color);
+}
+
+.custome_width {
+    max-width: 1440px;
+    padding: 0 80px;
+}
+
+h1{
+    color: #FFF;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 55px;
+}
+
+
+h2{
+    color: #FFF;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 45px;
+}
+
+h3{
+    font-size: 20px;
+    line-height: 34px;
+    font-weight: 700;
+}
+
+h4{
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 700;
+}
+
+a{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: var(--text_color);
+    transition: all linear .2s;
+}
+
+p{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #999;
+}
+
+.d_flex{
+    display: flex;
+    align-items: center;
+}
+
+.d_justify{
+    justify-content: space-between;
+}
+
+.wh{
+    color: #FFF;
+}
+
+select{
+    font-size: 16px;
+    padding: 5px 10px;
+    color: var(--text_color);
+}
+
+.section_gaps{
+    margin-top: 50px;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START header PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+#header{
+    background: #0980BA;
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START Sign up PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+#singUp{
+    background: #001e38;
+    padding: 20px 0;
+}
+
+#singUp a{
+    color: #FFF;
+}
+
+#singUp a svg{
+    margin-right: 10px;
+}
+
+.singUp_content.d_flex {
+    justify-content: end;
+}
+
+.singUp_content .custome_input{
+    width: 250px;
+    position: relative;
+}
+
+.singUp_content .custome_input input{
+    width: 100%;
+    border-radius: 20px;
+    padding: 2px 20px;
+}
+
+.singUp_content .custome_input .search{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--bdr_color);
+}
+
+.singUp_content .custome_input .search svg{
+    font-size: 16px;
+}
+
+.signUp_cart{
+    position: relative;
+    color: #FFF;
+    display: inline-block; 
+    margin-left: 40px;
+}
+
+.signUp_cart svg{
+    font-size: 25px;
+}
+
+.signUp_cart .cart_overlay {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+}
+
+.signUp_cart .cart_overlay span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: red;
+    text-align: center;
+}
+
+.sign_in{
+    margin-left: 40px;
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START Menu bar PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+.navbar{
+    background: #FFF;
+}
+
+a.navbar-brand img {
+    height: 80px;
+}
+
+.navbar .nav-item{
+    padding: 0 10px;
+}
+
+.navbar .nav-item .nav-link{
+    padding: 0;
+    font-size: 20px;
+    color: var(--text_color);
+}
+
+.navbar .nav-item .nav-link:hover{
+    color: var(--bg_color2);
+}
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START Banner PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+#banner{
+    position: relative;
+}
+
+.category_page #banner::after{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+}
+
+.category_page #banner .banner_overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 9;
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START SHOP BY CATEGORY PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+#shopByCategory .header h1{
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+
+}
+
+#shopByCategory .header h1::before {
+    position: absolute;
+    content: '';
+    left: -75%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    height: 1px;
+    background: #FFF;
+}
+
+#shopByCategory .header h1::after {
+    position: absolute;
+    content: '';
+    right: -75%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    height: 1px;
+    background: #FFF;
+}
+
+.shopByCategory_item{
+    margin-top: 30px;
+    overflow: hidden;
+    transition: all linear .5s;
+}
+
+.shopByCategory_item img{
+    transition: all linear .5s;
+}
+
+.shopByCategory_item:hover img{
+    transform: scale(1.05);
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START Best Seller PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+.header h2 {
+    position: relative;
+    display: inline-block;
+    width: 30%;
+}
+
+.header h2:after{
+    position: absolute;
+    content: '';
+    left: -100%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    height: 1px;
+    background: #FFF;
+}
+
+.header h2::before{
+    position: absolute;
+    content: '';
+    right: -100%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    height: 1px;
+    background: #FFF;
+}
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START  PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START content part PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+.category_item{
+    margin-top: 30px;
+    background: #FFF;
+    transition: all linear .5s;
+    overflow: hidden;
+    position: relative;
+}
+
+.category_item img{
+    transition: all linear .5s;
+}
+
+.category_item:hover img{
+    transform: scale(1.1);
+
+}
+
+.category_item .text{
+    padding: 20px;
+}
+
+.category_item .text p{
+    color: var(--text_color);
+    padding-top: 5px;
+    font-weight: 700;
+}
+
+.category_item .text p del{
+    color: var(--bdr_color);
+}
+
+.category_item .add_to_cart{
+    margin-top: 20px;
+}
+
+.category_item .add_to_cart a{
+    padding: 8px 15px;
+    background: var(--text_color);
+    color: #FFF;
+}
+
+.category_item .add_to_cart a:hover{
+    background: var(--bg_color);
+}
+
+.category_item .overlay{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--text_color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category_item .overlay span{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #FFF;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START Customer Review PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+.customer_review_content{
+    margin-top: 60px;
+}
+
+.customer_review_content .img{
+    text-align: center;
+}
+
+.customer_review_content .img svg{
+    font-size: 50px;
+    color: #FFF;
+}
+
+.customer_review_content .text{
+    margin-top: 30px;
+}
+
+.customer_review_content .text h3{
+    margin-top: 20px;
+}
+
+.photo_review_content{
+    margin-top: 60px;
+}
+
+.photo_review_content .photo_review_item{
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all linear .5s;
+}
+
+.photo_review_content .photo_review_item img{
+    transition: all linear .5s;
+}
+
+.photo_review_content .photo_review_item:hover img{
+    transform: scale(1.05);
+}
+
+.col-lg-4 .video_part_content{
+    margin-left: 30px;
+}
+
+.video_part_content .text p{
+    margin-top: 20px;
+}
+
+.video_part_content .text a{
+    color: #FFF;
+    background: #000;
+    border-radius: 30px;
+    padding: 10px 20px;
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.video_part_content .text a:hover{
+    background: var(--bg_color2);
+    color: #000;
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START stayUpdate PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+.dash{
+    position: relative;
+    border-bottom: 2px dashed #FFF;
+}
+
+.dash .img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg_color);
+    padding: 0 20px;
+}
+
+.dash .img svg{
+    font-size: 50px;
+    color: #FFF;
+}
+
+#stayUpdate .header h3{
+    font-size: 30px;
+}
+
+.social_part{
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.social_part a{
+    width: 40px;
+    height: 40px;
+    background: #FFF;
+    border-radius: 5px;
+    justify-content: center;
+    margin: 0 8px;
+}
+
+.social_part a svg{
+    font-size: 20px;
+}
+
+.social_part a:hover{
+    border-radius: 50%;
+    background: var(--bg_color2);
+    color: var(--bg_color);
+}
+
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START footer PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+#footer{
+    background: #FFF;
+    padding: 30px 0;
+}
+
+.footer_content{
+    margin-right: 50px;
+}
+
+.footer_content h3{
+    margin-bottom: 10px;
+}
+
+.footer_content ul li{
+    margin-bottom: 5px;
+}
+
+#tiny_footer{
+    padding: 10px 0;
+}
+
+#tiny_footer h3{
+    margin-bottom: 20px;
+}
+
+#tiny_footer .img{
+    display: inline-block;
+    background: #FFF;
+    padding: 5px;
+}
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START Product Details PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+.product_details_content{
+    margin-top: 60px;
+}
+
+.product_details_content .xzoom-thumbs {
+    display: flex;
+    justify-content: center;
+}
+
+.product_details_content  img.xzoom-gallery {
+    margin: 0;
+    height: 120px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.product_details_content span#ex1 img.xzoom {
+    width: 100% !important;
+    height: 500px;
+    object-fit: cover;
+}
+
+.product_details_content .zoom {
+    width: 100%;
+}
+
+.product_description ul{
+    margin-top: 30px;
+}
+
+.product_description ul li{
+    color: #FFF;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.product_description ul li img{
+    margin-right: 10px;
+}
+
+.product_description .amount{
+    margin-top: 30px;
+}
+
+.product_description .add_to_cart{
+    margin-top: 20px;
+}
+
+.product_description .add_to_cart .custome_input {
+    width: 80px;
+}
+
+.product_description .add_to_cart .custome_input input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.product_description .add_to_cart a{
+    color: #FFF;
+    background: #000;
+    padding: 10px 20px;
+    margin-left: 20px;
+    border-radius: 2px;
+}
+
+.product_description .add_to_cart a:hover{
+    background: var(--bg_color2);
+    color: #000;
+}
+
+.product_description .category_text{
+    margin-top: 20px;
+}
+
+.product_description .category_text h5{
+    color: #FFF;
+    font-size: 16px;
+    line-height: 20px;
+    min-width: 100px;
+    font-weight: 700;
+}
+
+.product_description .category_text span{
+    color: #FFF;
+}
+
+.product_description .category_text .category_items{
+    margin-bottom: 5px;
+}
+
+/* review_Condition */
+.review_Condition{
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 50%);
+    margin-top: 50px;
+    padding: 30px 0;
+}
+
+.review_Condition .nav-tabs .nav-link{
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 700;
+    color: #FFF;
+}
+
+.review_Condition .nav-tabs .nav-link.active{
+    color: var(--bg_color);
+}
+
+.review_Condition .tab-content{
+    margin-top: 30px;
+}
+
+.review_Condition .tab-content ul{
+    margin: 30px 0;
+}
+
+.review_Condition .tab-content ul li{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--bg_color2);
+    margin-bottom: 10px;
+}
+
+.review_Condition .tab-content ul li:last-child{
+    margin-bottom: 0;
+}
+
+.review_Condition .tab-content p{
+    font-style: italic;
+}
+
+.review_Condition .rating a{
+    color: #FFF;
+}
+
+.review_Condition .rating a.ratingsss{
+    color: yellow;
+}
+
+.review_Condition .form_part{
+    margin-top: 30px;
+}
+
+.review_Condition .form_part label{
+    color: #FFF;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.review_Condition .form_part .custome_input{
+    margin-bottom: 20px;
+}
+
+.review_Condition .form_part textarea{
+    width: 50%;
+    padding: 5px 10px;
+    border-radius: 2px;
+    border: none;
+}
+
+.review_Condition .form_part input{
+    width: 50%;
+    padding: 5px 10px;
+    border-radius: 2px;
+}
+
+.review_Condition .form_part .custome_input input{
+    width: auto;
+    margin-right: 10px;
+}
+
+.review_Condition .form_part .custome_input label{
+    margin-bottom: 0;
+}
+
+.review_Condition .form_part .custome_input button{
+    color: #FFF;
+    background: var(--bg_color);
+    border: 1px solid #FFF;
+    padding: 5px 30px;
+    border-radius: 3px;
+    transition: all linear .3s;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.review_Condition .form_part .custome_input button:hover{
+    background: #FFF;
+    color: var(--bg_color);
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START  PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+#youMayLike{
+    margin: 50px 0;
+    margin-bottom: 90px;
+}
+
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START Modal Part PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+.modal_part .custom_input{
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.modal_part .custom_input label{
+    margin-bottom: 10px;
+}
+
+.modal_part .custom_input label span{
+    color: red;
+}
+
+.modal_part .custom_input input{
+    width: 100%;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.order_part .table{
+    margin-top: 20px;
+}
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START  PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------------------------------
+    START  PART
+--------------------------------------------------------------------------------------------------------------------------------------------------- */
