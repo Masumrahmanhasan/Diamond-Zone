@@ -91,7 +91,7 @@
 														</th>
 														<th class="border-bottom">
 																<a wire:click="sortBy('TagsName')" class="text-default me-3">
-																		<span>Tags</span>
+																		<span>Price</span>
 
 																		<span>
 																				<i class="fas fa-sort"></i>
@@ -129,9 +129,14 @@
                                                                         class="rounded" style="max-width: 150px;"></span>
                                                 </td>
                                                 <td>
-                                                        <span><span class="badge text-white" style="background-color:#f5365c">Hot</span>
-                                                                <span class="badge text-white" style="background-color:#5e72e4">Trending</span>
-                                                                <span class="badge text-white" style="background-color:#11cdef">New</span></span>
+                                                            <span>
+                                                                Base Price :<span class="badge text-white" style="background-color:#f5365c">৳ {{ $product->price }}</span>
+                                                                <br>
+                                                                @if($product->discount != 0)
+                                                                    Discount Price : <span class="badge text-white" style="background-color:#5e72e4">৳ {{ $product->price - $product->discount }}</span>
+                                                                @endif
+
+                                                            </span>
                                                 </td>
                                                 <td>
                                                         <span>{{ beautify_date($product->created_at) }}</span>
@@ -151,8 +156,8 @@
                                                                         </button>
                                                                         <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1" style="margin: 0px;">
                                                                                 <a class="dropdown-item d-flex align-items-center"
-                                                                                        href="https://volt-pro-laravel-admin-dashboard.updivision.com/edit-item/1"><span
-                                                                                                class="fas fa-user-shield me-2"></span>Edit item</a>
+                                                                                        href="#">
+                                                                                        <i class="fas fa-pencil me-2"></i>Edit item</a>
                                                                                 <a onclick="confirm('Are you sure you want to remove the item from this group?') || event.stopImmediatePropagation()"
                                                                                         wire:click="delete(1)" class="dropdown-item text-danger rounded-bottom"><span
                                                                                                 class="fas fa-user-times me-2"></span>Delete item</a>
