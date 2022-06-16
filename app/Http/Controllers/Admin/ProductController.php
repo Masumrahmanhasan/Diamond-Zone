@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
@@ -31,8 +32,10 @@ class ProductController extends Controller
             'category_id' => 'required',
             'thumbnail' => 'required',
             'gallary' => 'required',
-            'quantity' => 'required',
         ]);
+
+        dd($request->all());
+        Product::create($request->all());
 
 
     }

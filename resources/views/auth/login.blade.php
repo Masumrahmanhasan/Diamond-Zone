@@ -21,9 +21,12 @@
                             <div class="text-center text-md-center mb-4 mt-md-0">
                                 <h1 class="mb-0 h3">Sign in to Continue</h1>
                             </div>
-                            <form action="#" class="mt-4">
-                                <div class="form-group mb-4"><label for="email">Your Email</label>
-                                    <div class="input-group"><span class="input-group-text" id="basic-addon1">
+                            <form action="{{ route('login') }}" class="mt-4" method="POST">
+                                @csrf
+                                <div class="form-group mb-4">
+                                    <label for="email">Your Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1">
                                         <svg
                                                 class="icon icon-xs text-gray-600" fill="currentColor"
                                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -32,19 +35,33 @@
                                                 </path>
                                                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z">
                                                 </path>
-                                        </svg> </span><input type="email" class="form-control"
-                                            placeholder="example@company.com" id="email" autofocus="" required=""></div>
+                                        </svg> </span>
+                                        <input type="email" name="email" class="form-control"
+                                            placeholder="example@company.com" id="email" autofocus="" required="">
+                                    </div>
+
+                                    @if($errors->any())
+                                    @foreach ($errors->all() as $message)
+                                    <span>{{ $message }}</span>
+                                    @endforeach
+                                    @endif
                                 </div>
                                 <div class="form-group">
-                                    <div class="form-group mb-4"><label for="password">Your Password</label>
-                                        <div class="input-group"><span class="input-group-text" id="basic-addon2"><svg
+                                    <div class="form-group mb-4">
+                                        <label for="password">Your Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text" id="basic-addon2">
+                                                <svg
                                                     class="icon icon-xs text-gray-600" fill="currentColor"
                                                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd"
                                                         d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
                                                         clip-rule="evenodd"></path>
-                                                </svg> </span><input type="password" placeholder="Password"
-                                                class="form-control" id="password" required=""></div>
+                                                </svg>
+                                            </span>
+                                            <input type="password" name="password" placeholder="Password"
+                                                class="form-control" id="password" required="">
+                                        </div>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-top mb-4">
                                         <div class="form-check"><input class="form-check-input" type="checkbox" value=""
@@ -52,13 +69,14 @@
                                             <label class="form-check-label mb-0" for="remember">Remember me</label>
                                         </div>
                                         <div>
-                                            <a href="./forgot-password.html" class="small text-right">Lost
+                                            <a href="javascript:;" class="small text-right">Lost
                                                 password?
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-grid"><button type="submit" class="btn btn-gray-800">Sign in</button>
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-gray-800">Sign in</button>
                                 </div>
                             </form>
                             <div class="mt-3 mb-4 text-center"><span class="fw-normal">&nbsp;</span></div>

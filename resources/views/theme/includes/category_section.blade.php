@@ -19,80 +19,26 @@
 
             <div class="row">
 
-                <!-- item -->
-                <div class="col-lg-6">
+                @foreach (\App\Models\Category::all() as $key => $category)
 
-                    <div class="shopByCategory_item">
 
-                        <a href="category_page.html">
-                            <div class="shopByCategory_img">
-                                <img src="frontend_asset/images/shopByCategory1.jpg" class="img-fluid w-100" alt="">
-                            </div>
-                        </a>
+                    <div class="@if($key+1 == 1 || $key+1 == 2)col-lg-6 col-sm-6 @else col-lg-4 col-sm-4 @endif">
 
-                    </div>
+                        <div class="shopByCategory_item">
 
-                </div>
+                            <a href="javascript:;">
+                                <div class="shopByCategory_img">
+                                    <img src="{{ $category->featured_image }}" class="img-fluid w-100" alt="">
+                                </div>
+                            </a>
 
-                <!-- item -->
-                <div class="col-lg-6">
-
-                    <div class="shopByCategory_item">
-
-                        <a href="category_page.html">
-                            <div class="shopByCategory_img">
-                                <img src="frontend_asset/images/shopByCategory2.jpg" class="img-fluid w-100" alt="">
-                            </div>
-                        </a>
+                        </div>
 
                     </div>
 
-                </div>
+                @endforeach
 
-                <!-- item -->
-                <div class="col-lg-4">
 
-                    <div class="shopByCategory_item">
-
-                        <a href="category_page.html">
-                            <div class="shopByCategory_img">
-                                <img src="frontend_asset/images/shopByCategory3.jpg" class="img-fluid w-100" alt="">
-                            </div>
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <!-- item -->
-                <div class="col-lg-4">
-
-                    <div class="shopByCategory_item">
-
-                        <a href="category_page.html">
-                            <div class="shopByCategory_img">
-                                <img src="frontend_asset/images/shopByCategory4.jpg" class="img-fluid w-100" alt="">
-                            </div>
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <!-- item -->
-                <div class="col-lg-4">
-
-                    <div class="shopByCategory_item">
-
-                        <a href="category_page.html">
-                            <div class="shopByCategory_img">
-                                <img src="frontend_asset/images/shopByCategory5.jpg" class="img-fluid w-100" alt="">
-                            </div>
-                        </a>
-
-                    </div>
-
-                </div>
 
             </div>
 

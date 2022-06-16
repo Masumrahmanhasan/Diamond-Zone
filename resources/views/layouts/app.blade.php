@@ -29,75 +29,10 @@
 <body>
 
     <div id="app">
-        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav> --}}
-
-        <header id="header">
-
-            <div class="container-fluid">
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="header_img">
-                            <img src="frontend_asset/images/header.jpg" class="img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </header>
+        <div class="preloader">
+            <img src="frontend_asset/images/preloader.gif" alt="">
+        </div>
 
         <section id="singUp">
 
@@ -152,20 +87,74 @@
 
         </section>
 
-
         {{-- Navbar --}}
 
+        @php
+            $categories = \App\Models\Category::with('subcategory')->get();
+        @endphp
         <nav class="navbar navbar-expand-lg">
 
             <div class="container">
 
-              <a class="navbar-brand" href="index.html">
-                  <img src="frontend_asset/images/logo.jpg" alt="">
-              </a>
+                <a class="navbar-brand" href="index.html">
+                    <img src="{{ uploaded_asset(get_setting('header_logo')) }}" alt="">
+                </a>
 
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+                <!-- Mobile Menu -->
+                <div class="mobileMenu">
+
+                    <a class="" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                        <i class="fas fa-bars"></i>
+                    </a>
+
+
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+
+                        <div class="offcanvas-header">
+                          <h2 class="offcanvas-title" id="offcanvasExampleLabel">Menu Bar</h2>
+                          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+
+                        <div class="offcanvas-body">
+
+                            <div class="dropdown mt-3">
+                                <ul class="navbar-nav ms-auto">
+
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Shop</a>
+                                    </li>
+
+                                    @foreach ($categories as $category)
+                                    <li class="nav-item">
+
+                                        <a class="nav-link @if(count($category->subcategory) > 0) dropdown-toggle @endif" href="#" @if(count($category->subcategory) > 0) id="dropdownMenuButton" data-bs-toggle="dropdown" @endif>
+                                            {{ $category->name }}
+                                        </a>
+
+                                            @if(count($category->subcategory) > 0)
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                @foreach ($category->subcategory as $subcategory)
+                                                <li><a class="dropdown-item" href="#">{{ $subcategory->name }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                            @endif
+
+                                    </li>
+                                    @endforeach
+
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
 
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
@@ -174,23 +163,28 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">SHOP ALL</a>
+                            <a class="nav-link" href="#">Shop</a>
                         </li>
+                        @foreach ($categories as $category)
                         <li class="nav-item">
-                            <a class="nav-link" href="#">EARRING</a>
+                            <a class="nav-link" href="#">{{ $category->name }}</a>
+
+                            @if(count($category->subcategory) > 0)
+                                <ul class="drop_down">
+
+                                    @foreach ($category->subcategory as $subcategory)
+                                        <li><a href="">{{ $subcategory->name }}</a></li>
+                                    @endforeach
+
+                                </ul>
+                            @endif
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown link
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
+                        @endforeach
+
                     </ul>
+
                 </div>
+
             </div>
 
         </nav>
@@ -200,6 +194,8 @@
             <div class="section_gaps"></div>
 
             @include('theme.includes.footer_section')
+
+            <a class="backToTop"><i class="fas fa-chevron-up"></i></a>
     </div>
 
     <script src="{{ asset('frontend_asset/js/jquery-1.12.4.min.js') }}"></script>

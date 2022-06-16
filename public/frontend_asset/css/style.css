@@ -64,15 +64,15 @@ select:focus {
 
 /* =============== COMMON CSS FOR WEB SITE =============== */
 :root {
-    --bg_color: #2A296F;
-    --bg_color2: #c3d4f0;
+    --bg_color: #181D23;
+    --bg_color2: #7C9DEC;
     --bdr_color: #777;
-    --text_color: #2c3137;
+    --text_color: #ccc;
 }
 
 body {
     font-family: 'PT Sans', sans-serif !important;
-    background: var(--bg_color);
+    background: #FFF;
 }
 
 .custome_width {
@@ -81,7 +81,7 @@ body {
 }
 
 h1{
-    color: #FFF;
+    color: var(--bg_color);
     font-size: 45px;
     font-weight: 700;
     line-height: 55px;
@@ -89,7 +89,7 @@ h1{
 
 
 h2{
-    color: #FFF;
+    color: var(--bg_color);
     font-size: 35px;
     font-weight: 700;
     line-height: 45px;
@@ -138,18 +138,12 @@ p{
 select{
     font-size: 16px;
     padding: 5px 10px;
-    color: var(--text_color);
+    color: #FFF;
+    background: var(--bg_color);
 }
 
 .section_gaps{
-    margin-top: 50px;
-}
-
-/* ---------------------------------------------------------------------------------------------------------------------------------------------------
-    START header PART
---------------------------------------------------------------------------------------------------------------------------------------------------- */
-#header{
-    background: #0980BA;
+    margin-top: 80px;
 }
 
 
@@ -157,7 +151,7 @@ select{
     START Sign up PART
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
 #singUp{
-    background: #001e38;
+    background: var(--bg_color2);
     padding: 20px 0;
 }
 
@@ -178,10 +172,10 @@ select{
     position: relative;
 }
 
-.singUp_content .custome_input input{
+.singUp_content .custome_input input {
     width: 100%;
     border-radius: 20px;
-    padding: 2px 20px;
+    padding: 5px 20px;
 }
 
 .singUp_content .custome_input .search{
@@ -199,7 +193,7 @@ select{
 .signUp_cart{
     position: relative;
     color: #FFF;
-    display: inline-block; 
+    display: inline-block;
     margin-left: 40px;
 }
 
@@ -229,31 +223,138 @@ select{
 }
 
 
+/* Per Loader */
+
+.preloader{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #FFF;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------
     START Menu bar PART
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
 .navbar{
-    background: #FFF;
+    background: var(--bg_color);
+    padding: 0;
+}
+
+.navbar a.navbar-brand {
+    padding: 0;
+    margin: 0;
 }
 
 a.navbar-brand img {
-    height: 80px;
+    height: 90px;
 }
 
 .navbar .nav-item{
-    padding: 0 10px;
+    position: relative;
+    overflow: hidden;
 }
 
-.navbar .nav-item .nav-link{
+.navbar .nav-item .nav-link {
     padding: 0;
-    font-size: 20px;
+    font-size: 18px;
     color: var(--text_color);
+    font-weight: 600;
+    text-transform: capitalize;
+    height: 100%;
+    padding: 38px 15px;
+}
+
+.navbar .nav-item:last-child .nav-link{
+    padding-right: 0;
 }
 
 .navbar .nav-item .nav-link:hover{
     color: var(--bg_color2);
 }
 
+.navbar .nav-item .drop_down {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    min-width: 200px;
+    background: #FFF;
+    border-radius: 3px;
+    z-index: 9;
+    padding: 20px;
+    transition: all linear .3s;
+    transform: translateY(10px);
+    opacity: 0;
+}
+
+.navbar .nav-item .drop_down li{
+    margin-bottom: 10px;
+}
+
+.navbar .nav-item .drop_down li:last-child{
+    margin-bottom: 0;
+}
+
+.navbar .nav-item .drop_down li a{
+    color: var(--bg_color);
+    width: 100%;
+    font-weight: 600;
+}
+
+.navbar .nav-item .drop_down li a:hover{
+    color: var(--bg_color2);
+}
+
+.navbar .nav-item .drop_down li:hover a{
+    padding-left: 5px;
+}
+
+.navbar .nav-item:hover{
+    overflow: visible;
+}
+
+.navbar .nav-item:hover .drop_down{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.navbar.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+.navbar.sticky .nav-item .nav-link {
+    padding: 30px 15px;
+}
+
+.navbar.sticky a.navbar-brand img {
+    height: 70px;
+}
+
+
+/* Mobile Menu */
+
+.mobileMenu{
+    display: none;
+}
+
+.mobileMenu a{
+    background: var(--bg_color2);
+    padding: 5px 12px;
+    border-radius: 3px;
+    font-size: 20px;
+    color: var(--bg_color);
+}
 
 
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -282,15 +383,36 @@ a.navbar-brand img {
     z-index: 9;
 }
 
+.owl-dots {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 30px;
+}
+
+button.owl-dot {
+    width: 20px;
+    height: 5px;
+    background: #FFF !important;
+    border-radius: 20px;
+    z-index: 9;
+    margin: 0 5px;
+    transition: all linear .3s;
+}
+
+button.owl-dot.active {
+    width: 50px;
+    background: var(--bg_color2) !important;
+}
 
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------
     START SHOP BY CATEGORY PART
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
-#shopByCategory .header h1{
+#shopByCategory .header h1 {
     position: relative;
     display: inline-block;
     margin-bottom: 20px;
-
+    width: 40%;
 }
 
 #shopByCategory .header h1::before {
@@ -301,7 +423,7 @@ a.navbar-brand img {
     transform: translateY(-50%);
     width: 250px;
     height: 1px;
-    background: #FFF;
+    background: var(--bg_color);
 }
 
 #shopByCategory .header h1::after {
@@ -312,7 +434,7 @@ a.navbar-brand img {
     transform: translateY(-50%);
     width: 250px;
     height: 1px;
-    background: #FFF;
+    background: var(--bg_color);
 }
 
 .shopByCategory_item{
@@ -337,6 +459,7 @@ a.navbar-brand img {
     position: relative;
     display: inline-block;
     width: 30%;
+    color: var(--bg_color);
 }
 
 .header h2:after{
@@ -347,7 +470,7 @@ a.navbar-brand img {
     transform: translateY(-50%);
     width: 250px;
     height: 1px;
-    background: #FFF;
+    background: var(--bg_color);
 }
 
 .header h2::before{
@@ -358,7 +481,7 @@ a.navbar-brand img {
     transform: translateY(-50%);
     width: 250px;
     height: 1px;
-    background: #FFF;
+    background: var(--bg_color);
 }
 
 
@@ -373,12 +496,18 @@ a.navbar-brand img {
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------
     START content part PART
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
-.category_item{
+.category_item {
     margin-top: 30px;
-    background: #FFF;
+    background: var(--bg_color);
     transition: all linear .5s;
     overflow: hidden;
     position: relative;
+    border: 1px solid var(--bg_color);
+    border-radius: 3px;
+}
+
+.category_item .img{
+    overflow: hidden;
 }
 
 .category_item img{
@@ -387,7 +516,6 @@ a.navbar-brand img {
 
 .category_item:hover img{
     transform: scale(1.1);
-
 }
 
 .category_item .text{
@@ -410,12 +538,17 @@ a.navbar-brand img {
 
 .category_item .add_to_cart a{
     padding: 8px 15px;
-    background: var(--text_color);
+    background: var(--bg_color2);
     color: #FFF;
+    border: 1px solid var(--bg_color2);
+    font-weight: 600;
+    border-radius: 2px;
 }
 
 .category_item .add_to_cart a:hover{
-    background: var(--bg_color);
+    border: 1px solid var(--bg_color2);
+    background: none;
+    color: var(--bg_color2);
 }
 
 .category_item .overlay{
@@ -441,6 +574,11 @@ a.navbar-brand img {
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------
     START Customer Review PART
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
+#customer_review{
+    background: var(--bg_color2);
+    padding: 100px 0;
+}
+
 .customer_review_content{
     margin-top: 60px;
 }
@@ -509,7 +647,7 @@ a.navbar-brand img {
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
 .dash{
     position: relative;
-    border-bottom: 2px dashed #FFF;
+    border-bottom: 2px dashed var(--bg_color2);
 }
 
 .dash .img {
@@ -517,13 +655,13 @@ a.navbar-brand img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: var(--bg_color);
+    background: #FFF;
     padding: 0 20px;
 }
 
 .dash .img svg{
     font-size: 50px;
-    color: #FFF;
+    color: var(--bg_color);
 }
 
 #stayUpdate .header h3{
@@ -538,10 +676,11 @@ a.navbar-brand img {
 .social_part a{
     width: 40px;
     height: 40px;
-    background: #FFF;
+    background: var(--bg_color);
     border-radius: 5px;
     justify-content: center;
     margin: 0 8px;
+    color: #FFF;
 }
 
 .social_part a svg{
@@ -552,6 +691,7 @@ a.navbar-brand img {
     border-radius: 50%;
     background: var(--bg_color2);
     color: var(--bg_color);
+    color: #FFF;
 }
 
 
@@ -561,7 +701,7 @@ a.navbar-brand img {
     START footer PART
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
 #footer{
-    background: #FFF;
+    background: var(--bg_color);
     padding: 30px 0;
 }
 
@@ -578,7 +718,9 @@ a.navbar-brand img {
 }
 
 #tiny_footer{
+    background: var(--bg_color);
     padding: 10px 0;
+    border-top: 2px solid var(--bg_color2);
 }
 
 #tiny_footer h3{
@@ -624,14 +766,27 @@ a.navbar-brand img {
 
 .product_description ul{
     margin-top: 30px;
+    margin-left: 20px;
 }
 
 .product_description ul li{
-    color: #FFF;
     margin-bottom: 5px;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
+    position: relative;
+}
+
+.product_description ul li::after{
+    position: absolute;
+    content: '';
+    top: 50%;
+    transform: translateY(-50%);
+    left: -20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg_color2);
 }
 
 .product_description ul li img{
@@ -648,6 +803,7 @@ a.navbar-brand img {
 
 .product_description .add_to_cart .custome_input {
     width: 80px;
+    border: 1px solid var(--bdr_color);
 }
 
 .product_description .add_to_cart .custome_input input{
@@ -701,11 +857,13 @@ a.navbar-brand img {
     font-size: 16px;
     line-height: 30px;
     font-weight: 700;
-    color: #FFF;
+    color: var(--bg_color);
+
 }
 
 .review_Condition .nav-tabs .nav-link.active{
-    color: var(--bg_color);
+    background: var(--bg_color2);
+    color: #FFF;
 }
 
 .review_Condition .tab-content{
@@ -733,11 +891,11 @@ a.navbar-brand img {
 }
 
 .review_Condition .rating a{
-    color: #FFF;
+    color: var(--bg_color2);
 }
 
 .review_Condition .rating a.ratingsss{
-    color: yellow;
+    color: var(--bdr_color);
 }
 
 .review_Condition .form_part{
@@ -745,7 +903,7 @@ a.navbar-brand img {
 }
 
 .review_Condition .form_part label{
-    color: #FFF;
+    color: var(--bdr_color);
     font-size: 16px;
     display: block;
     margin-bottom: 5px;
@@ -759,22 +917,19 @@ a.navbar-brand img {
     width: 50%;
     padding: 5px 10px;
     border-radius: 2px;
-    border: none;
+    border: 1px solid var(--bdr_color);
 }
 
 .review_Condition .form_part input{
     width: 50%;
     padding: 5px 10px;
     border-radius: 2px;
+    border: 1px solid var(--bdr_color);
 }
 
 .review_Condition .form_part .custome_input input{
-    width: auto;
+    width: 50%;
     margin-right: 10px;
-}
-
-.review_Condition .form_part .custome_input label{
-    margin-bottom: 0;
 }
 
 .review_Condition .form_part .custome_input button{
@@ -835,12 +990,100 @@ a.navbar-brand img {
     margin-top: 20px;
 }
 
+.order_part .table th{
+    font-size: 16px;
+}
 
+.order_part .table td{
+    font-size: 14px;
+}
+
+
+.order_part .table th, .order_part .table td{
+    border-right: 1px solid #eee;
+}
+
+.order_part .table th:last-child, .order_part .table td:last-child{
+    border-right: none;
+}
+
+/* cash_on_delivary */
+.cash_on_delivary{
+    margin-top: 20px;
+    background: var(--bg_color2);
+    padding: 20px;
+    border-radius: 3px;
+}
+
+.cash_on_delivary h4{
+    font-weight: 18px;
+}
+
+.cash_on_delivary span{
+    display: block;
+    background: var(--bdr_color);
+    padding: 10px;
+    border-radius: 3px;
+    color: #FFF;
+    margin-top: 10px;
+    position: relative;
+}
+
+.cash_on_delivary span::after {
+    content: "";
+    border: 12px solid var(--text_color);
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    position: absolute;
+    top: -24px;
+    left: 40px;
+}
+
+.cash_on_delivary p{
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #000;
+    color: #000;
+}
+
+.cash_on_delivary p a{
+    font-weight: 700;
+}
+
+.cash_on_delivary .custome_input{
+    margin-top: 10px;
+}
+
+.cash_on_delivary .submit{
+    text-align: right;
+}
+
+.cash_on_delivary .submit button{
+    font-size: 18px;
+    background: var(--bg_color);
+    color: #FFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+}
 
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------
-    START  PART
+    START Back to top PART
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
-
+.backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: orange;
+    width: 30px;
+    height: 30px;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 
 
 

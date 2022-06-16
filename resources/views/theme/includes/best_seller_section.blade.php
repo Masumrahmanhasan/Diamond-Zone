@@ -18,7 +18,7 @@
             <div class="row">
 
                 <!-- item -->
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-sm-4">
 
                     <div class="category_item">
 
@@ -30,12 +30,12 @@
                         </a>
 
                         <div class="text">
-                            <h3>18k Gold Earrings</h3>
-                            <p><del>৳ 7,900.00</del> ৳ 3,680.00</p>
+                            <h3 class="wh">18k Gold Earrings</h3>
+                            <p class="wh"><del>৳ 7,900.00</del> ৳ 3,680.00</p>
 
                             <div class="add_to_cart d_flex d_justify">
-                                <a href="">Add to cart</a>
-                                <a href="">Buy Now</a>
+                                <a href="">View More</a>
+                                <a href="">Order Now</a>
                             </div>
 
                         </div>
@@ -50,7 +50,7 @@
                 </div>
 
                 <!-- item -->
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-sm-4">
 
                     <div class="category_item">
 
@@ -62,12 +62,12 @@
                         </a>
 
                         <div class="text">
-                            <h3>18k Gold Earrings</h3>
-                            <p><del>৳ 7,900.00</del> ৳ 3,680.00</p>
+                            <h3 class="wh">18k Gold Earrings</h3>
+                            <p class="wh"><del>৳ 7,900.00</del> ৳ 3,680.00</p>
 
                             <div class="add_to_cart d_flex d_justify">
-                                <a href="">Add to cart</a>
-                                <a href="">Buy Now</a>
+                                <a href="">View More</a>
+                                <a href="">Order Now</a>
                             </div>
 
                         </div>
@@ -82,7 +82,7 @@
                 </div>
 
                 <!-- item -->
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-sm-4">
 
                     <div class="category_item">
 
@@ -94,12 +94,12 @@
                         </a>
 
                         <div class="text">
-                            <h3>18k Gold Earrings</h3>
-                            <p><del>৳ 7,900.00</del> ৳ 3,680.00</p>
+                            <h3 class="wh">18k Gold Earrings</h3>
+                            <p class="wh"><del>৳ 7,900.00</del> ৳ 3,680.00</p>
 
                             <div class="add_to_cart d_flex d_justify">
-                                <a href="">Add to cart</a>
-                                <a href="">Buy Now</a>
+                                <a href="">View More</a>
+                                <a href="">Order Now</a>
                             </div>
 
                         </div>
@@ -114,7 +114,7 @@
                 </div>
 
                 <!-- item -->
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-sm-4">
 
                     <div class="category_item">
 
@@ -126,12 +126,12 @@
                         </a>
 
                         <div class="text">
-                            <h3>18k Gold Earrings</h3>
-                            <p><del>৳ 7,900.00</del> ৳ 3,680.00</p>
+                            <h3 class="wh">18k Gold Earrings</h3>
+                            <p class="wh"><del>৳ 7,900.00</del> ৳ 3,680.00</p>
 
                             <div class="add_to_cart d_flex d_justify">
-                                <a href="">Add to cart</a>
-                                <a href="">Buy Now</a>
+                                <a href="">View More</a>
+                                <a href="">Order Now</a>
                             </div>
 
                         </div>

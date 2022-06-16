@@ -20,7 +20,7 @@
             <div class="col-lg-10 m-auto">
 
                <div class="header text-center">
-                    <h3 class="wh">Stay Updated With the Latest...</h3>
+                    <h3 >Stay Updated With the Latest...</h3>
                     <div class="social_part d_flex">
                         <a href="" class="d_flex"><i class="fab fa-facebook-f"></i></a>
                         <a href="" class="d_flex"><i class="fab fa-youtube"></i></a>

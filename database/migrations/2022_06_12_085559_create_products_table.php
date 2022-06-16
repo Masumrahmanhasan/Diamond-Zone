@@ -21,12 +21,11 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->tinyText('short_description')->nullable();
             $table->longText('description');
-            $table->integer('thumbnail');
-            $table->integer('gallary');
-            $table->integer('certificate')->nullable();
+            $table->string('thumbnail');
+            $table->string('gallary');
+            $table->string('certificate')->nullable();
             $table->integer('price')->default(0);
             $table->integer('discount')->default(0);
-            $table->integer('quantity');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

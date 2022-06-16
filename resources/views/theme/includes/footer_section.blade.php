@@ -5,20 +5,20 @@
         <div class="row">
 
             <!-- Item -->
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-sm-4">
 
                 <div class="footer_content">
-                    <h3>Look on Us</h3>
-                    <p>We are provide best quality jewellery to our customers. We care about quality. Our main aim to provide quality products and service that’s why we have assign quality types.</p>
+                    <h3 class="wh">Look on Us</h3>
+                    <p class="wh">We are provide best quality jewellery to our customers. We care about quality. Our main aim to provide quality products and service that’s why we have assign quality types.</p>
                 </div>
 
             </div>
 
             <!-- Item -->
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-sm-4">
 
                 <div class="footer_content">
-                    <h3>Services & Support</h3>
+                    <h3 class="wh">Services & Support</h3>
                     <ul>
                         <li><a href="">Privacy Policy</a></li>
                         <li><a href="">Replace Policy</a></li>
@@ -30,10 +30,10 @@
             </div>
 
             <!-- Item -->
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-sm-4">
 
                 <div class="footer_content">
-                    <h3>Services & Support</h3>
+                    <h3 class="wh"  >Services & Support</h3>
                     <ul>
                         <li><a href="">About Us</a></li>
                         <li><a href="">Contact Us</a></li>
@@ -57,10 +57,10 @@
 
     <div class="container">
 
-        <div class="row">
+        <div class="row d_flex">
 
             <!-- left -->
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-sm-6">
 
                 <div class="tiny_footer_left">
                     <h3 class="wh">PAYMENT METHODES</h3>
@@ -72,7 +72,7 @@
             </div>
 
             <!-- left -->
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-sm-6">
 
                 <div class="tiny_footer_left">
                     <h3 class="wh">SHIPPING SYSTEMS</h3>

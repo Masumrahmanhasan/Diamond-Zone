@@ -34,7 +34,9 @@
                                                                 <div class="col-md-6 mb-3">
                                                                         <div>
                                                                                 <label for="name">Name</label>
-                                                                                <input name="name" class="form-control " id="name" type="text"
+                                                                                <input name="name" class="form-control  @error('name')
+                                                                                is-invalid
+                                                                                @enderror" id="name" type="text"
                                                                                         placeholder="Enter the item's name" required="">
                                                                         </div>
                                                                 </div>
@@ -42,7 +44,9 @@
                                                                 <div class="col-md-6 mb-3">
                                                                     <div>
                                                                             <label for="name">SKU</label>
-                                                                            <input name="sku" class="form-control " id="name" type="text"
+                                                                            <input name="sku" class="form-control @error('sku')
+                                                                            is-invalid
+                                                                            @enderror" id="name" type="text"
                                                                                     placeholder="Enter the item's Sku" required="">
                                                                     </div>
                                                                 </div>
@@ -51,7 +55,9 @@
                                                         <div class="row">
                                                             <div class="col-md-6 mb-3">
                                                                 <label for="category">Category</label>
-                                                                <select name="category_id" class="form-select mb-0 " id="category_id"
+                                                                <select name="category_id" class="form-select mb-0 @error('category_id')
+                                                                is-invalid
+                                                                @enderror" id="category_id"
                                                                         aria-label="category select example">
                                                                         <option selected="">Choose...</option>
                                                                         @foreach ($categories as $category)
@@ -87,7 +93,9 @@
                                                             <div class="col-md-6 mb-3">
                                                                     <div class="form-group">
                                                                             <label for="excerpt">Price</label>
-                                                                            <input name="price" class="form-control " id="name" type="number"
+                                                                            <input name="price" class="form-control @error('price')
+                                                                            is-invalid
+                                                                            @enderror" id="name" type="number"
                                                                                     placeholder="Enter the item's Price" required="">
                                                                     </div>
                                                             </div>
@@ -217,7 +225,7 @@
                 axios.post('{{ route('get_subcategories') }}', {category_id:category_id})
                     .then(response => {
                         var subcategory = document.getElementById('subcategory_id');
-                        subcategory.innerHTM = '<option selected="">Choose...</option>'
+                        subcategory.innerHTM = '<option selected="" value="null">Choose...</option>'
                         response.data.forEach((element) => {
                             subcategory.innerHTML = '<option value="'+ element.id +'">'+ element.name +'</option>'
                         });

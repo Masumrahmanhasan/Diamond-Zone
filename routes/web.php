@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
@@ -29,14 +30,25 @@ Route::get('/aiz-uploader/get_uploaded_files', [UploadController::class, 'get_up
 Route::post('/aiz-uploader/get_file_by_ids', [UploadController::class, 'get_preview_files']);
 Route::get('/aiz-uploader/download/{id}', [UploadController::class, 'attachment_download'])->name('download_attachment');
 
-Route::prefix('admin')->group(function () {
-    Auth::routes();
+Auth::routes();
 
-    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
-    Route::resource('categories', CategoryController::class);
-    Route::resource('subcategories', SubCategoryController::class);
-    Route::resource('products', ProductController::class);
-    Route::post('/get_subcategories', [ProductController::class, 'getSubcategoryById'])->name('get_subcategories');
+Route::prefix('admin')->group(function () {
+
+    Route::group(['middleware' => ['auth']], function() {
+        Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+        Route::resource('categories', CategoryController::class);
+        Route::resource('subcategories', SubCategoryController::class);
+        Route::resource('products', ProductController::class);
+        Route::post('/get_subcategories', [ProductController::class, 'getSubcategoryById'])->name('get_subcategories');
+
+        Route::get('/website/header', [SettingsController::class, 'index'])->name('settings.header');
+        Route::get('/website/pages', [SettingsController::class, 'pages'])->name('settings.pages');
+
+        Route::post('/update/business_setting', [SettingsController::class, 'update'])->name('update.business_setting');
+    });
+
+
+
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

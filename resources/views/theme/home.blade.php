@@ -3,13 +3,41 @@
 @section('content')
 <section id="banner">
 
-    <div class="banner_img">
-        <a href="">
-            <img src="frontend_asset/images/banner.jpg" class="img-fluid w-100" alt="">
-        </a>
+    <div class="owl-carousel owl-theme">
+
+        <!-- Item -->
+        <div class="item">
+            <div class="banner_img">
+                <a href="">
+                    <img src="frontend_asset/images/banner.jpg" class="img-fluid w-100" alt="">
+                </a>
+            </div>
+        </div>
+
+        <!-- Item -->
+        <div class="item">
+            <div class="banner_img">
+                <a href="">
+                    <img src="frontend_asset/images/banner.jpg" class="img-fluid w-100" alt="">
+                </a>
+            </div>
+        </div>
+
+        <!-- Item -->
+        <div class="item">
+            <div class="banner_img">
+                <a href="">
+                    <img src="frontend_asset/images/banner.jpg" class="img-fluid w-100" alt="">
+                </a>
+            </div>
+        </div>
+
     </div>
 
+
+
 </section>
+
 
 
 <div class="section_gaps"></div>

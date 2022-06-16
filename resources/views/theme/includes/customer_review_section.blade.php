@@ -19,7 +19,7 @@
             <div class="row">
 
                 <!-- Item -->
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-sm-4">
 
                     <div class="customer_review_item">
 
@@ -35,7 +35,7 @@
                 </div>
 
                 <!-- Item -->
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-sm-4">
 
                     <div class="customer_review_item">
 
@@ -51,7 +51,7 @@
                 </div>
 
                  <!-- Item -->
-                 <div class="col-lg-4">
+                 <div class="col-lg-4 col-sm-4">
 
                     <div class="customer_review_item">
 
