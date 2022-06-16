@@ -47,7 +47,7 @@
                                                                             <input name="sku" class="form-control @error('sku')
                                                                             is-invalid
                                                                             @enderror" id="name" type="text"
-                                                                                    placeholder="Enter the item's Sku" required="">
+                                                                                    placeholder="Enter the item's Sku" required="" value="{{ $sku }}">
                                                                     </div>
                                                                 </div>
                                                         </div>
@@ -72,7 +72,7 @@
                                                                 <label for="category">Sub Category</label>
                                                                 <select name="subcategory_id" class="form-select mb-0 " id="subcategory_id"
                                                                         aria-label="category select example">
-                                                                        <option selected="">Choose...</option>
+                                                                        <option selected="" value="{{ null }}">Choose...</option>
 
                                                                 </select>
                                                             </div>

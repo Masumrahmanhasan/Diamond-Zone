@@ -25,6 +25,8 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend_asset/css/media.css') }}">
 
+    <link rel="stylesheet" href="https://unpkg.com/xzoom/dist/xzoom.css">
+
 </head>
 <body>
 
@@ -65,12 +67,12 @@
                             </div>
 
                             <!-- cart -->
-                            <div class="signUp_cart">
+                            {{-- <div class="signUp_cart">
                                 <i class="fas fa-cart-arrow-down"></i>
                                 <div class="cart_overlay">
                                     <span>0</span>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <!-- sing in -->
                             <div class="sign_in">
@@ -198,6 +200,18 @@
             <a class="backToTop"><i class="fas fa-chevron-up"></i></a>
     </div>
 
+
+    <div class="modal_part">
+
+        <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl" id="checkout_modal">
+
+
+            </div>
+        </div>
+
+    </div>
+
     <script src="{{ asset('frontend_asset/js/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ asset('frontend_asset/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('frontend_asset/js/owl.carousel.min.js') }}"></script>
@@ -208,9 +222,14 @@
     <script src="{{ asset('frontend_asset/js/jquery.elevatezoom.js') }}"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+    <script src="https://unpkg.com/xzoom/dist/xzoom.min.js"></script>
+
     <script>
         AOS.init();
     </script>
+
+
+    @yield('scripts')
 
 
 </body>

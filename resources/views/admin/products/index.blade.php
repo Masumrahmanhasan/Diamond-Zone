@@ -116,137 +116,53 @@
 
 
 										<tbody>
-												<tr>
-														<td>
-																<span><span class="fw-bold">5 citybreak ideas for this year</span></span>
-														</td>
-														<td>
-																<span>Fashion</span>
-														</td>
-														<td>
-																<span><img src="https://volt-pro-laravel-admin-dashboard.updivision.com/items/img1.jpg"
-																				class="rounded" style="max-width: 150px;"></span>
-														</td>
-														<td>
-																<span><span class="badge text-white" style="background-color:#f5365c">Hot</span>
-																		<span class="badge text-white" style="background-color:#5e72e4">Trending</span>
-																		<span class="badge text-white" style="background-color:#11cdef">New</span></span>
-														</td>
-														<td>
-																<span>12 Jun 2022</span>
-														</td>
-														<td>
-																<span>
-																		<div class="btn-group">
-																				<button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
-																						data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																						<svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20"
-																								xmlns="http://www.w3.org/2000/svg">
-																								<path
-																										d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-																								</path>
-																						</svg>
-																						<span class="visually-hidden">Toggle Dropdown</span>
-																				</button>
-																				<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1" style="margin: 0px;">
-																						<a class="dropdown-item d-flex align-items-center"
-																								href="https://volt-pro-laravel-admin-dashboard.updivision.com/edit-item/1"><span
-																										class="fas fa-user-shield me-2"></span>Edit item</a>
-																						<a onclick="confirm('Are you sure you want to remove the item from this group?') || event.stopImmediatePropagation()"
-																								wire:click="delete(1)" class="dropdown-item text-danger rounded-bottom"><span
-																										class="fas fa-user-times me-2"></span>Delete item</a>
-																				</div>
-																		</div>
-																</span>
-														</td>
-												</tr>
-												<tr>
-														<td>
-																<span><span class="fw-bold">Cocktail ideas for your birthday party</span></span>
-														</td>
-														<td>
-																<span>Food</span>
-														</td>
-														<td>
-																<span><img src="https://volt-pro-laravel-admin-dashboard.updivision.com/items/img3.jpg"
-																				class="rounded" style="max-width: 150px;"></span>
-														</td>
-														<td>
-																<span><span class="badge text-white" style="background-color:#f5365c">Hot</span></span>
-														</td>
-														<td>
-																<span>12 Jun 2022</span>
-														</td>
-														<td>
-																<span>
-																		<div class="btn-group">
-																				<button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
-																						data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																						<svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20"
-																								xmlns="http://www.w3.org/2000/svg">
-																								<path
-																										d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-																								</path>
-																						</svg>
-																						<span class="visually-hidden">Toggle Dropdown</span>
-																				</button>
-																				<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-																						<a class="dropdown-item d-flex align-items-center"
-																								href="https://volt-pro-laravel-admin-dashboard.updivision.com/edit-item/3"><span
-																										class="fas fa-user-shield me-2"></span>Edit item</a>
-																						<a onclick="confirm('Are you sure you want to remove the item from this group?') || event.stopImmediatePropagation()"
-																								wire:click="delete(3)" class="dropdown-item text-danger rounded-bottom"><span
-																										class="fas fa-user-times me-2"></span>Delete item</a>
-                                                                                        <a onclick="confirm('Are you sure you want to remove the item from this group?') || event.stopImmediatePropagation()"
-                                                                                                        wire:click="delete(3)" class="dropdown-item text-danger rounded-bottom"><span
-                                                                                                                class="fas fa-user-times me-2"></span>Delete item</a>
-																				</div>
-																		</div>
-																</span>
-														</td>
-												</tr>
-												<tr>
-														<td>
-																<span><span class="fw-bold">Top 10 restaurants in Italy</span></span>
-														</td>
-														<td>
-																<span>Food</span>
-														</td>
-														<td>
-																<span><img src="https://volt-pro-laravel-admin-dashboard.updivision.com/items/img2.jpg"
-																				class="rounded" style="max-width: 150px;"></span>
-														</td>
-														<td>
-																<span><span class="badge text-white" style="background-color:#f5365c">Hot</span></span>
-														</td>
-														<td>
-																<span>12 Jun 2022</span>
-														</td>
-														<td>
-																<span>
-																		<div class="btn-group">
-																				<button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
-																						data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																						<svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20"
-																								xmlns="http://www.w3.org/2000/svg">
-																								<path
-																										d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-																								</path>
-																						</svg>
-																						<span class="visually-hidden">Toggle Dropdown</span>
-																				</button>
-																				<div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-																						<a class="dropdown-item d-flex align-items-center"
-																								href="https://volt-pro-laravel-admin-dashboard.updivision.com/edit-item/2"><span
-																										class="fas fa-user-shield me-2"></span>Edit item</a>
-																						<a onclick="confirm('Are you sure you want to remove the item from this group?') || event.stopImmediatePropagation()"
-																								wire:click="delete(2)" class="dropdown-item text-danger rounded-bottom"><span
-																										class="fas fa-user-times me-2"></span>Delete item</a>
-																				</div>
-																		</div>
-																</span>
-														</td>
-												</tr>
+                                            @foreach ($products as $key => $product)
+                                            <tr>
+                                                <td>
+                                                        <span><span class="fw-bold">{{ $product->name }}</span></span>
+                                                </td>
+                                                <td>
+                                                        <span>{{ $product->category->name }}</span>
+                                                </td>
+                                                <td>
+                                                        <span><img src="{{ uploaded_asset($product->thumbnail) }}"
+                                                                        class="rounded" style="max-width: 150px;"></span>
+                                                </td>
+                                                <td>
+                                                        <span><span class="badge text-white" style="background-color:#f5365c">Hot</span>
+                                                                <span class="badge text-white" style="background-color:#5e72e4">Trending</span>
+                                                                <span class="badge text-white" style="background-color:#11cdef">New</span></span>
+                                                </td>
+                                                <td>
+                                                        <span>{{ beautify_date($product->created_at) }}</span>
+                                                </td>
+                                                <td>
+                                                        <span>
+                                                                <div class="btn-group">
+                                                                        <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
+                                                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20"
+                                                                                        xmlns="http://www.w3.org/2000/svg">
+                                                                                        <path
+                                                                                                d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
+                                                                                        </path>
+                                                                                </svg>
+                                                                                <span class="visually-hidden">Toggle Dropdown</span>
+                                                                        </button>
+                                                                        <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1" style="margin: 0px;">
+                                                                                <a class="dropdown-item d-flex align-items-center"
+                                                                                        href="https://volt-pro-laravel-admin-dashboard.updivision.com/edit-item/1"><span
+                                                                                                class="fas fa-user-shield me-2"></span>Edit item</a>
+                                                                                <a onclick="confirm('Are you sure you want to remove the item from this group?') || event.stopImmediatePropagation()"
+                                                                                        wire:click="delete(1)" class="dropdown-item text-danger rounded-bottom"><span
+                                                                                                class="fas fa-user-times me-2"></span>Delete item</a>
+                                                                        </div>
+                                                                </div>
+                                                        </span>
+                                                </td>
+                                        </tr>
+                                            @endforeach
+
 										</tbody>
 								</table>
 								<div class="mt-3">

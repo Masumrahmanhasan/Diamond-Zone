@@ -26,7 +26,7 @@
 
                         <div class="shopByCategory_item">
 
-                            <a href="javascript:;">
+                            <a href="{{ route('product_by_category', $category->slug) }}">
                                 <div class="shopByCategory_img">
                                     <img src="{{ $category->featured_image }}" class="img-fluid w-100" alt="">
                                 </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,9 @@ Route::post('/aiz-uploader/get_file_by_ids', [UploadController::class, 'get_prev
 Route::get('/aiz-uploader/download/{id}', [UploadController::class, 'attachment_download'])->name('download_attachment');
 
 Auth::routes();
+
+Route::get('/category/{slug}', [HomeController::class, 'getProductByCategory'])->name('product_by_category');
+Route::get('/item/{slug}', [HomeController::class, 'getProductDetailsBySlug'])->name('product_details');
 
 Route::prefix('admin')->group(function () {
 

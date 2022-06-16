@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->foreignId('category_id');
             $table->foreignId('subcategory_id')->nullable();
             $table->string('name');
+            $table->string('slug');
             $table->tinyText('short_description')->nullable();
             $table->longText('description');
             $table->string('thumbnail');
