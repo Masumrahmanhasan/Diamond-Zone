@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{ asset('frontend_asset/css/media.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/xzoom/dist/xzoom.css">
-    @livewireStyles
+    {{-- @livewireStyles --}}
 
 
 </head>
@@ -253,12 +253,19 @@
     <script src="{{ asset('frontend_asset/js/shop.js') }}"></script>
     <script src="{{ asset('frontend_asset/js/custom.js') }}"></script>
     <script src="{{ asset('frontend_asset/js/jquery.elevatezoom.js') }}"></script>
+    <script src="{{ asset('frontend_asset/js/parsley.min.js') }}"></script>
+    <script>
+
+            // $('#orderform_for_from_submit').parsley();
+
+    </script>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
 
     <script src="https://unpkg.com/xzoom/dist/xzoom.min.js"></script>
 
-    @livewireScripts
+    {{-- @livewireScripts --}}
 
     <script>
         AOS.init();
@@ -273,7 +280,7 @@
 
                 $.post('{{ route('checkout.buyNow') }}', {_token: '{{ csrf_token() }}', id:id, quantity: quantity}, function(data){
 
-
+                    $('#orderform_for_from_submit').parsley();
                     $('#checkout-modal-body').html(data);
                     $('#checkout_modal').modal('show');
                     // if(data != 0){
@@ -307,6 +314,12 @@
                 type: 2,
                 position: 'right top'
             })
+        }
+
+
+        //
+        function placeOrder(){
+          alert('Ok');
         }
     </script>
 

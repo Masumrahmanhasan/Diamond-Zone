@@ -244,7 +244,7 @@
                                             </div>
 
                                             <div class="custome_input">
-                                                <button>Submit</button>
+                                                <button type="submit">Submit</button>
                                             </div>
 
                                         </form>
