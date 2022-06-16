@@ -68,6 +68,9 @@ select:focus {
     --bg_color2: #7C9DEC;
     --bdr_color: #777;
     --text_color: #ccc;
+    --border_color: #DEDFE2;
+    --bg_opacity_color: #f7941d42;
+    --hover_color: #e98a15;
 }
 
 body {
@@ -1090,5 +1093,160 @@ button.owl-dot.active {
 
 
 /* ---------------------------------------------------------------------------------------------------------------------------------------------------
-    START  PART
+    User dashboard  PART
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+#user_dashboard .user_dashboard_list #nav-tab {
+    display: block;
+    border: none;
+}
+
+#user_dashboard .user_dashboard_list button {
+    border: none;
+    font-size: 18px;
+    border: 1px solid #586690;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+    color: var(--text_color);
+    border-radius: 10px;
+}
+
+#user_dashboard .user_dashboard_list button.active{
+    background: var(--bg_color);
+    color: #FFF;
+    border: 1px solid var(--border_color);
+}
+
+#user_dashboard .user_dashboard_list button svg{
+    margin-right: 10px;
+}
+
+#user_dashboard .user_dashboard_details{
+    margin-left: 50px;
+}
+
+#user_dashboard .user_dashboard_details .list-group-item.active {
+	background: var(--bg_color);
+  border: 1px solid var(--bg_color);
+}
+
+
+#user_dashboard .user_dashboard_details .dashboard h3 {
+    font-size: 30px;
+    color: var(--header_color);
+}
+
+#user_dashboard .user_dashboard_details .dashboard  a{
+    font-size: 16px;
+    color: var(--bg_color);
+}
+
+#user_dashboard .user_dashboard_details .orders_list {
+    margin-top: 30px;
+}
+
+#user_dashboard .user_dashboard_details .orders_list table {
+    border: 1px solid var(--border_color);
+}
+
+#user_dashboard .user_dashboard_details .orders_list table th {
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    color: var(--header_color);
+}
+
+#user_dashboard .user_dashboard_details .orders_list table td{
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+}
+
+#user_dashboard .user_dashboard_details .orders_list table td a{
+    color: var(--bg_color);
+    font-size: 16px;
+}
+
+#user_dashboard .user_dashboard_details .order_traking {
+    margin-top: 30px;
+}
+
+#user_dashboard .user_dashboard_details .order_traking .form_group{
+    margin-bottom: 30px;
+}
+
+#user_dashboard .user_dashboard_details .order_traking .form_group input{
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--bg_color);
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+#user_dashboard .user_dashboard_details .order_traking .form_group textarea{
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--bg_color);
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+#user_dashboard .user_dashboard_details .order_traking .form_group button{
+    background: var(--bg_color);
+    color: #FFF;
+}
+
+#user_dashboard .user_dashboard_details .address {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+#user_dashboard .user_dashboard_details .dashboard span {
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+    color: var(--text_color);
+}
+
+#user_dashboard .user_dashboard_list button a {
+	color: rebeccapurple;
+	width: 100%;
+	padding: 5px 20px;
+}
+
+#user_dashboard .user_dashboard_list button:hover{
+    background: var(--bg_color);
+}
+
+#user_dashboard .user_dashboard_list button:hover a{
+    color: #FFF;
+}
+
+.cartCalculation{
+  text-align: right;
+}
+
+.order_info_title{
+   margin-right: 10px;
+   position: relative;
+}
+
+.user_image{
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.order_info_clone {
+
+}
+
+
+.bg-grad-1 { background-color: #eb4786; background-image: linear-gradient(315deg, #eb4786 0%, #b854a6 74%); }
+.bg-grad-2 { background-color: var(--bg_color); background-image: linear-gradient(315deg, var(--bg_color) 0%, var(--bg_color) 74%); }
+.bg-grad-3 { background-color: #47c5f4; background-image: linear-gradient(315deg, #47c5f4 0%, #6791d9 74%); }
+.bg-grad-4 { background-color: #ffb72c; background-image: linear-gradient(315deg, #ffb72c 0%, #f57f59 74%); }
+
+.c-pointer {
+    cursor: pointer !important;
+}

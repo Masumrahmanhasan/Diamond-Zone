@@ -85,8 +85,8 @@
                                 </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" style="color: black !important" href="#">Dashboard</a>
-                                        <a class="dropdown-item" style="color: black !important" href="#">My Order</a>
+                                        <a class="dropdown-item" style="color: black !important" href="{{ route('user.dashboard') }}">Dashboard</a>
+                                        <a class="dropdown-item" style="color: black !important" href="{{ route('user.orders') }}">My Order</a>
                                         <a class="dropdown-item" style="color: black !important" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
                                     </div>
                                 @else
