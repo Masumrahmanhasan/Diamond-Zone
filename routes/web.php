@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -39,6 +40,11 @@ Route::get('/item/{slug}', [HomeController::class, 'getProductDetailsBySlug'])->
 Route::post('/checkout/buynow', [HomeController::class, 'checkout'])->name('checkout.buyNow');
 
 Route::post('/checkout/store', [HomeController::class, 'checkout_done'])->name('checkout.done');
+
+Route::group(['prefix' => 'user', 'middleware' => ['auth']], function(){
+    Route::get('/dashboard', [UserDashboardController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/orders', [UserDashboardController::class, 'orders'])->name('user.orders');
+});
 
 Route::prefix('admin')->group(function () {
 
