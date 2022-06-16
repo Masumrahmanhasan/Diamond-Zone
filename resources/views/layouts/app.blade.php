@@ -24,13 +24,16 @@
     <link rel="stylesheet" href="{{ asset('frontend_asset/css/style.css') }}">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend_asset/css/media.css') }}">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/xzoom/dist/xzoom.css">
+    @livewireStyles
+
 
 </head>
 <body>
 
     <div id="app">
+
 
         <div class="preloader">
             <img src="frontend_asset/images/preloader.gif" alt="">
@@ -75,10 +78,28 @@
                             </div> --}}
 
                             <!-- sing in -->
-                            <div class="sign_in">
-                                <a href=""> <i class="fas fa-user-circle"></i> Sign In</a>
+                            <div class="sign_in dropdown show">
+                                @auth
+                                <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-home"></i> My Account
+                                </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" style="color: black !important" href="#">Dashboard</a>
+                                        <a class="dropdown-item" style="color: black !important" href="#">My Order</a>
+                                        <a class="dropdown-item" style="color: black !important" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                                    </div>
+                                @else
+                                <a href="{{ route('login') }}">
+                                    <i class="fas fa-user-circle"></i> Sign In
+                                </a>
+                                @endauth
+
                             </div>
 
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                @csrf
+                            </form>
                         </div>
 
                     </div>
@@ -203,14 +224,26 @@
 
     <div class="modal_part">
 
-        <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl" id="checkout_modal">
+        <div class="modal fade " id="checkout_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog modal-dialog-centered modal-xl">
 
+                <div class="modal-content">
 
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div id="checkout-modal-body">
+
+                    </div>
+
+                </div>
             </div>
         </div>
 
     </div>
+
+
 
     <script src="{{ asset('frontend_asset/js/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ asset('frontend_asset/js/bootstrap.bundle.min.js') }}"></script>
@@ -221,11 +254,60 @@
     <script src="{{ asset('frontend_asset/js/custom.js') }}"></script>
     <script src="{{ asset('frontend_asset/js/jquery.elevatezoom.js') }}"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
 
     <script src="https://unpkg.com/xzoom/dist/xzoom.min.js"></script>
 
+    @livewireScripts
+
     <script>
         AOS.init();
+    </script>
+
+    <script>
+        function buyNow(id){
+
+            @if (auth()->check() && (auth()->user()->user_type == 'user'))
+
+                var quantity = $('#quantity').val();
+
+                $.post('{{ route('checkout.buyNow') }}', {_token: '{{ csrf_token() }}', id:id, quantity: quantity}, function(data){
+
+
+                    $('#checkout-modal-body').html(data);
+                    $('#checkout_modal').modal('show');
+                    // if(data != 0){
+                    //     $('#wishlist').html(data);
+                    //     AIZ.plugins.notify('success', 'Item has been added to wishlist');
+                    // }
+                    // else{
+                    //     showToast('warning', 'Warning', 'Please Login First');
+                    // }
+                });
+            @else
+                showToast('warning', 'Warning', 'Please Login First');
+            @endif
+        }
+
+        function showToast(status, title, text){
+            new Notify({
+                status: status,
+                title: title,
+                text: text,
+                effect: 'slide',
+                speed: 300,
+                customClass: null,
+                customIcon: null,
+                showIcon: true,
+                showCloseButton: true,
+                autoclose: true,
+                autotimeout: 3000,
+                gap: 20,
+                distance: 20,
+                type: 2,
+                position: 'right top'
+            })
+        }
     </script>
 
 

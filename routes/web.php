@@ -36,6 +36,10 @@ Auth::routes();
 Route::get('/category/{slug}', [HomeController::class, 'getProductByCategory'])->name('product_by_category');
 Route::get('/item/{slug}', [HomeController::class, 'getProductDetailsBySlug'])->name('product_details');
 
+Route::post('/checkout/buynow', [HomeController::class, 'checkout'])->name('checkout.buyNow');
+
+Route::post('/checkout/store', [HomeController::class, 'checkout_done'])->name('checkout.done');
+
 Route::prefix('admin')->group(function () {
 
     Route::group(['middleware' => ['auth']], function() {

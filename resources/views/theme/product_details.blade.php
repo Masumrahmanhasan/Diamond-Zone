@@ -80,10 +80,10 @@
                             <div class="add_to_cart d_flex">
 
                                 <div class="custome_input">
-                                    <input type="number" value="1" name="" min="1">
+                                    <input type="number" id="quantity" value="1" name="" min="1">
                                 </div>
 
-                                <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> Order Now </a>
+                                <a href="javascript:;" onclick="buyNow({{ $product->id }})"> Order Now </a>
 
                             </div>
 
@@ -92,12 +92,12 @@
 
                                 <div class="category_items d_flex">
                                     <h5>SKU</h5>
-                                    <span>DP-0121</span>
+                                    <span>{{ $product->sku }}</span>
                                 </div>
 
                                 <div class="category_items d_flex">
                                     <h5>Category</h5>
-                                    <span>Pendant</span>
+                                    <span>{{ $product->category->name }}</span>
                                 </div>
 
                             </div>
@@ -162,7 +162,7 @@
                                         <div class="col-lg-6">
 
                                             <div class="img">
-                                                <img src="frontend_asset/images/Certificate-for-web.jpg" class="img-fluid" alt="">
+                                                <img src="{{ uploaded_asset($product->certificate) }}" class="img-fluid" alt="">
                                             </div>
 
                                         </div>
@@ -187,7 +187,7 @@
                                         <div class="col-lg-6">
 
                                             <div class="img">
-                                                <img src="frontend_asset/images/Certificate-for-web.jpg" class="img-fluid" alt="">
+                                                <img src="{{ uploaded_asset($product->certificate) }}" class="img-fluid" alt="">
                                             </div>
 
                                         </div>

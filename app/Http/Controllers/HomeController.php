@@ -41,4 +41,19 @@ class HomeController extends Controller
         return view('theme.product_details', compact('product'));
     }
 
+    public function checkout(Request $request)
+    {
+        $product = Product::with('category')->find($request->id);
+        $quantity = $request->quantity;
+
+        $subtotal = 0;
+        if($product->discount != 0){
+            $subtotal = ($product->price - $product->discount) * $quantity;
+        } else {
+            $subtotal = ($product->price) * $quantity;
+        }
+
+        return view('theme.includes.checkout_modal', compact('product', 'quantity', 'subtotal'));
+    }
+
 }

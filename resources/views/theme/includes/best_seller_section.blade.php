@@ -131,7 +131,11 @@
 
                             <div class="add_to_cart d_flex d_justify">
                                 <a href="">View More</a>
-                                <a href="">Order Now</a>
+                                @auth
+                                    <a href="">Order Now</a>
+                                @else
+                                    <a href="{{ route('login') }}">Order Now</a>
+                                @endauth
                             </div>
 
                         </div>
