@@ -18,7 +18,7 @@
                     </div>
                     <div class="card-body">
 
-                            <form action="{{ route('profile.update_settings') }}" method="POST">
+                            <form action="{{ route('products.offer_store') }}" method="POST">
                                 @csrf
 
 
@@ -27,7 +27,7 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
 
-                                            <input type="text" class="form-control" name="name" placeholder="offer title">
+                                            <input type="text" class="form-control" name="name">
                                         </div>
                                     </div>
                                 </div>
@@ -37,9 +37,11 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <select name="products[]" multiple="multiple" id="products" class="form-control choices__input" onchange="getPrice(this)">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
+
+                                                @foreach($products as $product)
+                                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                                @endforeach
+
                                             </select>
                                         </div>
                                     </div>
@@ -60,7 +62,7 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
 
-                                            <input type="number" class="form-control" name="grand_price" value="">
+                                            <input type="number" class="form-control" name="discount" value="">
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +88,14 @@
     const choices = new Choices(element);
 
     function getPrice(elem){
-        console.log(choices)
+
+        const products = choices.getValue(true);
+
+        axios.post('{{route('get_total')}}', { _token: '{{ csrf_token() }}', products: products}).then(response => {
+            var show_total = document.getElementById('total_selected_product_price')
+
+            show_total.value = response.data
+        })
     }
 
 </script>
