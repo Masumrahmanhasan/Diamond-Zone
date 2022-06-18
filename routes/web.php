@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -52,11 +53,17 @@ Route::prefix('admin')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
         Route::resource('categories', CategoryController::class);
         Route::resource('subcategories', SubCategoryController::class);
+
+        Route::get('/products/offers', [OfferController::class, 'index'])->name('products.combo_offer');
+        Route::get('/products/offer_create', [OfferController::class, 'create'])->name('products.offer_create');
         Route::resource('products', ProductController::class);
         Route::post('/get_subcategories', [ProductController::class, 'getSubcategoryById'])->name('get_subcategories');
 
         Route::get('/website/header', [SettingsController::class, 'index'])->name('settings.header');
         Route::get('/website/pages', [SettingsController::class, 'pages'])->name('settings.pages');
+        Route::get('/settings', [SettingsController::class, 'settings'])->name('profile.settings');
+        Route::post('/settings', [SettingsController::class, 'update_settings'])->name('profile.update_settings');
+        Route::post('/settings/update_password', [SettingsController::class, 'update_password'])->name('profile.update_password');
 
         Route::post('/update/business_setting', [SettingsController::class, 'update'])->name('update.business_setting');
     });

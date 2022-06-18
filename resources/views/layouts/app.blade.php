@@ -49,7 +49,7 @@
                     <div class="col-lg-6">
 
                         <div class="sing_number">
-                            <a href="tel:0000000000"><i class="fas fa-phone-alt"></i> 0000000000</a>
+                            <a href="tel:{{ get_setting('helpline_number') }}"><i class="fas fa-phone-alt"></i> {{ get_setting('helpline_number') }}</a>
                         </div>
 
                     </div>
@@ -119,7 +119,7 @@
 
             <div class="container">
 
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ uploaded_asset(get_setting('header_logo')) }}" alt="">
                 </a>
 
@@ -272,7 +272,6 @@
                 var quantity = $('#quantity').val();
 
                 $.post('{{ route('checkout.buyNow') }}', {_token: '{{ csrf_token() }}', id:id, quantity: quantity}, function(data){
-
 
                     $('#checkout-modal-body').html(data);
                     $('#checkout_modal').modal('show');

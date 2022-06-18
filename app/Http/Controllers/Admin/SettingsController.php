@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BusinessSetting;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Hash;
 
 class SettingsController extends Controller
 {
@@ -64,4 +66,50 @@ class SettingsController extends Controller
 
         return back();
     }
+
+    public function settings()
+    {
+        return view('admin.settings.password_change');
+    }
+
+    public function update_settings(Request $request)
+    {
+
+        $user = User::find(auth()->user()->id);
+        if($request->name) {
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone = $request->phone;
+        }
+
+        $user->save();
+        return back();
+    }
+
+    public function update_password(Request $request)
+    {
+
+        $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|confirmed',
+        ]);
+        $user = User::find(auth()->user()->id);
+
+        if($request->old_password){
+
+            $old_password = Hash::make($request->old_password);
+            if($old_password == $user->password){
+
+                $user->password = Hash::make($request->new_password);
+                $user->save();
+                return back();
+
+            } else {
+                return back()->with('error', 'Old Password did not match!');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Something went Wrong!');
+        }
+    }
+
 }
