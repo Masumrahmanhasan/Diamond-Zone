@@ -58,6 +58,8 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/products/offers', [OfferController::class, 'index'])->name('products.combo_offer');
         Route::get('/products/offer_create', [OfferController::class, 'create'])->name('products.offer_create');
+        Route::post('/selected-products-total', [OfferController::class, 'getSelectedProductsTotal'])->name('get_total');
+        Route::post('/products/offer_store', [OfferController::class, 'store'])->name('products.offer_store');
         Route::resource('products', ProductController::class);
         Route::post('/get_subcategories', [ProductController::class, 'getSubcategoryById'])->name('get_subcategories');
 

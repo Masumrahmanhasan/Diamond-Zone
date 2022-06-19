@@ -29,8 +29,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                 </svg> New Offer</a>
 
-
-
     </div>
 </div>
 
@@ -39,16 +37,18 @@
             <div class="row justify-content-between align-items-center">
                     <div class="col-9 col-lg-8 d-md-flex">
                             <div class="input-group me-2 me-lg-3 fmxw-300">
-                                    <span class="input-group-text"><svg class="icon icon-xs" x-description="Heroicon name: solid/search"
+                                    <span class="input-group-text">
+                                        <svg class="icon icon-xs" x-description="Heroicon name: solid/search"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                     <path fill-rule="evenodd"
                                                             d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                                                             clip-rule="evenodd"></path>
-                                            </svg></span>
-                                    <input wire:model="search" type="text" class="form-control" placeholder="Search items">
+                                        </svg>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Search items">
                             </div>
                             <div class="col-3 d-flex">
-                                    <select wire:model="entries" class="form-select fmxw-100 d-none d-md-inline" id="entries"
+                                    <select class="form-select fmxw-100 d-none d-md-inline" id="entries"
                                             aria-label="Entries per page">
                                             <option value="10">10</option>
                                             <option value="25">25</option>
@@ -64,7 +64,16 @@
                     <tr>
 
                             <th class="border-bottom">
-                                    <a wire:click="sortBy('items.name')" class="text-default me-3">
+                                    <a  class="text-default me-3">
+                                            <span>#SR</span>
+
+                                            <span>
+                                                    <i class="fas fa-sort"></i>
+                                            </span>
+                                    </a>
+                            </th>
+                            <th class="border-bottom">
+                                    <a  class="text-default me-3">
                                             <span>Name</span>
 
                                             <span>
@@ -73,8 +82,8 @@
                                     </a>
                             </th>
                             <th class="border-bottom">
-                                    <a wire:click="sortBy('items.category_id')" class="text-default me-3">
-                                            <span>Category</span>
+                                    <a  class="text-default me-3">
+                                            <span>Products</span>
 
                                             <span>
                                                     <i class="fas fa-sort"></i>
@@ -82,8 +91,8 @@
                                     </a>
                             </th>
                             <th class="border-bottom">
-                                    <a wire:click="sortBy('items.picture')" class="text-default me-3">
-                                            <span>Picture</span>
+                                    <a  class="text-default me-3">
+                                            <span>Grand Price</span>
 
                                             <span>
                                                     <i class="fas fa-sort"></i>
@@ -91,29 +100,47 @@
                                     </a>
                             </th>
                             <th class="border-bottom">
-                                    <a wire:click="sortBy('TagsName')" class="text-default me-3">
-                                            <span>Price</span>
+                                    <a  class="text-default me-3">
+                                            <span>Discounted Price</span>
 
                                             <span>
                                                     <i class="fas fa-sort"></i>
                                             </span>
                                     </a>
                             </th>
+
                             <th class="border-bottom">
-                                    <a wire:click="sortBy('items.created_at')" class="text-default me-3">
-                                            <span>Date created</span>
+                                <a  class="text-default me-3">
+                                    <span>Discount amount</span>
 
-                                            <span>
-                                                    <i class="fas fa-sort"></i>
-                                            </span>
-                                    </a>
+                                    <span>
+                                                        <i class="fas fa-sort"></i>
+                                                </span>
+                                </a>
                             </th>
+
                             <th class="border-bottom">
                                     <a class="text-default me-3">Action</a>
                             </th>
 
                     </tr>
             </thead>
+            <tbody>
+                @foreach($offers as $key => $offer)
+                    <tr>
+                        <td>{{ $key+1 }}</td>
+                        <td>{{ $offer->name }}</td>
+                        <td>
+                            @php
+                                $offer_product = \App\Models\Product::find($offer->products)->get();
+                            @endphp
+
+                            @dd($offer_product)
+                        </td>
+                        <td>{{ $offer->name }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
 
     </table>
     <div class="mt-3">
