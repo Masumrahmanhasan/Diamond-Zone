@@ -183,8 +183,7 @@
 
 
 												<a href="{{ route('logout') }}"
-
-                                                "
+                                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();"
 														class="dropdown-item d-flex align-items-center">
 														<svg class="dropdown-icon text-danger me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
 																xmlns="http://www.w3.org/2000/svg">

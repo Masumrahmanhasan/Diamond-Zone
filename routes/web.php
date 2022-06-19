@@ -22,9 +22,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('theme.home');
-});
+
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('master');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Uploader
 Route::post('/aiz-uploader', [UploadController::class, 'show_uploader'])->name('aiz.uploader');
@@ -37,6 +38,7 @@ Auth::routes();
 
 Route::get('/category/{slug}', [HomeController::class, 'getProductByCategory'])->name('product_by_category');
 Route::get('/item/{slug}', [HomeController::class, 'getProductDetailsBySlug'])->name('product_details');
+Route::get('/offer/{slug}', [HomeController::class, 'getOfferDetailsBySlug'])->name('offer.details');
 
 Route::post('/checkout/buynow', [HomeController::class, 'checkout'])->name('checkout.buyNow');
 
@@ -60,6 +62,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/products/offer_create', [OfferController::class, 'create'])->name('products.offer_create');
         Route::post('/selected-products-total', [OfferController::class, 'getSelectedProductsTotal'])->name('get_total');
         Route::post('/products/offer_store', [OfferController::class, 'store'])->name('products.offer_store');
+        Route::get('/products/offer_edit/{id}', [OfferController::class, 'edit'])->name('products.offer_edit');
+        Route::post('/products/update/{id}', [OfferController::class, 'update'])->name('products.offer_update');
+        Route::post('/products/delete/{id}', [OfferController::class, 'delete'])->name('products.offer_delete');
         Route::resource('products', ProductController::class);
         Route::post('/get_subcategories', [ProductController::class, 'getSubcategoryById'])->name('get_subcategories');
 
@@ -76,4 +81,3 @@ Route::prefix('admin')->group(function () {
 
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

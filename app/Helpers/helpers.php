@@ -96,6 +96,15 @@ if (!function_exists('get_setting')) {
     }
 }
 
+if(!function_exists('discounted_price')) {
+    function discounted_price($value1, $value2){
+
+        $discounted_price = $value1 - $value2;
+
+        return number_format($discounted_price, 2);
+    }
+}
+
 function imagePath(){
     return public_path();
 }

@@ -73,7 +73,6 @@
                                 <h3>৳ {{ number_format($product->price, 2) }}</h3>
                                 @endif
 
-
                             </div>
 
                             <!-- add to cart -->
@@ -83,7 +82,7 @@
                                     <input type="number" id="quantity" value="1" name="" min="1">
                                 </div>
 
-                                <a href="javascript:;" onclick="buyNow({{ $product->id }})"> Order Now </a>
+                                <a href="javascript:;" onclick="buyNow({{ $product->id }}, false)"> Order Now </a>
 
                             </div>
 

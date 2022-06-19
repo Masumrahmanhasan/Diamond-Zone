@@ -26,6 +26,7 @@ class CreateOrdersTable extends Migration
             $table->integer('status')->default(0)->comment('1 for active 2 for reject');
             $table->integer('payment_status')->default(0)->comment('0 for unpaid, 1 for paid');
             $table->string('payment_type')->default('cod');
+            $table->string('order_type')->default('normal');
             $table->timestamps();
         });
     }

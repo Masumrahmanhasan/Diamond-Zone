@@ -11,9 +11,18 @@
 
                 @csrf
 
-                <input type="hidden" name="product_id[]" value={{ $product->id }}>
+                @if(getType($product) == "array")
+                @foreach ($product as $key => $value)
+                <input type="hidden" name="product_id[]" value="{{ $key }}">
+                @endforeach
+                @else
+                <input type="hidden" name="product_id[]" value="{{ $product->id }}">
+                @endif
                 <input type="hidden" name="quantity" value={{ $quantity }}>
                 <input type="hidden" name="total" value={{ $subtotal }}>
+                <input type="hidden" name="offer" value={{ $offer }}>
+
+
 
                 <div class="row">
 
@@ -65,10 +74,22 @@
                                     <th>Subtotal</th>
                                 </tr>
 
+                                @if (getType($product) == 'array')
+                                <tr>
+                                    <td>
+                                        @foreach ($product as $key => $value)
+                                        <span>{{ $value }}</span><br>
+                                        @endforeach
+                                    </td>
+                                    <td>৳ {{ number_format($subtotal, 2) }}</td>
+                                </tr>
+                                @else
                                 <tr>
                                     <td>{{ $product->name }} {{ $product->sku }}  × {{ $quantity }}</td>
                                     <td>৳ {{ number_format($subtotal, 2) }}</td>
                                 </tr>
+                                @endif
+
 
                                 {{-- <tr>
                                     <td>Diamond Nose Pin Cartilage 3Stone Stud  × 1 Discount: </td>
@@ -81,7 +102,7 @@
                                 </tr>
 
                                 {{-- <tr>
-                                    <th>Shipping</th>
+                                    <th>Discount</th>
                                     <th>Charge: ৳ 80.00</th>
                                 </tr> --}}
 
