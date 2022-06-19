@@ -50,7 +50,9 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function(){
 Route::prefix('admin')->group(function () {
 
     Route::group(['middleware' => ['auth']], function() {
+
         Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+
         Route::resource('categories', CategoryController::class);
         Route::resource('subcategories', SubCategoryController::class);
 
