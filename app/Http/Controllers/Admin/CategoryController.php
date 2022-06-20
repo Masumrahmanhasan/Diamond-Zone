@@ -29,7 +29,6 @@ class CategoryController extends Controller
 
         $extenstion = $request->file('featured_image')->getClientOriginalExtension();
         $name       = $request->name . '-'. Carbon::now()->format('dmY').'.'.$extenstion;
-
         $storeFile  = $request->file('featured_image')->storeAs('/categories', $name, 'custom');
 
 
@@ -50,7 +49,30 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        # code...
+        $category = Category::find($id);
+        return view('admin.categories.edit', compact('category'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->slug = $request->slug;
+
+        if($request->file('featured_image')){
+            $extenstion = $request->file('featured_image')->getClientOriginalExtension();
+            $name       = $request->name . '-'. Carbon::now()->format('dmY').'.'.$extenstion;
+            $storeFile  = $request->file('featured_image')->storeAs('/categories', $name, 'custom');
+
+            $category->featured_image = $storeFile;
+        }
+
+        $category->save();
+
+        return redirect()->route('categories.index');
+
+
     }
 
     public function destroy($id)

@@ -152,6 +152,12 @@
                                                     </a>
                                             </li>
 
+                                            <li class="nav-item @if (request()->segment(2) == 'social_media' ) active @endif">
+                                                <a class="nav-link" href="#">
+                                                        <span class="sidebar-text">Social Media</span>
+                                                </a>
+                                            </li>
+
                                             <li class="nav-item @if (request()->segment(2) == 'pages' ) active @endif">
                                                 <a class="nav-link" href="{{ route('settings.pages') }}">
                                                         <span class="sidebar-text">Pages</span>

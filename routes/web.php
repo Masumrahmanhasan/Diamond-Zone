@@ -56,7 +56,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function(){
 
 Route::prefix('admin')->group(function () {
 
-    Route::group(['middleware' => ['auth']], function() {
+    Route::group(['middleware' => ['auth', 'admin']], function() {
 
         Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
 
@@ -68,8 +68,9 @@ Route::prefix('admin')->group(function () {
         Route::post('/selected-products-total', [OfferController::class, 'getSelectedProductsTotal'])->name('get_total');
         Route::post('/products/offer_store', [OfferController::class, 'store'])->name('products.offer_store');
         Route::get('/products/offer_edit/{id}', [OfferController::class, 'edit'])->name('products.offer_edit');
-        Route::post('/products/update/{id}', [OfferController::class, 'update'])->name('products.offer_update');
-        Route::post('/products/delete/{id}', [OfferController::class, 'delete'])->name('products.offer_delete');
+        Route::post('/products/offer_update/{id}', [OfferController::class, 'update'])->name('products.offer_update');
+        Route::post('/products/offer_delete/{id}', [OfferController::class, 'delete'])->name('products.offer_delete');
+
         Route::resource('products', ProductController::class);
         Route::post('/get_subcategories', [ProductController::class, 'getSubcategoryById'])->name('get_subcategories');
 

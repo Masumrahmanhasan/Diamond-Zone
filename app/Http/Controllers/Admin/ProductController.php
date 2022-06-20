@@ -68,6 +68,45 @@ class ProductController extends Controller
 
     }
 
+
+
+
+    public function edit($id)
+    {
+        $product = Product::find($id);
+        $categories = Category::all();
+
+        return view('admin.products.edit', compact('product', 'categories'));
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->sku = $request->sku;
+        $product->category_id = $request->category_id;
+
+        if($request->subcategory_id != null){
+            $product->subcategory_id = $request->subcategory_id;
+        }
+
+        $product->gallary = $request->gallary;
+        $product->thumbnail = $request->thumbnail;
+        $product->certificate = $request->certificate;
+
+        $product->short_description = $request->short_description;
+        $product->description = $request->description;
+        $product->discount = $request->discount;
+
+        $product->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->name)));
+
+        $product->save();
+
+        return redirect()->route('products.index');
+
+    }
+
     public function getSubcategoryById(Request $request)
     {
         $subcategories = SubCategory::where('category_id', $request->category_id)->get();

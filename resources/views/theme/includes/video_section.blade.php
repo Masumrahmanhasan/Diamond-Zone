@@ -25,7 +25,7 @@
                     <div class="text">
                         <h2>DIAMOND ZONE</h2>
                         <p>Make Your Luxury Style!</p>
-                        <a href="">Browse All Collection</a>
+                        <a href="{{ route('shop') }}">Browse All Collection</a>
                     </div>
                 </div>
 

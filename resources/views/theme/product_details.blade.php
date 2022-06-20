@@ -208,6 +208,8 @@
                                             <li>Be the first to review “DIAMOND PENDANT DP-0121”</li>
                                             <li>Your email address will not be published. Required fields are marked *</li>
                                         </ul>
+
+
                                         <form action="{{ route('product.review_store') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{ $product->id }}">
