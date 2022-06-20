@@ -38,6 +38,12 @@ class HomeController extends Controller
         return view('theme.home', compact('combo_offers'));
     }
 
+    public function shop()
+    {
+        $shop_products = Product::all();
+        return view('theme.product_listing', compact('shop_products'));
+    }
+
     public function getProductByCategory($slug)
     {
         $category = Category::with('products')->where('slug', $slug)->first();

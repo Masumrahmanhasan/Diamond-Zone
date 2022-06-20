@@ -7,8 +7,10 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Models\Review;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -36,6 +38,7 @@ Route::get('/aiz-uploader/download/{id}', [UploadController::class, 'attachment_
 
 Auth::routes();
 
+Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
 Route::get('/category/{slug}', [HomeController::class, 'getProductByCategory'])->name('product_by_category');
 Route::get('/item/{slug}', [HomeController::class, 'getProductDetailsBySlug'])->name('product_details');
 Route::get('/offer/{slug}', [HomeController::class, 'getOfferDetailsBySlug'])->name('offer.details');
@@ -47,6 +50,8 @@ Route::post('/checkout/store', [HomeController::class, 'checkout_done'])->name('
 Route::group(['prefix' => 'user', 'middleware' => ['auth']], function(){
     Route::get('/dashboard', [UserDashboardController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/orders', [UserDashboardController::class, 'orders'])->name('user.orders');
+
+    Route::post('/product/review/store', [ReviewController::class, 'store'])->name('product.review_store');
 });
 
 Route::prefix('admin')->group(function () {

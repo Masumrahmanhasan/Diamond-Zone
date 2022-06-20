@@ -85,8 +85,14 @@
                                 </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" style="color: black !important" href="{{ route('user.dashboard') }}">Dashboard</a>
-                                        <a class="dropdown-item" style="color: black !important" href="{{ route('user.orders') }}">My Order</a>
+                                        @if(auth()->user()->user_type == 'admin')
+                                        <a class="dropdown-item" style="color: black !important" href="{{ route('admin.dashboard') }}">Dashboard</a>
+
+                                        @else
+                                            <a class="dropdown-item" style="color: black !important" href="{{ route('user.dashboard') }}">Dashboard</a>
+                                            <a class="dropdown-item" style="color: black !important" href="{{ route('user.orders') }}">My Order</a>
+                                        @endif
+
                                         <a class="dropdown-item" style="color: black !important" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
                                     </div>
                                 @else
@@ -184,11 +190,11 @@
                     <ul class="navbar-nav ms-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('master') }}">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Shop</a>
+                            <a class="nav-link" href="{{ route('shop') }}">Shop</a>
                         </li>
 
                         @foreach ($categories as $category)
