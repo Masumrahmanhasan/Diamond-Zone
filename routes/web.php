@@ -2,12 +2,15 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OfferController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Models\Review;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -21,9 +24,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('theme.home');
-});
+
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('master');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Uploader
 Route::post('/aiz-uploader', [UploadController::class, 'show_uploader'])->name('aiz.uploader');
@@ -34,8 +38,10 @@ Route::get('/aiz-uploader/download/{id}', [UploadController::class, 'attachment_
 
 Auth::routes();
 
+Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
 Route::get('/category/{slug}', [HomeController::class, 'getProductByCategory'])->name('product_by_category');
 Route::get('/item/{slug}', [HomeController::class, 'getProductDetailsBySlug'])->name('product_details');
+Route::get('/offer/{slug}', [HomeController::class, 'getOfferDetailsBySlug'])->name('offer.details');
 
 Route::post('/checkout/buynow', [HomeController::class, 'checkout'])->name('checkout.buyNow');
 
@@ -44,19 +50,34 @@ Route::post('/checkout/store', [HomeController::class, 'checkout_done'])->name('
 Route::group(['prefix' => 'user', 'middleware' => ['auth']], function(){
     Route::get('/dashboard', [UserDashboardController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/orders', [UserDashboardController::class, 'orders'])->name('user.orders');
+
+    Route::post('/product/review/store', [ReviewController::class, 'store'])->name('product.review_store');
 });
 
 Route::prefix('admin')->group(function () {
 
     Route::group(['middleware' => ['auth']], function() {
+
         Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+
         Route::resource('categories', CategoryController::class);
         Route::resource('subcategories', SubCategoryController::class);
+
+        Route::get('/products/offers', [OfferController::class, 'index'])->name('products.combo_offer');
+        Route::get('/products/offer_create', [OfferController::class, 'create'])->name('products.offer_create');
+        Route::post('/selected-products-total', [OfferController::class, 'getSelectedProductsTotal'])->name('get_total');
+        Route::post('/products/offer_store', [OfferController::class, 'store'])->name('products.offer_store');
+        Route::get('/products/offer_edit/{id}', [OfferController::class, 'edit'])->name('products.offer_edit');
+        Route::post('/products/update/{id}', [OfferController::class, 'update'])->name('products.offer_update');
+        Route::post('/products/delete/{id}', [OfferController::class, 'delete'])->name('products.offer_delete');
         Route::resource('products', ProductController::class);
         Route::post('/get_subcategories', [ProductController::class, 'getSubcategoryById'])->name('get_subcategories');
 
         Route::get('/website/header', [SettingsController::class, 'index'])->name('settings.header');
         Route::get('/website/pages', [SettingsController::class, 'pages'])->name('settings.pages');
+        Route::get('/settings', [SettingsController::class, 'settings'])->name('profile.settings');
+        Route::post('/settings', [SettingsController::class, 'update_settings'])->name('profile.update_settings');
+        Route::post('/settings/update_password', [SettingsController::class, 'update_password'])->name('profile.update_password');
 
         Route::post('/update/business_setting', [SettingsController::class, 'update'])->name('update.business_setting');
     });
@@ -65,4 +86,3 @@ Route::prefix('admin')->group(function () {
 
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

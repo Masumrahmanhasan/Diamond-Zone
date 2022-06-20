@@ -14,7 +14,7 @@
 						</div>
 
 						<div class="banner_overlay">
-								<h2 class="wh">{{ $category->name }}</h2>
+								<h2 class="wh">Shop</h2>
 						</div>
 
 				</section>
@@ -41,7 +41,7 @@
 
 												<div class="header d_flex d_justify">
 
-														<p>Showing 1–16 of 43 results Sort by latest Sale!</p>
+														<p>Showing {{ $shop_products->count() }} results Sort by latest Sale!</p>
 
 														<!-- Filter -->
 														<div class="filter">
@@ -67,7 +67,7 @@
 
 										<div class="row">
 
-												@foreach ($category->products as $product)
+												@foreach ($shop_products as $product)
 														<!-- item -->
 														<div class="col-lg-3 col-sm-4">
 

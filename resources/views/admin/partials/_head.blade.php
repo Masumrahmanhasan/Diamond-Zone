@@ -23,6 +23,10 @@
 <link type="text/css" href="https://cdn.jsdelivr.net/npm/notyf@3.10.0/notyf.min.css" rel="stylesheet">
 
 <link href="https://releases.transloadit.com/uppy/v2.12.1/uppy.min.css" rel="stylesheet">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+/>
 
 <!-- Volt CSS -->
 <link type="text/css" href="{{ asset('css/volt.css') }}" rel="stylesheet">

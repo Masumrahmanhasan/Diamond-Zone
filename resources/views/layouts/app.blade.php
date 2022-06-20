@@ -49,7 +49,7 @@
                     <div class="col-lg-6">
 
                         <div class="sing_number">
-                            <a href="tel:0000000000"><i class="fas fa-phone-alt"></i> 0000000000</a>
+                            <a href="tel:{{ get_setting('helpline_number') }}"><i class="fas fa-phone-alt"></i> {{ get_setting('helpline_number') }}</a>
                         </div>
 
                     </div>
@@ -85,8 +85,14 @@
                                 </a>
 
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" style="color: black !important" href="{{ route('user.dashboard') }}">Dashboard</a>
-                                        <a class="dropdown-item" style="color: black !important" href="{{ route('user.orders') }}">My Order</a>
+                                        @if(auth()->user()->user_type == 'admin')
+                                        <a class="dropdown-item" style="color: black !important" href="{{ route('admin.dashboard') }}">Dashboard</a>
+
+                                        @else
+                                            <a class="dropdown-item" style="color: black !important" href="{{ route('user.dashboard') }}">Dashboard</a>
+                                            <a class="dropdown-item" style="color: black !important" href="{{ route('user.orders') }}">My Order</a>
+                                        @endif
+
                                         <a class="dropdown-item" style="color: black !important" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
                                     </div>
                                 @else
@@ -113,14 +119,14 @@
         {{-- Navbar --}}
 
         @php
-            $categories = \App\Models\Category::with('subcategory')->get();
+            $categories = \App\Models\Category::with('subcategory')->take(5)->get();
         @endphp
         <nav class="navbar navbar-expand-lg">
 
             <div class="container">
 
-                <a class="navbar-brand" href="index.html">
-                    <img src="{{ uploaded_asset(get_setting('header_logo')) }}" alt="">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="{{ uploaded_asset(get_setting('header_logo')) ?? asset('frontend_asset/images/logo.svg') }}" alt="">
                 </a>
 
                 <!-- Mobile Menu -->
@@ -154,7 +160,7 @@
                                     @foreach ($categories as $category)
                                     <li class="nav-item">
 
-                                        <a class="nav-link @if(count($category->subcategory) > 0) dropdown-toggle @endif" href="#" @if(count($category->subcategory) > 0) id="dropdownMenuButton" data-bs-toggle="dropdown" @endif>
+                                        <a class="nav-link @if(count($category->subcategory) > 0) dropdown-toggle @endif" href="{{ route('product_by_category', $category->slug) }}" @if(count($category->subcategory) > 0) id="dropdownMenuButton" data-bs-toggle="dropdown" @endif>
                                             {{ $category->name }}
                                         </a>
 
@@ -182,26 +188,31 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
                     <ul class="navbar-nav ms-auto">
+
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('master') }}">Home</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Shop</a>
+                            <a class="nav-link" href="{{ route('shop') }}">Shop</a>
                         </li>
+
                         @foreach ($categories as $category)
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ $category->name }}</a>
+                            <li class="nav-item">
 
-                            @if(count($category->subcategory) > 0)
-                                <ul class="drop_down">
+                                <a class="nav-link" href="{{ route('product_by_category', $category->slug) }}">{{ $category->name }}</a>
 
-                                    @foreach ($category->subcategory as $subcategory)
-                                        <li><a href="">{{ $subcategory->name }}</a></li>
-                                    @endforeach
+                                @if(count($category->subcategory) > 0)
+                                    <ul class="drop_down">
 
-                                </ul>
-                            @endif
-                        </li>
+                                        @foreach ($category->subcategory as $subcategory)
+                                            <li><a href="">{{ $subcategory->name }}</a></li>
+                                        @endforeach
+
+                                    </ul>
+                                @endif
+
+                            </li>
                         @endforeach
 
                     </ul>
@@ -218,7 +229,9 @@
 
             @include('theme.includes.footer_section')
 
-            <a class="backToTop"><i class="fas fa-chevron-up"></i></a>
+            <a class="backToTop">
+                <i class="fas fa-chevron-up"></i>
+            </a>
     </div>
 
 
@@ -272,15 +285,21 @@
     </script>
 
     <script>
-        function buyNow(id){
+        function buyNow(id, offer){
+
+            if(offer == true){
+                offer = 1
+            } else {
+                offer = 0
+            }
+
 
             @if (auth()->check() && (auth()->user()->user_type == 'user'))
 
                 var quantity = $('#quantity').val();
 
-                $.post('{{ route('checkout.buyNow') }}', {_token: '{{ csrf_token() }}', id:id, quantity: quantity}, function(data){
+                $.post('{{ route('checkout.buyNow') }}', {_token: '{{ csrf_token() }}', id:id, quantity: quantity, offer:offer}, function(data){
 
-                    $('#orderform_for_from_submit').parsley();
                     $('#checkout-modal-body').html(data);
                     $('#checkout_modal').modal('show');
                     // if(data != 0){

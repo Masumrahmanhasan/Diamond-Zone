@@ -73,7 +73,6 @@
                                 <h3>৳ {{ number_format($product->price, 2) }}</h3>
                                 @endif
 
-
                             </div>
 
                             <!-- add to cart -->
@@ -83,7 +82,7 @@
                                     <input type="number" id="quantity" value="1" name="" min="1">
                                 </div>
 
-                                <a href="javascript:;" onclick="buyNow({{ $product->id }})"> Order Now </a>
+                                <a href="javascript:;" onclick="buyNow({{ $product->id }}, false)"> Order Now </a>
 
                             </div>
 
@@ -202,54 +201,68 @@
                                 <div class="tab-pane fade" id="Review" role="tabpanel" aria-labelledby="Review-tab">
 
                                     <h3>Reviews</h3>
-                                    <ul>
-                                        <li>There are no reviews yet.</li>
-                                        <li>Be the first to review “DIAMOND PENDANT DP-0121”</li>
-                                        <li>Your email address will not be published. Required fields are marked *</li>
-                                    </ul>
 
-                                    <!-- Rating -->
-                                    <div class="rating">
-                                        <h4>Your rating *</h4>
-                                        <a href="" class="ratingsss"><i class="fas fa-star"></i></a>
-                                        <a href="" class="ratingsss"><i class="fas fa-star"></i></a>
-                                        <a href="" class="ratingsss"><i class="fas fa-star"></i></a>
-                                        <a href=""><i class="fas fa-star"></i></a>
-                                        <a href=""><i class="fas fa-star"></i></a>
-                                    </div>
-
-                                    <!-- Form Part -->
-                                    <div class="form_part">
-
-                                        <form action="" method="">
-
-                                            <div class="custome_input">
-                                                <label>Your review *</label>
-                                                <textarea name="" id="" rows="3"></textarea>
+                                    @auth
+                                        <ul>
+                                            <li>There are no reviews yet.</li>
+                                            <li>Be the first to review “DIAMOND PENDANT DP-0121”</li>
+                                            <li>Your email address will not be published. Required fields are marked *</li>
+                                        </ul>
+                                        <form action="{{ route('product.review_store') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <!-- Rating -->
+                                            <div class="form-group">
+                                                <label class="opacity-60">Rating</label>
+                                                <div class="rating rating-input c-pointer">
+                                                    <label>
+                                                        <input type="radio" name="rating" value="1" required="">
+                                                        <i class="fas fa-star"></i>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="rating" value="2">
+                                                        <i class="fas fa-star"></i>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="rating" value="3">
+                                                        <i class="fas fa-star"></i>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="rating" value="4">
+                                                        <i class="fas fa-star"></i>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="rating" value="5">
+                                                        <i class="fas fa-star"></i>
+                                                    </label>
+                                                </div>
                                             </div>
 
-                                            <div class="custome_input">
-                                                <label>Name *</label>
-                                                <input type="text" name="">
+                                            <div class="form_part">
+                                                <div class="custome_input">
+                                                    <input type="file" name="attachment">
+                                                </div>
                                             </div>
 
-                                            <div class="custome_input">
-                                                <label>Email *</label>
-                                                <input type="text" name="">
-                                            </div>
+                                            <!-- Form Part -->
+                                                <div class="form_part">
 
-                                            <div class="custome_input checkbox d_flex">
-                                                <input type="checkbox" id="check" name="">
-                                                <label for="check">Save my name, email, and website in this browser for the next time I comment.</label>
-                                            </div>
+                                                    <div class="custome_input">
+                                                        <label>Comment *</label>
+                                                        <textarea name="body" id="" rows="3"></textarea>
+                                                    </div>
 
-                                            <div class="custome_input">
-                                                <button type="submit">Submit</button>
-                                            </div>
+                                                    <div class="custome_input">
+                                                        <button type="submit">Submit</button>
+                                                    </div>
+
+                                                </div>
 
                                         </form>
 
-                                    </div>
+                                    @else
+
+                                    @endauth
 
                                 </div>
 
@@ -278,6 +291,47 @@
 @section('scripts')
     <script>
         $(".xzoom, .xzoom-gallery").xzoom({tint: '#333', Xoffset: 15});
+
+        $(document).ready(function(){
+            $(".rating-input").each(function() {
+                $(this)
+                    .find("label")
+                    .on({
+                        mouseover: function(event) {
+                            $(this).find("svg").addClass("hover");
+                            $(this).prevAll().find("svg").addClass("hover");
+                        },
+                        mouseleave: function(event) {
+                            $(this).find("svg").removeClass("hover");
+                            $(this).prevAll().find("svg").removeClass("hover");
+                        },
+                        click: function(event) {
+                            $(this).siblings().find("svg").removeClass("active");
+                            $(this).find("svg").addClass("active");
+                            $(this).prevAll().find("svg").addClass("active");
+                        },
+                    });
+                if ($(this).find("input").is(":checked")) {
+                    $(this)
+                        .find("label")
+                        .siblings()
+                        .find("svg")
+                        .removeClass("active");
+                    $(this)
+                        .find("input:checked")
+                        .closest("label")
+                        .find("svg")
+                        .addClass("active");
+                    $(this)
+                        .find("input:checked")
+                        .closest("label")
+                        .prevAll()
+                        .find("svg")
+                        .addClass("active");
+                }
+            });
+        })
+
 
     </script>
 @endsection

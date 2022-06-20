@@ -1,3 +1,5 @@
+@if (count($combo_offers) > 0)
+
 <section id="Best_seller">
 
     <div class="container">
@@ -17,101 +19,31 @@
 
             <div class="row">
 
-                <!-- item -->
-                <div class="col-lg-3 col-sm-4">
+                @foreach ($combo_offers as $offer)
+                    <div class="col-lg-3 col-sm-4">
 
-                    <div class="category_item">
+                        <div class="category_item">
 
-                        <div class="img">
-                            <img src="frontend_asset/images/category_item1.png" class="img-fluid w-100" alt="">
-                        </div>
+                            <div class="img">
+                                <img src="frontend_asset/images/category_item1.png" class="img-fluid w-100" alt="">
+                            </div>
 
-                        <div class="text">
-                            <h3 class="wh">18k Gold Earrings</h3>
-                            <p class="wh"><del>৳ 7,900.00</del> ৳ 3,680.00</p>
+                            <div class="text">
+                                <h3 class="wh">{{ $offer->name }}</h3>
+                                <p class="wh"><del>৳ {{ number_format($offer->grand_price, 2) }}</del> ৳ {{ discounted_price($offer->grand_price, $offer->discount) }}</p>
 
-                            <div class="add_to_cart d_flex d_justify">
-                                <a href="">View More</a>
-                                <a href="">Order Now</a>
+                                <div class="add_to_cart d_flex d_justify">
+                                    <a href="{{ route('offer.details', $offer->slug) }}">View More</a>
+                                    <a href="">Order Now</a>
+                                </div>
+
                             </div>
 
                         </div>
 
                     </div>
+                @endforeach
 
-                </div>
-
-                <!-- item -->
-                <div class="col-lg-3 col-sm-4">
-
-                    <div class="category_item">
-
-                        <div class="img">
-                            <img src="frontend_asset/images/category_item2.png" class="img-fluid w-100" alt="">
-                        </div>
-
-                        <div class="text">
-                            <h3 class="wh">18k Gold Earrings</h3>
-                            <p class="wh"><del>৳ 7,900.00</del> ৳ 3,680.00</p>
-
-                            <div class="add_to_cart d_flex d_justify">
-                                <a href="">View More</a>
-                                <a href="">Order Now</a>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- item -->
-                <div class="col-lg-3 col-sm-4">
-
-                    <div class="category_item">
-
-                        <div class="img">
-                            <img src="frontend_asset/images/category_item3.png" class="img-fluid w-100" alt="">
-                        </div>
-
-                        <div class="text">
-                            <h3 class="wh">18k Gold Earrings</h3>
-                            <p class="wh"><del>৳ 7,900.00</del> ৳ 3,680.00</p>
-
-                            <div class="add_to_cart d_flex d_justify">
-                                <a href="">View More</a>
-                                <a href="">Order Now</a>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- item -->
-                <div class="col-lg-3 col-sm-4">
-
-                    <div class="category_item">
-
-                        <div class="img">
-                            <img src="frontend_asset/images/category_item4.jpg" class="img-fluid w-100" alt="">
-                        </div>
-
-                        <div class="text">
-                            <h3 class="wh">18k Gold Earrings</h3>
-                            <p class="wh"><del>৳ 7,900.00</del> ৳ 3,680.00</p>
-
-                            <div class="add_to_cart d_flex d_justify">
-                                <a href="">View More</a>
-                                <a href="">Order Now</a>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
 
             </div>
 
@@ -120,3 +52,5 @@
     </div>
 
 </section>
+
+@endif
