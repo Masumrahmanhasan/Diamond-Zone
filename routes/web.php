@@ -60,9 +60,12 @@ Route::prefix('admin')->group(function () {
 
         Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
 
+        // Menus
         Route::resource('categories', CategoryController::class);
         Route::resource('subcategories', SubCategoryController::class);
 
+
+        // Product  Offer ...
         Route::get('/products/offers', [OfferController::class, 'index'])->name('products.combo_offer');
         Route::get('/products/offer_create', [OfferController::class, 'create'])->name('products.offer_create');
         Route::post('/selected-products-total', [OfferController::class, 'getSelectedProductsTotal'])->name('get_total');
@@ -71,15 +74,17 @@ Route::prefix('admin')->group(function () {
         Route::post('/products/offer_update/{id}', [OfferController::class, 'update'])->name('products.offer_update');
         Route::post('/products/offer_delete/{id}', [OfferController::class, 'delete'])->name('products.offer_delete');
 
+        // Product
         Route::resource('products', ProductController::class);
         Route::post('/get_subcategories', [ProductController::class, 'getSubcategoryById'])->name('get_subcategories');
 
+        // Website Settings
         Route::get('/website/header', [SettingsController::class, 'index'])->name('settings.header');
         Route::get('/website/pages', [SettingsController::class, 'pages'])->name('settings.pages');
         Route::get('/settings', [SettingsController::class, 'settings'])->name('profile.settings');
         Route::post('/settings', [SettingsController::class, 'update_settings'])->name('profile.update_settings');
-        Route::post('/settings/update_password', [SettingsController::class, 'update_password'])->name('profile.update_password');
 
+        Route::post('/settings/update_password', [SettingsController::class, 'update_password'])->name('profile.update_password');
         Route::post('/update/business_setting', [SettingsController::class, 'update'])->name('update.business_setting');
     });
 
