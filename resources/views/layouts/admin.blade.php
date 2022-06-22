@@ -30,6 +30,8 @@
             files: 'Files',
         }
 	</script>
+
+  @yield('styles')
 </head>
 
 <body>

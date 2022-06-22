@@ -208,57 +208,79 @@
                                             <li>Be the first to review “DIAMOND PENDANT DP-0121”</li>
                                             <li>Your email address will not be published. Required fields are marked *</li>
                                         </ul>
-                                        <form action="{{ route('product.review_store') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                            <!-- Rating -->
-                                            <div class="form-group">
-                                                <label class="opacity-60">Rating</label>
-                                                <div class="rating rating-input c-pointer">
-                                                    <label>
-                                                        <input type="radio" name="rating" value="1" required="">
-                                                        <i class="fas fa-star"></i>
-                                                    </label>
-                                                    <label>
-                                                        <input type="radio" name="rating" value="2">
-                                                        <i class="fas fa-star"></i>
-                                                    </label>
-                                                    <label>
-                                                        <input type="radio" name="rating" value="3">
-                                                        <i class="fas fa-star"></i>
-                                                    </label>
-                                                    <label>
-                                                        <input type="radio" name="rating" value="4">
-                                                        <i class="fas fa-star"></i>
-                                                    </label>
-                                                    <label>
-                                                        <input type="radio" name="rating" value="5">
-                                                        <i class="fas fa-star"></i>
-                                                    </label>
-                                                </div>
-                                            </div>
+                                        @php
+                                          $order = App\Models\Order::with('order_items')->where('user_id',Auth::user()->id)->first();
+                                        @endphp
 
-                                            <div class="form_part">
-                                                <div class="custome_input">
-                                                    <input type="file" name="attachment">
-                                                </div>
-                                            </div>
+                                        @if($order)
+                                            @foreach($order->order_items as $item)
+                                              @if($item->product_id == $product->id)
+                                                @php
+                                                  $review = App\Models\Review::where('product_id',$product->id)->where('user_id',Auth::user()->id)->first();
+                                                @endphp
 
-                                            <!-- Form Part -->
-                                                <div class="form_part">
+                                                @if($review)
+                                                  <p class="text-warning">You Have Already Submited a review</p>
+                                                @else
+                                                  {{-- form part --}}
+                                                  <form action="{{ route('product.review_store') }}" method="POST" enctype="multipart/form-data">
+                                                      @csrf
+                                                      <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                      <!-- Rating -->
+                                                      <div class="form-group">
+                                                          <label class="opacity-60">Rating</label>
+                                                          <div class="rating rating-input c-pointer">
+                                                              <label>
+                                                                  <input type="radio" name="rating" value="1" required="">
+                                                                  <i class="fas fa-star"></i>
+                                                              </label>
+                                                              <label>
+                                                                  <input type="radio" name="rating" value="2">
+                                                                  <i class="fas fa-star"></i>
+                                                              </label>
+                                                              <label>
+                                                                  <input type="radio" name="rating" value="3">
+                                                                  <i class="fas fa-star"></i>
+                                                              </label>
+                                                              <label>
+                                                                  <input type="radio" name="rating" value="4">
+                                                                  <i class="fas fa-star"></i>
+                                                              </label>
+                                                              <label>
+                                                                  <input type="radio" name="rating" value="5">
+                                                                  <i class="fas fa-star"></i>
+                                                              </label>
+                                                          </div>
+                                                      </div>
 
-                                                    <div class="custome_input">
-                                                        <label>Comment *</label>
-                                                        <textarea name="body" id="" rows="3"></textarea>
-                                                    </div>
+                                                      <div class="form_part">
+                                                          <div class="custome_input">
+                                                              <input type="file" name="attachment">
+                                                          </div>
+                                                      </div>
 
-                                                    <div class="custome_input">
-                                                        <button type="submit">Submit</button>
-                                                    </div>
+                                                      <!-- Form Part -->
+                                                          <div class="form_part">
 
-                                                </div>
+                                                              <div class="custome_input">
+                                                                  <label>Comment *</label>
+                                                                  <textarea name="body" id="" rows="3"></textarea>
+                                                              </div>
 
-                                        </form>
+                                                              <div class="custome_input">
+                                                                  <button type="submit">Submit</button>
+                                                              </div>
+
+                                                          </div>
+
+                                                  </form>
+                                                  {{-- form part --}}
+                                                @endif
+
+                                              @endif
+                                            @endforeach
+                                        @endif
+
 
                                     @else
 

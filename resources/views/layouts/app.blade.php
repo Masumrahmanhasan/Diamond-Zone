@@ -285,6 +285,13 @@
     </script>
 
     <script>
+        @if (session()->has('message'))
+            showToast('warning', 'Warning', {{ session()->get('message') }});
+        @else
+
+        @endif
+
+
         function buyNow(id, offer){
 
             if(offer == true){

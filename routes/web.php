@@ -80,9 +80,14 @@ Route::prefix('admin')->group(function () {
         Route::post('/settings/update_password', [SettingsController::class, 'update_password'])->name('profile.update_password');
 
         Route::post('/update/business_setting', [SettingsController::class, 'update'])->name('update.business_setting');
+
+        Route::get('/product/review/', [ReviewController::class, 'index'])->name('products.review-get');
+
+        Route::get('/product/review-approve/{id}', [ReviewController::class, 'approve'])->name('review-approve');
+
+        Route::get('/product/review-delete/{id}', [ReviewController::class, 'delete'])->name('review-delete');
     });
 
 
 
 });
-
