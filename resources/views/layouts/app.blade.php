@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{ asset('frontend_asset/css/media.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/xzoom/dist/xzoom.css">
-    @livewireStyles
+    {{-- @livewireStyles --}}
 
 
 </head>
@@ -266,18 +266,32 @@
     <script src="{{ asset('frontend_asset/js/shop.js') }}"></script>
     <script src="{{ asset('frontend_asset/js/custom.js') }}"></script>
     <script src="{{ asset('frontend_asset/js/jquery.elevatezoom.js') }}"></script>
+    <script src="{{ asset('frontend_asset/js/parsley.min.js') }}"></script>
+    <script>
+
+            // $('#orderform_for_from_submit').parsley();
+
+    </script>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
 
     <script src="https://unpkg.com/xzoom/dist/xzoom.min.js"></script>
 
-    @livewireScripts
+    {{-- @livewireScripts --}}
 
     <script>
         AOS.init();
     </script>
 
     <script>
+        @if (session()->has('message'))
+            showToast('warning', 'Warning', {{ session()->get('message') }});
+        @else
+
+        @endif
+
+
         function buyNow(id, offer){
 
             if(offer == true){
@@ -326,6 +340,12 @@
                 type: 2,
                 position: 'right top'
             })
+        }
+
+
+        //
+        function placeOrder(){
+          alert('Ok');
         }
     </script>
 
