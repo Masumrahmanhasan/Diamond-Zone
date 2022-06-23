@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/portdund/diamondzone
+    - /bin/cp * $DEPLOYPATH
