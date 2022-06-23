@@ -185,10 +185,16 @@
                                             </li>
 
                                             <li class="nav-item @if (request()->segment(2) == 'pages' ) active @endif">
-                                                <a class="nav-link" href="{{ route('settings.pages') }}">
+                                                <a class="nav-link" href="{{ route('pages.index') }}">
                                                         <span class="sidebar-text">Pages</span>
                                                 </a>
-                                        </li>
+                                            </li>
+
+                                            <li class="nav-item @if (request()->segment(2) == 'banner' ) active @endif">
+                                                <a class="nav-link" href="{{ route('settings.banner') }}">
+                                                        <span class="sidebar-text">Slider</span>
+                                                </a>
+                                            </li>
 
                                     </ul>
                             </div>

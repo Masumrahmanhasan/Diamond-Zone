@@ -26,7 +26,8 @@
     <link rel="stylesheet" href="{{ asset('frontend_asset/css/media.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/xzoom/dist/xzoom.css">
-    {{-- @livewireStyles --}}
+
+    @yield('styles')
 
 
 </head>

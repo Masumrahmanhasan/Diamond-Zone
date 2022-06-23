@@ -22,15 +22,6 @@ class SettingsController extends Controller
         return view('admin.website.footer');
     }
 
-    public function pages()
-    {
-        return view('admin.website.pages.index');
-    }
-
-    public function pageCreate()
-    {
-        return view('admin.website.pages.create');
-    }
 
     public function update(Request $request)
     {
@@ -116,6 +107,12 @@ class SettingsController extends Controller
         } else {
             return redirect()->back()->with('error', 'Something went Wrong!');
         }
+    }
+
+
+    public function banner()
+    {
+        return view('admin.settings.banner');
     }
 
 }

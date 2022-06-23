@@ -7,6 +7,7 @@ use App\Models\Offer;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,9 +34,11 @@ class HomeController extends Controller
 
     public function home()
     {
-
+        $best_sales = Order::with('order_items','order_items.product')->where('status', 3)->get();
         $combo_offers = Offer::all();
-        return view('theme.home', compact('combo_offers'));
+        $reviews = Review::with('user')->inRandomOrder()->where('status', 1)->limit(3)->get();
+        $reviewsImage = Review::inRandomOrder()->where('status', 1)->whereNotNull('attachment')->limit(12)->get();
+        return view('theme.home', compact('combo_offers', 'reviews', 'reviewsImage', 'best_sales'));
     }
 
     public function shop()

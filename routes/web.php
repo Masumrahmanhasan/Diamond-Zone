@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OfferController;
@@ -51,6 +51,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function(){
     Route::get('/dashboard', [UserDashboardController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/orders', [UserDashboardController::class, 'orders'])->name('user.orders');
 
+    Route::get('/account', [UserDashboardController::class, 'account'])->name('user.accounts');
+    Route::post('/update-info', [UserDashboardController::class, 'updateInfo'])->name('user.update_info');
+    Route::post('/update-password', [UserDashboardController::class, 'updatePassword'])->name('user.update_password');
+
     Route::post('/product/review/store', [ReviewController::class, 'store'])->name('product.review_store');
 });
 
@@ -83,9 +87,12 @@ Route::prefix('admin')->group(function () {
         // Website Settings
         Route::get('/website/header', [SettingsController::class, 'index'])->name('settings.header');
         Route::get('/website/footer', [SettingsController::class, 'footer'])->name('settings.footer');
-        Route::get('/website/pages', [SettingsController::class, 'pages'])->name('settings.pages');
+
+        Route::resource('pages', PageController::class);
         Route::get('/settings', [SettingsController::class, 'settings'])->name('profile.settings');
         Route::post('/settings', [SettingsController::class, 'update_settings'])->name('profile.update_settings');
+
+        Route::get('/setting/banner', [SettingsController::class, 'banner'])->name('settings.banner');
 
         Route::post('/settings/update_password', [SettingsController::class, 'update_password'])->name('profile.update_password');
         Route::post('/update/business_setting', [SettingsController::class, 'update'])->name('update.business_setting');

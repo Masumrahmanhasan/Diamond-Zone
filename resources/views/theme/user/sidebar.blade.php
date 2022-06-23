@@ -15,14 +15,10 @@
                     <a href="{{ route('user.orders') }}"><i class="fas fa-shopping-bag"></i> Orders</a>
                 </button>
 
-                {{-- My Address --}}
-                {{-- <button class="nav-link @yield('address')">
-                    <a href=""><i class="fas fa-map-marker-alt"></i> My Address</a>
-                </button> --}}
 
                 {{-- Account details --}}
                 <button class="nav-link @yield('account')">
-                    <a href=""><i class="fas fa-user"></i> Account details</a>
+                    <a href="{{ route('user.accounts') }}"><i class="fas fa-user"></i> Account details</a>
                 </button>
 
                 {{-- Logout --}}
