@@ -10,7 +10,7 @@ class Order extends Model
 
     public const STATUS = [
         0 => [
-            'label' => 'bg-info',
+            'label' => 'bg-primary',
             'value' => 'Pending',
         ],
         1 => [
@@ -23,10 +23,27 @@ class Order extends Model
         ]
     ];
 
+    public const PAYMENTSTATUS = [
+        0 => [
+            'label' => 'bg-info',
+            'value' => 'Unpaid',
+        ],
+        1 => [
+            'label' => 'bg-success',
+            'value' => 'Paid',
+        ],
+
+    ];
+
     use HasFactory;
 
     public function order_items()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

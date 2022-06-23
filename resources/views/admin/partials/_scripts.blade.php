@@ -6,18 +6,15 @@
 <!-- Vendor JS -->
 <script src="https://unpkg.com/onscreen/dist/on-screen.umd.min.js"></script>
 
-
 <!-- Smooth scroll -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.polyfills.min.js"></script>
 
-
-<!-- Sweet Alerts 2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 <!-- Moment JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
 <!-- Notyf -->
 <script src="https://cdn.jsdelivr.net/npm/notyf@3.10.0/notyf.min.js"></script>
@@ -38,6 +35,7 @@
 <script src="{{ asset('js/custom.js') }}"></script>
 
 <script src="{{ asset('js/fileupload.js') }}"></script>
+
 <script src="{{ asset('js/parslay.min.js') }}"></script>
 
 <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>

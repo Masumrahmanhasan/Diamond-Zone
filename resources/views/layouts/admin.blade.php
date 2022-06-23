@@ -55,6 +55,12 @@
 
         @include('admin.partials._scripts')
 
+        <script>
+            $(document).ready( function () {
+                $('#componentTable').DataTable();
+            } );
+        </script>
+
 
 
 </body>

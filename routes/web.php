@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OfferController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -10,7 +11,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
-use App\Models\Review;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -77,6 +77,8 @@ Route::prefix('admin')->group(function () {
         // Product
         Route::resource('products', ProductController::class);
         Route::post('/get_subcategories', [ProductController::class, 'getSubcategoryById'])->name('get_subcategories');
+
+        Route::resource('orders', OrderController::class);
 
         // Website Settings
         Route::get('/website/header', [SettingsController::class, 'index'])->name('settings.header');
