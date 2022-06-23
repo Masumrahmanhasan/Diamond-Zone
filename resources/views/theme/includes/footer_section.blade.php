@@ -9,7 +9,7 @@
 
                 <div class="footer_content">
                     <h3 class="wh">Look on Us</h3>
-                    <p class="wh">We are provide best quality jewellery to our customers. We care about quality. Our main aim to provide quality products and service that’s why we have assign quality types.</p>
+                    <p class="wh">{{ get_setting('about_us_description') }}</p>
                 </div>
 
             </div>

@@ -80,6 +80,7 @@ Route::prefix('admin')->group(function () {
 
         // Website Settings
         Route::get('/website/header', [SettingsController::class, 'index'])->name('settings.header');
+        Route::get('/website/footer', [SettingsController::class, 'footer'])->name('settings.footer');
         Route::get('/website/pages', [SettingsController::class, 'pages'])->name('settings.pages');
         Route::get('/settings', [SettingsController::class, 'settings'])->name('profile.settings');
         Route::post('/settings', [SettingsController::class, 'update_settings'])->name('profile.update_settings');
@@ -87,10 +88,10 @@ Route::prefix('admin')->group(function () {
         Route::post('/settings/update_password', [SettingsController::class, 'update_password'])->name('profile.update_password');
         Route::post('/update/business_setting', [SettingsController::class, 'update'])->name('update.business_setting');
 
+
+        // Product Review
         Route::get('/product/review/', [ReviewController::class, 'index'])->name('products.review-get');
-
         Route::get('/product/review-approve/{id}', [ReviewController::class, 'approve'])->name('review-approve');
-
         Route::get('/product/review-delete/{id}', [ReviewController::class, 'delete'])->name('review-delete');
     });
 

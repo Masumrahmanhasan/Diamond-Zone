@@ -38,6 +38,7 @@
 <script src="{{ asset('js/custom.js') }}"></script>
 
 <script src="{{ asset('js/fileupload.js') }}"></script>
+<script src="{{ asset('js/parslay.min.js') }}"></script>
 
 <script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
 

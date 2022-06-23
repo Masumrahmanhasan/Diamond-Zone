@@ -18,7 +18,6 @@ class ProductController extends Controller
 
     public function create()
     {
-
         $sku = 'DP-'.mt_rand( 100000, 999999 );
 
         $categories = Category::all();
@@ -35,6 +34,8 @@ class ProductController extends Controller
             'category_id' => 'required',
             'thumbnail' => 'required',
             'gallary' => 'required',
+            'short_description' => 'required',
+
         ]);
 
         $product = new Product;

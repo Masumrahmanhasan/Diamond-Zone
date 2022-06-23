@@ -1,5 +1,18 @@
 @extends('layouts.admin')
 
+<style>
+    .parsley-errors-list {
+        list-style: none;
+        padding-left: .5rem
+    }
+
+    .parsley-errors-list li {
+        color: red;
+        font-size: 13px;
+        font-style: italic;
+    }
+</style>
+
 @section('content')
             <div>
                     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
@@ -23,7 +36,7 @@
                                     <h2 class="h4">Add item</h2>
                             </div>
                     </div>
-                    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                    <form id="product_create" action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                                 <div class="col-12 col-xl-8">
@@ -37,7 +50,7 @@
                                                                                 <input name="name" class="form-control  @error('name')
                                                                                 is-invalid
                                                                                 @enderror" id="name" type="text"
-                                                                                        placeholder="Enter the item's name" required="">
+                                                                                        placeholder="Enter the item's name" required >
                                                                         </div>
                                                                 </div>
 
@@ -47,7 +60,7 @@
                                                                             <input name="sku" class="form-control @error('sku')
                                                                             is-invalid
                                                                             @enderror" id="name" type="text"
-                                                                                    placeholder="Enter the item's Sku" required="" value="{{ $sku }}">
+                                                                                    placeholder="Enter the item's Sku" required value="{{ $sku }}">
                                                                     </div>
                                                                 </div>
                                                         </div>
@@ -58,8 +71,8 @@
                                                                 <select name="category_id" class="form-select mb-0 @error('category_id')
                                                                 is-invalid
                                                                 @enderror" id="category_id"
-                                                                        aria-label="category select example">
-                                                                        <option selected="">Choose...</option>
+                                                                        aria-label="category select example" required>
+                                                                        <option  value="">Choose...</option>
                                                                         @foreach ($categories as $category)
                                                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                                         @endforeach
@@ -81,8 +94,10 @@
                                                                 <div class="col-md-12 mb-3">
                                                                         <div class="form-group">
                                                                                 <label for="excerpt">Short Description</label>
-                                                                                <textarea class="form-control" name="short_description" id="short_desc" type="text"
-                                                                                style="height: 142px;"></textarea>
+                                                                                <textarea class="form-control @error('short_description')
+                                                                                is-invalid
+                                                                                @enderror" name="short_description" id="short_desc" type="text"
+                                                                                style="height: 142px;" required></textarea>
                                                                         </div>
                                                                 </div>
                                                         </div>
@@ -95,8 +110,8 @@
                                                                             <label for="excerpt">Price</label>
                                                                             <input name="price" class="form-control @error('price')
                                                                             is-invalid
-                                                                            @enderror" id="name" type="number"
-                                                                                    placeholder="Enter the item's Price" required="">
+                                                                            @enderror" id="name" type="text"
+                                                                                    placeholder="Enter the item's Price" required data-parsley-type="integer" data-parsley-pattern="[0-9]+$" data-parsley-trigger="keyup" >
                                                                     </div>
                                                             </div>
 
@@ -104,7 +119,7 @@
                                                                 <div class="form-group">
                                                                         <label for="excerpt">Discount</label>
                                                                         <input name="discount" class="form-control " id="name" type="number"
-                                                                                placeholder="Enter the item's name" required="" value="0">
+                                                                                placeholder="Enter the item's name" value="0">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -216,6 +231,7 @@
          CKEDITOR.replace( 'short_desc' );
          CKEDITOR.replace( 'editor1' );
 
+
         var category = document.getElementById('category_id');
 
         category.addEventListener('change', function() {
@@ -232,5 +248,7 @@
                     })
             }
         })
+
+        $('#product_create').parsley();
     </script>
 @endpush

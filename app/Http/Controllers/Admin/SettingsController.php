@@ -16,6 +16,12 @@ class SettingsController extends Controller
         return view('admin.website.header');
     }
 
+
+    public function footer()
+    {
+        return view('admin.website.footer');
+    }
+
     public function pages()
     {
         return view('admin.website.pages.index');

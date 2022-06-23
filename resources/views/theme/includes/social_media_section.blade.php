@@ -22,11 +22,11 @@
                <div class="header text-center">
                     <h3 >Stay Updated With the Latest...</h3>
                     <div class="social_part d_flex">
-                        <a href="" class="d_flex"><i class="fab fa-facebook-f"></i></a>
-                        <a href="" class="d_flex"><i class="fab fa-youtube"></i></a>
-                        <a href="" class="d_flex"><i class="fab fa-twitter"></i></a>
-                        <a href="" class="d_flex"><i class="fab fa-instagram"></i></a>
-                        <a href="" class="d_flex"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="{{ get_setting('facebook_link')}}" target="_blank" class="d_flex"><i class="fab fa-facebook-f"></i></a>
+                        <a href="{{ get_setting('youtube_link')}}" target="_blank" class="d_flex"><i class="fab fa-youtube"></i></a>
+                        <a href="{{ get_setting('twitter_link')}}" target="_blank" class="d_flex"><i class="fab fa-twitter"></i></a>
+                        <a href="{{ get_setting('instagram_link')}}" target="_blank" class="d_flex"><i class="fab fa-instagram"></i></a>
+                        <a href="{{ get_setting('linkedin_link')}}" target="_blank" class="d_flex"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                </div>
 

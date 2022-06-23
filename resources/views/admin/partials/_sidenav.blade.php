@@ -160,7 +160,7 @@
                                             </li>
 
                                             <li class="nav-item @if (request()->segment(2) == 'header' ) active @endif">
-                                                    <a class="nav-link" href="#">
+                                                    <a class="nav-link" href="{{ route('settings.footer') }}">
                                                             <span class="sidebar-text">Footer</span>
                                                     </a>
                                             </li>
