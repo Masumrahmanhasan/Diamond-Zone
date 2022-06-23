@@ -301,6 +301,7 @@
                 offer = 0
             }
 
+            console.log(offer);
 
             @if (auth()->check() && (auth()->user()->user_type == 'user'))
 
@@ -310,13 +311,7 @@
 
                     $('#checkout-modal-body').html(data);
                     $('#checkout_modal').modal('show');
-                    // if(data != 0){
-                    //     $('#wishlist').html(data);
-                    //     AIZ.plugins.notify('success', 'Item has been added to wishlist');
-                    // }
-                    // else{
-                    //     showToast('warning', 'Warning', 'Please Login First');
-                    // }
+
                 });
             @else
                 showToast('warning', 'Warning', 'Please Login First');
@@ -344,10 +339,6 @@
         }
 
 
-        //
-        function placeOrder(){
-          alert('Ok');
-        }
     </script>
 
 

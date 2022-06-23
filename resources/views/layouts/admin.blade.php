@@ -47,7 +47,6 @@
 
             @yield('content')
 
-            @include('admin.partials._footer')
         </main>
 
 
