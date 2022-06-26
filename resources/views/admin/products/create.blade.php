@@ -219,6 +219,25 @@
                                                     </div>
                                             </div>
                                         </div>
+
+                                        <div class="row">
+                                            <div class="col-12 mb-4">
+                                                    <div class="card shadow border-0 p-0">
+
+                                                        <div class="card-body pb-5">
+                                                            <div class="row">
+                                                                <label for="excerpt">International Information</label>
+                                                                    <textarea class="form-control" name="intl_info" id="editor3" type="text" placeholder="Write Something here"
+                                                                    ></textarea>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+
+
                                 </div>
                         </div>
                     </form>
@@ -230,6 +249,7 @@
     <script>
          CKEDITOR.replace( 'short_desc' );
          CKEDITOR.replace( 'editor1' );
+         CKEDITOR.replace( 'editor3' );
 
 
         var category = document.getElementById('category_id');

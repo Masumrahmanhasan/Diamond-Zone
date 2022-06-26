@@ -104,7 +104,7 @@
 
                                     <div class="category_items d_flex">
                                         <h5>Category</h5>
-                                        <span>{{ $product->category->name }}</span>
+                                        <span>{{ $product->category ? $product->category->name : ''}}</span>
                                     </div>
 
                                 </div>

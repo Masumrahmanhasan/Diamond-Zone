@@ -143,11 +143,11 @@
                                 <ul class="navbar-nav ms-auto">
 
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+                                        <a class="nav-link active" aria-current="page" href="{{ route('home') }}">HOME</a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Shop</a>
+                                        <a class="nav-link" href="{{ route('shop') }}">SHOP</a>
                                     </li>
 
                                     @foreach ($categories as $category)
@@ -183,11 +183,11 @@
                     <ul class="navbar-nav ms-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ route('master') }}">Home</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('master') }}">HOME</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('shop') }}">Shop</a>
+                            <a class="nav-link" href="{{ route('shop') }}">SHOP</a>
                         </li>
 
                         @foreach ($categories as $category)
@@ -270,8 +270,6 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
 
     <script src="https://unpkg.com/xzoom/dist/xzoom.min.js"></script>
-
-    {{-- @livewireScripts --}}
 
     <script>
         AOS.init();

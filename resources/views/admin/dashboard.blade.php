@@ -15,13 +15,13 @@
 																</svg></div>
 														<div class="d-sm-none">
 																<h2 class="h5">Categories</h2>
-																<h3 class="fw-extrabold mb-1">345,678</h3>
+																<h3 class="fw-extrabold mb-1">{{ $category }}</h3>
 														</div>
 												</div>
 												<div class="col-12 col-xl-7 px-xl-0">
 														<div class="d-none d-sm-block">
 																<h2 class="h5">Categories</h2>
-																<h3 class="fw-extrabold mb-1">0</h3>
+																<h3 class="fw-extrabold mb-1">{{ $category }}</h3>
 														</div>
 
 												</div>
@@ -44,13 +44,13 @@
                                                         </div>
 														<div class="d-sm-none">
 																<h2 class="h5">Orders</h2>
-																<h3 class="fw-extrabold mb-1">345,678</h3>
+																<h3 class="fw-extrabold mb-1">{{ $order }}</h3>
 														</div>
 												</div>
 												<div class="col-12 col-xl-7 px-xl-0">
 														<div class="d-none d-sm-block">
 																<h2 class="h5">Orders</h2>
-																<h3 class="fw-extrabold mb-1">0</h3>
+																<h3 class="fw-extrabold mb-1">{{ $order }}</h3>
 														</div>
 
 												</div>
@@ -58,5 +58,35 @@
 								</div>
 						</div>
 				</div>
+
+                <div class="col-12 col-sm-6 col-xl-4 mb-4">
+                    <div class="card border-0 shadow">
+                            <div class="card-body">
+                                    <div class="row d-block d-xl-flex align-items-center">
+                                            <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
+                                                    <div class="icon-shape icon-shape-info rounded me-4 me-sm-0">
+                                                        <svg class="icon icon-md" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                                            <path fill="none" d="M0 0h24v24H0z"/>
+                                                            <path d="M8 4h13v2H8V4zm-5-.5h3v3H3v-3zm0 7h3v3H3v-3zm0 7h3v3H3v-3zM8 11h13v2H8v-2zm0 7h13v2H8v-2z"/>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="d-sm-none">
+                                                            <h2 class="h5">Products</h2>
+                                                            <h3 class="fw-extrabold mb-1">{{ $product }}</h3>
+                                                    </div>
+                                            </div>
+                                            <div class="col-12 col-xl-7 px-xl-0">
+                                                    <div class="d-none d-sm-block">
+                                                            <h2 class="h5">Products</h2>
+                                                            <h3 class="fw-extrabold mb-1">{{ $product }}</h3>
+                                                    </div>
+
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+                </div>
+
+
 		</div>
 @endsection

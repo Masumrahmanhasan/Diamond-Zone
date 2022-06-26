@@ -53,6 +53,7 @@ class ProductController extends Controller
 
         $product->short_description = $request->short_description;
         $product->description = $request->description;
+        $product->intl_info = $request->intl_info;
         $product->discount = $request->discount;
 
         $product->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->name)));
@@ -98,6 +99,7 @@ class ProductController extends Controller
 
         $product->short_description = $request->short_description;
         $product->description = $request->description;
+        $product->intl_info = $request->intl_info;
         $product->discount = $request->discount;
 
         $product->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->name)));
