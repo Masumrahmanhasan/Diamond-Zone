@@ -50,6 +50,7 @@ Route::post('/checkout/store', [HomeController::class, 'checkout_done'])->name('
 Route::group(['prefix' => 'user', 'middleware' => ['auth']], function(){
     Route::get('/dashboard', [UserDashboardController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/orders', [UserDashboardController::class, 'orders'])->name('user.orders');
+    Route::get('/order/detail/{id}', [UserDashboardController::class, 'orderDetails'])->name('user.order_details');
 
     Route::get('/account', [UserDashboardController::class, 'account'])->name('user.accounts');
     Route::post('/update-info', [UserDashboardController::class, 'updateInfo'])->name('user.update_info');

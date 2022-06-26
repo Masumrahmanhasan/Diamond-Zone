@@ -22,6 +22,13 @@ class DashboardController extends Controller
         return view('theme.user.orders', compact('orders'));
     }
 
+    public function orderDetails($id)
+    {
+        $order = Order::with('user', 'order_items', 'order_items.product')->where('user_id', $id)->first();
+
+        return view('theme.user.order_details', compact('order'));
+    }
+
     public function account()
     {
         return view('theme.user.account');

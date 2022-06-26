@@ -45,7 +45,7 @@
                                         <td><span class="badge {{ \App\Models\Order::STATUS[$order->status]['label'] }}">{{ \App\Models\Order::STATUS[$order->status]['value'] }}</span></td>
                                         <td>{{ number_format($order->grand_total, 2) }}</td>
                                         <td>
-                                            <a href="" class="btn btn-info btn-sm text-white">view</a>
+                                            <a href="{{ route('user.order_details', $order->id) }}" class="btn btn-info h-auto">view</a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -34,77 +34,34 @@
 								</div>
 						</div>
 						<div class="card card-body shadow-sm table-wrapper table-responsive">
-								<div class="table-settings mb-4">
-										<div class="row justify-content-between align-items-center">
-												<div class="col-9 col-lg-8 d-md-flex">
-														<div class="input-group me-2 me-lg-3 fmxw-300">
-																<span class="input-group-text"><svg class="icon icon-xs" x-description="Heroicon name: solid/search"
-																				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-																				<path fill-rule="evenodd"
-																						d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-																						clip-rule="evenodd"></path>
-																		</svg></span>
-																<input  type="text" class="form-control" placeholder="Search items">
-														</div>
-														<div class="col-3 d-flex">
-																<select wire:model="entries" class="form-select fmxw-100 d-none d-md-inline" id="entries"
-																		aria-label="Entries per page">
-																		<option value="10">10</option>
-																		<option value="25">25</option>
-																		<option value="50">50</option>
-																		<option value="100">100</option>
-																</select>
-														</div>
-												</div>
-										</div>
-								</div>
-								<table class="table user-table table-hover align-items-center overflow-hidden">
+
+								<table class="table table-hover table-striped align-items-center" id="componentTable">
 										<thead>
 												<tr>
 
 														<th class="border-bottom">
-																<a wire:click="sortBy('items.name')" class="text-default me-3">
+																<a  class="text-default me-3">
 																		<span>Name</span>
-
-																		<span>
-																				<i class="fas fa-sort"></i>
-																		</span>
 																</a>
 														</th>
 														<th class="border-bottom">
-																<a wire:click="sortBy('items.category_id')" class="text-default me-3">
+																<a class="text-default me-3">
 																		<span>Category</span>
-
-																		<span>
-																				<i class="fas fa-sort"></i>
-																		</span>
 																</a>
 														</th>
 														<th class="border-bottom">
-																<a wire:click="sortBy('items.picture')" class="text-default me-3">
+																<a class="text-default me-3">
 																		<span>Picture</span>
-
-																		<span>
-																				<i class="fas fa-sort"></i>
-																		</span>
 																</a>
 														</th>
 														<th class="border-bottom">
-																<a wire:click="sortBy('TagsName')" class="text-default me-3">
+																<a  class="text-default me-3">
 																		<span>Price</span>
-
-																		<span>
-																				<i class="fas fa-sort"></i>
-																		</span>
 																</a>
 														</th>
 														<th class="border-bottom">
-																<a wire:click="sortBy('items.created_at')" class="text-default me-3">
+																<a  class="text-default me-3">
 																		<span>Date created</span>
-
-																		<span>
-																				<i class="fas fa-sort"></i>
-																		</span>
 																</a>
 														</th>
 														<th class="border-bottom">

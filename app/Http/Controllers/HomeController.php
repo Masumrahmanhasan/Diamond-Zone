@@ -71,7 +71,13 @@ class HomeController extends Controller
     public function checkout(Request $request)
     {
         $subtotal = 0;
-        $quantity = 1;
+
+        if(!$request->has('quantity')){
+            $quantity = 1;
+        } else {
+            $quantity = $request->quantity;
+        }
+
 
         $offer = $request->offer;
 
@@ -89,14 +95,9 @@ class HomeController extends Controller
                 array_push($product, $item->id = $item->name);
             }
 
-
-
         } else {
 
-
             $product = Product::with('category')->find($request->id);
-            $quantity = $request->quantity;
-
 
             if($product->discount != 0){
                 $subtotal = ($product->price - $product->discount) * $quantity;
@@ -105,6 +106,7 @@ class HomeController extends Controller
             }
 
         }
+
 
         return view('theme.includes.checkout_modal', compact('product', 'quantity', 'subtotal', 'offer'));
     }
@@ -137,8 +139,10 @@ class HomeController extends Controller
 
         }
 
-        return redirect()->route('user.orders');
+        return redirect()->route('user.orders')->with('success' , 'Order Placed SuccessFully');
     }
+
+
 
 
 }
