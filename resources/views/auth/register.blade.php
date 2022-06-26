@@ -10,9 +10,9 @@
                 <div class="card px-5 py-5" id="form1">
                     <div class="form-data">
                         <div class="forms-inputs mb-4"> <span>Name</span>
-                            <input autocomplete="off" class="form-control @error('name')
+                            <input type="text" name="name" autocomplete="off" class="form-control @error('name')
                                 is-invalid
-                            @enderror" type="text" name="email">
+                            @enderror" >
                             @error('name')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
