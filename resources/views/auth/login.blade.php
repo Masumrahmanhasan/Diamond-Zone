@@ -10,6 +10,7 @@
                 @csrf
                 <div class="card px-5 py-5" id="form1">
                     <div class="form-data">
+
                         <div class="forms-inputs mb-4"> <span>Email or username</span>
                             <input autocomplete="off" class="form-control @error('email')
                                 is-invalid
@@ -18,7 +19,8 @@
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="forms-inputs mb-4"> <span>Password</span>
+
+                        <div class="forms-inputs"> <span>Password</span>
                             <input autocomplete="off" class="form-control @error('password')
                                 is-invalid
                             @enderror" type="password" name="password">
@@ -26,6 +28,12 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+
+                        <div class="d-flex justify-content-between mb-4">
+                            <a class="text-black-50" href="{{ route('register') }}">Create new account</a>
+                            <a class="text-black-50" href="">Forgot Password?</a>
+                        </div>
+
                         <div class="mb-3">
                             <button type="submit" class="btn btn-dark w-100">Login</button>
                         </div>

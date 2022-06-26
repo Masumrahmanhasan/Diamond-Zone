@@ -47,10 +47,7 @@
 
             @yield('content')
 
-            @include('admin.partials._footer')
         </main>
-
-
 
 
         @include('admin.partials._scripts')

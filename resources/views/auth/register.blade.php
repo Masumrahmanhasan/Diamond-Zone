@@ -36,14 +36,19 @@
                             @enderror
                         </div>
 
-                        <div class="forms-inputs mb-4"> <span>Confirm Password</span>
+                        <div class="forms-inputs mb-1"> <span>Confirm Password</span>
                             <input autocomplete="off" class="form-control" type="password" id="password-confirm" name="password_confirmation">
+
+                        </div>
+
+                        <div class="d-flex justify-content-end mb-4">
+                            <a class="text-black-50" href="{{ route('login') }}">Already have an account? login</a>
 
                         </div>
 
 
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-dark w-100">Login</button>
+                            <button type="submit" class="btn btn-dark w-100">Register</button>
                         </div>
                     </div>
 

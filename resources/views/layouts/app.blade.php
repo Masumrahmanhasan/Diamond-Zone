@@ -46,7 +46,6 @@
 
                 <div class="row">
 
-                    <!-- left -->
                     <div class="col-lg-6">
 
                         <div class="sing_number">
@@ -55,30 +54,23 @@
 
                     </div>
 
-                    <!-- Right -->
                     <div class="col-lg-6">
 
                         <div class="singUp_content d_flex">
 
-                            <!-- input -->
-                            <div class="custome_input">
-                                <input type="text">
+                            <form action="" method="POST">
 
-                                <div class="search">
-                                    <i class="fas fa-search"></i>
+                                <div class="custome_input">
+                                    <input type="text">
+
+                                    <div class="search">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+
                                 </div>
 
-                            </div>
+                            </form>
 
-                            <!-- cart -->
-                            {{-- <div class="signUp_cart">
-                                <i class="fas fa-cart-arrow-down"></i>
-                                <div class="cart_overlay">
-                                    <span>0</span>
-                                </div>
-                            </div> --}}
-
-                            <!-- sing in -->
                             <div class="sign_in dropdown show">
                                 @auth
                                 <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

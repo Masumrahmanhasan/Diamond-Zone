@@ -49,12 +49,12 @@ class ReviewController extends Controller
       ]);
 
       if($request->file('attachment')){
-        // +++++++++++++++ make Image +++++++++++++++
+
         $image = $request->file('attachment');
         $imageName = 'review'.'-'.uniqid().'-'.$image->getClientOriginalExtension();
         Image::make($image)->resize(702,400)->save('uploads/attachment/'.$imageName);
         $saveUrl = 'uploads/attachment/'.$imageName;
-        // +++++++++++++++ make Image +++++++++++++++
+
         Review::where('id',$reviewId)->update([
           'attachment' => $saveUrl,
           'updated_at' => Carbon::now(),

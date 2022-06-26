@@ -33,10 +33,12 @@
 
                                 <img src='{{ uploaded_asset($product->thumbnail) }}'
                                     xoriginal="{{ uploaded_asset($product->thumbnail) }}" class="xzoom"
-                                    alt='Daisy on the Ohoopee' />
+                                    alt='Daisy on the Ohoopee'
+                                />
 
 
                                 <div class="xzoom-thumbs">
+
                                     <a href="{{ uploaded_asset($product->thumbnail) }}">
                                         <img class="xzoom-gallery" width="80"
                                             src="{{ uploaded_asset($product->thumbnail) }}"
@@ -50,8 +52,8 @@
                                         </a>
                                     @endforeach
 
-
                                 </div>
+
                             </span>
 
                         </div>
