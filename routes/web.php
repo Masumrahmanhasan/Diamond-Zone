@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('master');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('index');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Uploader
