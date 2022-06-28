@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Diamond Zone') }}</title>
 
-
+    <link rel="icon" type="image/x-icon" href="{{ asset('frontend_asset/images/fav icon white.svg') }}">
     <!-- Font Link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="{{ asset('frontend_asset/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend_asset/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend_asset/css/style.css') }}">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend_asset/css/media.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/xzoom/dist/xzoom.css">
@@ -262,18 +261,12 @@
     <script src="{{ asset('frontend_asset/js/parsley.min.js') }}"></script>
     <script>
 
-            // $('#orderform_for_from_submit').parsley();
 
     </script>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
 
     <script src="https://unpkg.com/xzoom/dist/xzoom.min.js"></script>
-
-    <script>
-        AOS.init();
-    </script>
 
     <script>
         @if (session()->has('message'))
@@ -290,8 +283,6 @@
             } else {
                 offer = 0
             }
-
-            console.log(offer);
 
             @if (auth()->check() && (auth()->user()->user_type == 'user'))
 

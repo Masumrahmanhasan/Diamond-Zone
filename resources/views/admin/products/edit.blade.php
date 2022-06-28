@@ -220,8 +220,8 @@
                                                         <div class="card-body pb-5">
                                                             <div class="row">
                                                                 <label for="excerpt">International Information</label>
-                                                                    <textarea class="form-control" name="intl_info" id="editor3" type="text" placeholder="Write Something here"
-                                                                    ></textarea>
+                                                                    <textarea class="form-control" id="editor3" name="intl_info" id="editor3" type="text" placeholder="Write Something here"
+                                                                    >{{ $product->intl_info }}</textarea>
                                                             </div>
 
 
@@ -240,6 +240,7 @@
     <script>
          CKEDITOR.replace( 'short_desc' );
          CKEDITOR.replace( 'editor1' );
+         CKEDITOR.replace( 'editor3' );
 
         var category = document.getElementById('category_id');
 

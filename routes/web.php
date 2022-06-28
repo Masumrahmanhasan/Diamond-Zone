@@ -83,6 +83,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('products', ProductController::class);
         Route::post('/get_subcategories', [ProductController::class, 'getSubcategoryById'])->name('get_subcategories');
 
+        Route::post('update_status', [OrderController::class, 'updateStatus'])->name('update_status');
         Route::resource('orders', OrderController::class);
 
         // Website Settings

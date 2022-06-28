@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->tinyText('short_description')->nullable();
             $table->longText('description');
-            $table->longText('intl_info');
+            $table->longText('intl_info')->nullable();
             $table->string('thumbnail');
             $table->string('gallary');
             $table->string('certificate')->nullable();

@@ -16,7 +16,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::with('user')->get();
-        return  view('admin.orders.index', compact('orders'));
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**
@@ -48,7 +48,26 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::with('user', 'order_items', 'order_items.product')->find($id);
+        return view('admin.orders.show', compact('order'));
+    }
+
+    /**
+     * update the status for the specified resource.
+     * @param Request $request
+     */
+    public  function updateStatus(Request $request)
+    {
+
+        $order = Order::find($request->order_id);
+        if($request->type == 'payment'){
+            $order->payment_status = $request->value;
+        } else {
+            $order->status = $request->value;
+        }
+
+        $order->save();
+        return 1;
     }
 
     /**

@@ -121,6 +121,82 @@
     				</div>
     			</div>
 
+                <div class="col-lg-12 mt-3">
+                    <div class="card shadow-none bg-light">
+    					<div class="card-header">
+    						<h6 class="mb-0">Link widget 2</h6>
+    					</div>
+    					<div class="card-body">
+                            <form action="{{ route('update.business_setting') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+    							<div class="form-group">
+    								<label>{{ __('Title') }}</label>
+    								<input type="hidden" name="types[][]" value="widget_two">
+    								<input type="text" class="form-control" placeholder="Widget title" name="widget_two" value="{{ get_setting('widget_two') }}">
+    							</div>
+    			                <div class="form-group mt-3">
+    								<label>Links</label>
+    								<div class="w3-links-target">
+                                        <input type="hidden" name="types[]" value="widget_two_labels">
+    									<input type="hidden" name="types[]" value="widget_two_links">
+    									@if (get_setting('widget_two_labels') != null)
+    										@foreach (json_decode(get_setting('widget_two_labels'), true) as $key => $value)
+    											<div class="row gutters-5">
+    												<div class="col-4">
+    													<div class="form-group">
+    														<input type="text" class="form-control" placeholder="label" name="widget_two_labels[]" value="">
+    													</div>
+    												</div>
+    												<div class="col">
+    													<div class="form-group">
+    														<input type="text" class="form-control" placeholder="http://" name="widget_two_links[]" value="{{ json_decode(get_setting('widget_two_links'), true)[$key] }}">
+    													</div>
+    												</div>
+    												<div class="col-auto">
+    													<button type="button" class="mt-1 btn btn-icon btn-circle btn-sm btn-soft-danger" data-toggle="remove-parent" data-parent=".row">
+    														<i class="las la-times"></i>
+    													</button>
+    												</div>
+    											</div>
+    										@endforeach
+    									@endif
+    								</div>
+    								<button
+    									type="button"
+    									class="btn btn-primary btn-sm mb-3 mt-3"
+    									data-toggle="add-more"
+    									data-content='<div class="row gutters-5">
+    										<div class="col-4 mt-3">
+    											<div class="form-group">
+    												<input type="text" class="form-control" placeholder="Label" name="widget_two_labels[]">
+    											</div>
+    										</div>
+    										<div class="col mt-3">
+    											<div class="form-group">
+    												<input type="text" class="form-control" placeholder="http://" name="widget_two_links[]">
+    											</div>
+    										</div>
+    										<div class="col-auto mt-3">
+    											<button type="button" class="mt-1 btn btn-icon btn-sm" data-toggle="remove-parent" data-parent=".row">
+    												<svg class="icon icon-xs ms-1" title="" data-bs-toggle="tooltip" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-bs-original-title="Delete" aria-label="Delete">
+                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd">
+                                                        </path>
+                                                </svg>
+    											</button>
+    										</div>
+    									</div>'
+    									data-target=".w3-links-target">
+    									Add New
+    								</button>
+    							</div>
+    							<div class="text-end">
+    								<button type="submit" class="btn btn-primary">Update</button>
+    							</div>
+    						</form>
+    					</div>
+    				</div>
+    			</div>
+
     	</div>
     </div>
 

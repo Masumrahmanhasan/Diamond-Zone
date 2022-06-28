@@ -39,24 +39,9 @@ class ProductController extends Controller
         ]);
 
         $product = new Product;
-        $product->name = $request->name;
-        $product->sku = $request->sku;
-        $product->category_id = $request->category_id;
 
-        if($request->subcategory_id != null){
-            $product->subcategory_id = $request->subcategory_id;
-        }
+        $this->productField($product, $request);
 
-        $product->gallary = $request->gallary;
-        $product->thumbnail = $request->thumbnail;
-        $product->certificate = $request->certificate;
-
-        $product->short_description = $request->short_description;
-        $product->description = $request->description;
-        $product->intl_info = $request->intl_info;
-        $product->discount = $request->discount;
-
-        $product->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->name)));
 
         if(Product::where('slug', $product->slug)->count() > 0){
 
@@ -85,6 +70,15 @@ class ProductController extends Controller
     {
 
         $product = Product::find($id);
+        $this->productField($product, $request);
+        $product->save();
+
+        return redirect()->route('products.index');
+
+    }
+
+    public function productField($product, $request)
+    {
         $product->name = $request->name;
         $product->sku = $request->sku;
         $product->category_id = $request->category_id;
@@ -100,14 +94,12 @@ class ProductController extends Controller
         $product->short_description = $request->short_description;
         $product->description = $request->description;
         $product->intl_info = $request->intl_info;
+        $product->price = $request->price;
         $product->discount = $request->discount;
 
         $product->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', strtolower($request->name)));
 
-        $product->save();
-
-        return redirect()->route('products.index');
-
+        return $product;
     }
 
     public function getSubcategoryById(Request $request)

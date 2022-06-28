@@ -114,10 +114,27 @@
                     <td><span class="badge {{ \App\Models\Order::PAYMENTSTATUS[$order->payment_status]['label'] }}">{{ \App\Models\Order::PAYMENTSTATUS[$order->payment_status]['value'] }}</span></td>
                     <td><span class="badge {{ \App\Models\Order::STATUS[$order->status]['label'] }}">{{ \App\Models\Order::STATUS[$order->status]['value'] }}</span></td>
                     <td>{{ beautify_date($order->created_at) }}</td>
-                    <td></td>
+                    <td>
+                        <a href="{{ route('orders.show', $order->id) }}">
+                            <svg class="icon icon-xs text-danger ms-1" title="" data-bs-toggle="tooltip" fill="currentColor"
+                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-bs-original-title="Delete" aria-label="Delete">
+                                <path fill-rule="evenodd"
+                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                                      clip-rule="evenodd">
+                                </path>
+                            </svg>
+
+                            <svg class="icon icon-xs text-primary ms-1" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
     </div>
 @endsection
+
+
