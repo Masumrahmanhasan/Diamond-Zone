@@ -114,20 +114,44 @@
                             </table>
 
                             <!-- Cash On delivary -->
-                            <div class="cash_on_delivary">
+                            <div class="cash_on_delivary text-white">
 
-                                <h4>Cash on delivery</h4>
-                                <span>Pay with cash upon delivery.</span>
+                                <h4>Payment Method</h4>
 
-                                <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <a href="">privacy policy</a>.</p>
+                                <div class="checkbox">
 
-                                {{-- <div class="custome_input">
-                                    <input type="checkbox" id="agree">
-                                    <label for="agree"> I would like to receive order updates on SMS</label>
-                                </div> --}}
+                                    <div class="checkbox_item">
+                                        <input type="radio" onclick="checkValue('cod')" class="payment_method" name="payment_method" value="cod" id="cod">
+                                        <label for="cod">
+
+                                            <span>Cash On Delivery</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="checkbox_item">
+                                        <input type="radio" class="payment_method" onclick="checkValue('bkash')" name="payment_method" value="bkash" id="bkash">
+                                        <label for="bkash">
+                                            <span>Bkash</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="checkbox_item">
+                                        <input type="radio" class="payment_method" onclick="checkValue('nagad')" name="payment_method" value="nagad" id="nagad">
+                                        <label for="nagad">
+                                            <span>Nagad</span>
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                                <div class="input_file">
+
+                                </div>
+
+                                <p class="text-white">Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <a href="">privacy policy</a>.</p>
 
                                 <div class="submit">
-                                    <button type="submit">Place Order</button>
+                                    <button type="submit" onclick="dataCheckout({{ $product }})">Place Order</button>
                                 </div>
 
                             </div>

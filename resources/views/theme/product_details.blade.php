@@ -1,6 +1,23 @@
 @extends('layouts.app')
 
+@section('meta')
+
+    <meta property="og:title" content="{{ $product['name'] }}" />
+    <meta property="og:description" content="{{ $product['short_description'] }}" />
+    <meta property="og:image" content="{{ uploaded_asset($product['thumbnail']) }}" />
+    <meta property="og:url" content="{{ route('product_details', $product['slug']) }}" />
+    <meta property="product:category" content="188">
+    <meta property="product:brand" content="Diamond Zone">
+    <meta property="product:availability" content="in stock">
+    <meta property="product:price:amount" content="{{ $product['discounted_price'] }}">
+    <meta property="product:price:currency" content="BDT">
+    <meta property="product:retailer_item_id" content="{{ $product['sku'] }}">
+
+@endsection
+
 @section('content')
+
+
     <div class="category_page">
 
         <section id="product_details">
@@ -13,8 +30,8 @@
                     <div class="col-lg-6">
 
                         <div class="header mt-3">
-                            <h4 style="color: #7c9dec;">Home / {{ $product->category->name }} / {{ $product->name }} -
-                                {{ $product->sku }}</h4>
+                            <h4 style="color: #7c9dec;">Home / {{ $product['category'] }} / {{ $product['name'] }} -
+                                {{ $product['sku'] }}</h4>
                         </div>
 
                     </div>
@@ -31,21 +48,21 @@
 
                             <span class='zoom' id='ex1'>
 
-                                <img src='{{ uploaded_asset($product->thumbnail) }}'
-                                    xoriginal="{{ uploaded_asset($product->thumbnail) }}" class="xzoom"
+                                <img src='{{ uploaded_asset($product['thumbnail']) }}'
+                                    xoriginal="{{ uploaded_asset($product['thumbnail']) }}" class="xzoom"
                                     alt='Daisy on the Ohoopee'
                                 />
 
 
                                 <div class="xzoom-thumbs">
 
-                                    <a href="{{ uploaded_asset($product->thumbnail) }}">
+                                    <a href="{{ uploaded_asset($product['thumbnail']) }}">
                                         <img class="xzoom-gallery" width="80"
-                                            src="{{ uploaded_asset($product->thumbnail) }}"
-                                            xpreview="{{ uploaded_asset($product->thumbnail) }}">
+                                            src="{{ uploaded_asset($product['thumbnail']) }}"
+                                            xpreview="{{ uploaded_asset($product['thumbnail']) }}">
                                     </a>
 
-                                    @foreach (explode(',', $product->gallary) as $gallary)
+                                    @foreach (explode(',', $product['gallary']) as $gallary)
                                         <a href="{{ uploaded_asset($gallary) }}">
                                             <img class="xzoom-gallery" width="80"
                                                 src="{{ uploaded_asset($gallary) }}">
@@ -63,22 +80,22 @@
 
                             <div class="product_description">
 
-                                <h3>{{ $product->name }} {{ $product->sku }}</h3>
+                                <h3>{{ $product['name'] }} {{ $product['sku'] }}</h3>
 
                                 <ul>
-                                    {!! $product->short_description !!}
+                                    {!! $product['short_description'] !!}
                                 </ul>
 
                                 <!-- Amounnt -->
                                 <div class="amount">
 
-                                    @if ($product->discount != 0)
+                                    @if ($product['discount'] != 0)
                                         <h3>
-                                            <del>৳ {{ number_format($product->price, 2) }}</del>
+                                            <del>৳ {{ number_format($product['price'], 2) }}</del>
                                         </h3>
-                                        <h3>৳ {{ number_format($product->price - $product->discount, 2) }}</h3>
+                                        <h3>৳ {{ number_format($product['discounted_price'], 2) }}</h3>
                                     @else
-                                        <h3>৳ {{ number_format($product->price, 2) }}</h3>
+                                        <h3>৳ {{ number_format($product['price'], 2) }}</h3>
                                     @endif
 
                                 </div>
@@ -90,7 +107,7 @@
                                         <input type="number" id="quantity" value="1" name="" min="1">
                                     </div>
 
-                                    <a href="javascript:;" onclick="buyNow({{ $product->id }}, false)"> Order Now </a>
+                                    <a href="javascript:;" onclick="buyNow({{ $product['id'] }}, false)"> Order Now </a>
 
                                 </div>
 
@@ -99,12 +116,12 @@
 
                                     <div class="category_items d_flex">
                                         <h5>SKU</h5>
-                                        <span>{{ $product->sku }}</span>
+                                        <span>{{ $product['sku'] }}</span>
                                     </div>
 
                                     <div class="category_items d_flex">
                                         <h5>Category</h5>
-                                        <span>{{ $product->category ? $product->category->name : ''}}</span>
+                                        <span>{{ $product['category'] }}</span>
                                     </div>
 
                                 </div>
@@ -170,14 +187,14 @@
 
                                             <!-- Descripntion -->
                                             <div class="col-lg-6">
-                                                {!! $product->description !!}
+                                                {!! $product['description'] !!}
 
                                             </div>
 
                                             <div class="col-lg-6">
 
                                                 <div class="img">
-                                                    <img src="{{ uploaded_asset($product->certificate) }}"
+                                                    <img src="{{ uploaded_asset($product['certificate']) }}"
                                                         class="img-fluid" alt="">
                                                 </div>
 
@@ -197,14 +214,14 @@
 
                                             <!-- Descripntion -->
                                             <div class="col-lg-6">
-                                                {!! $product->description !!}
+                                                {!! $product['description'] !!}
 
                                             </div>
 
                                             <div class="col-lg-6">
 
                                                 <div class="img">
-                                                    <img src="{{ uploaded_asset($product->certificate) }}"
+                                                    <img src="{{ uploaded_asset($product['certificate']) }}"
                                                         class="img-fluid" alt="">
                                                 </div>
 
@@ -222,96 +239,82 @@
 
                                         <h3>Reviews</h3>
 
-                                        @auth
-                                            <ul>
-                                                <li>There are no reviews yet.</li>
-                                                <li>Be the first to review “DIAMOND PENDANT DP-0121”</li>
-                                                <li>Your email address will not be published. Required fields are marked *</li>
-                                            </ul>
-                                            @php
-                                                $order = App\Models\Order::with('order_items')
-                                                    ->where('user_id', Auth::user()->id)
-                                                    ->first();
-                                            @endphp
 
-                                            @if ($order)
-                                                @foreach ($order->order_items as $item)
-                                                    @if ($item->product_id == $product->id)
-                                                        @php
-                                                            $review = App\Models\Review::where('product_id', $product->id)
-                                                                ->where('user_id', Auth::user()->id)
-                                                                ->first();
-                                                        @endphp
 
-                                                        @if ($review)
-                                                            <p class="text-warning">You Have Already Submited a review</p>
-                                                        @else
-                                                            {{-- form part --}}
-                                                            <form action="{{ route('product.review_store') }}"
-                                                                method="POST" enctype="multipart/form-data">
-                                                                @csrf
-                                                                <input type="hidden" name="product_id"
-                                                                    value="{{ $product->id }}">
-                                                                <!-- Rating -->
-                                                                <div class="form-group">
-                                                                    <label class="opacity-60">Rating</label>
-                                                                    <div class="rating rating-input c-pointer">
-                                                                        <label>
-                                                                            <input type="radio" name="rating"
-                                                                                value="1" required="">
-                                                                            <i class="fas fa-star"></i>
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="rating"
-                                                                                value="2">
-                                                                            <i class="fas fa-star"></i>
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="rating"
-                                                                                value="3">
-                                                                            <i class="fas fa-star"></i>
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="rating"
-                                                                                value="4">
-                                                                            <i class="fas fa-star"></i>
-                                                                        </label>
-                                                                        <label>
-                                                                            <input type="radio" name="rating"
-                                                                                value="5">
-                                                                            <i class="fas fa-star"></i>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
+                                        <form action="{{ route('product.review_store') }}"
+                                            method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name="product_id"
+                                                value="{{ $product['id'] }}">
+                                            <!-- Rating -->
+                                            <div class="form-group">
+                                                <label class="opacity-60">Rating</label>
+                                                <div class="rating rating-input c-pointer">
+                                                    <label>
+                                                        <input type="radio" name="rating"
+                                                            value="1" required="">
+                                                        <i class="fas fa-star"></i>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="rating"
+                                                            value="2">
+                                                        <i class="fas fa-star"></i>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="rating"
+                                                            value="3">
+                                                        <i class="fas fa-star"></i>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="rating"
+                                                            value="4">
+                                                        <i class="fas fa-star"></i>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="rating"
+                                                            value="5">
+                                                        <i class="fas fa-star"></i>
+                                                    </label>
+                                                </div>
+                                            </div>
 
-                                                                <div class="form_part">
-                                                                    <div class="custome_input">
-                                                                        <input type="file" name="attachment">
-                                                                    </div>
-                                                                </div>
+                                            <div class="form_part">
+                                                <div class="custome_input">
+                                                    <label for="">Your Name</label>
+                                                    <input type="text" name="name" required>
+                                                </div>
+                                            </div>
 
-                                                                <!-- Form Part -->
-                                                                <div class="form_part">
+                                            <div class="form_part">
+                                                <div class="custome_input">
+                                                    <label for="">Your Email</label>
+                                                    <input type="email" name=email" required>
+                                                </div>
+                                            </div>
 
-                                                                    <div class="custome_input">
-                                                                        <label>Comment *</label>
-                                                                        <textarea name="body" id="" rows="3"></textarea>
-                                                                    </div>
+                                            <div class="form_part">
+                                                <div class="custome_input">
+                                                    <input type="file" name="attachment">
+                                                </div>
+                                            </div>
 
-                                                                    <div class="custome_input">
-                                                                        <button type="submit">Submit</button>
-                                                                    </div>
+                                            <!-- Form Part -->
+                                            <div class="form_part">
 
-                                                                </div>
+                                                <div class="custome_input">
+                                                    <label>Comment *</label>
+                                                    <textarea name="body" id="" rows="3"></textarea>
+                                                </div>
 
-                                                            </form>
-                                                            {{-- form part --}}
-                                                        @endif
-                                                    @endif
-                                                @endforeach
-                                            @endif
-                                        @else
-                                        @endauth
+                                                <div class="custome_input">
+                                                    <button type="submit">Submit</button>
+                                                </div>
+
+                                            </div>
+
+                                        </form>
+
+
 
                                     </div>
 

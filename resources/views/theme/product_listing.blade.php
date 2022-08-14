@@ -69,11 +69,11 @@
 
 												@foreach ($shop_products as $product)
 														<!-- item -->
-														<div class="col-lg-3 col-sm-4">
+														<div class="col-lg-3 col-6">
 
 																<div class="category_item">
 
-																		<a href="categort_details.html">
+																		<a href="{{ route('product_details', $product->slug) }}">
 																				<div class="img">
 																						<img src="{{ uploaded_asset($product->thumbnail) ?? asset('frontend_asset/images/category_item1.png') }}" class="img-fluid w-100" alt="">
 																				</div>
@@ -93,14 +93,9 @@
 
 																				<div class="add_to_cart d_flex d_justify">
 																						<a href="{{ route('product_details', $product->slug) }}">View More</a>
-																						<a href="javascript:;" onclick="buyNow({{ $product->id }}, false)">Order Now</a>
+																						<a href="javascript:;" onclick="buyNow({{ $product }}, false)">Order Now</a>
 																				</div>
 
-																		</div>
-
-																		<!-- overlay -->
-																		<div class="overlay">
-																				<span>Sale</span>
 																		</div>
 
 																</div>

@@ -67,7 +67,8 @@ select:focus {
 /* =============== COMMON CSS FOR WEB SITE =============== */
 :root {
     --bg_color: #181D23;
-    --bg_color2: #7C9DEC;
+    /*--bg_color2: #7C9DEC;*/
+    --bg_color2: #000060;
     --bdr_color: #777;
     --text_color: #ccc;
     --border_color: #DEDFE2;
@@ -189,6 +190,9 @@ select {
     top: 50%;
     transform: translateY(-50%);
     color: var(--bdr_color);
+    outline: none;
+    border: none;
+    background: none;
 }
 
 .singUp_content .custome_input .search svg {
@@ -603,6 +607,19 @@ button.owl-dot.active {
 
 .customer_review_content .text h3 {
     margin-top: 20px;
+}
+
+#customer_review .header h2::before {
+
+    background: #fff;
+}
+
+#customer_review .header h2::after {
+    background: #fff;
+}
+
+#customer_review .header h2 {
+    color: #fff;
 }
 
 .photo_review_content {
@@ -1026,7 +1043,7 @@ button.owl-dot.active {
     font-weight: 18px;
 }
 
-.cash_on_delivary span {
+.cash_on_delivary span label{
     display: block;
     background: var(--bdr_color);
     padding: 10px;
@@ -1036,17 +1053,41 @@ button.owl-dot.active {
     position: relative;
 }
 
-.cash_on_delivary span::after {
-    content: "";
-    border: 12px solid var(--text_color);
-    border-right-color: transparent;
-    border-left-color: transparent;
-    border-top-color: transparent;
+.cash_on_delivary span input.payment_method {
     position: absolute;
-    top: -24px;
-    left: 40px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.cash_on_delivary span input[type="radio"] + .cash_on_delivary span label{
+    background: red;
 }
 
+/*Srat here*/
+.checkbox input{
+    display: none;
+    opacity: 0;
+}
+.checkbox input:checked + label{
+    color: #fff;
+    background: #0d6efd;
+}
+
+.checkbox_item {
+    margin-top: 10px;
+}
+
+.checkbox label {
+    background: var(--bdr_color);
+    display: block;
+    padding: 10px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+/*End Here*/
 .cash_on_delivary p {
     margin-top: 20px;
     padding-top: 20px;

@@ -58,14 +58,12 @@ class OrderController extends Controller
      */
     public  function updateStatus(Request $request)
     {
-
         $order = Order::find($request->order_id);
         if($request->type == 'payment'){
             $order->payment_status = $request->value;
         } else {
             $order->status = $request->value;
         }
-
         $order->save();
         return 1;
     }

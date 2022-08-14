@@ -36,6 +36,8 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
       $request->validate([
+        'name' => 'required',
+        'email' => 'required',
         'rating' => 'required',
         'body' => 'required',
       ]);
@@ -44,7 +46,9 @@ class ReviewController extends Controller
         'product_id' => $request->product_id,
         'user_id' => Auth::user()->id,
         'rating' => $request->rating,
-        'body' => $request->body,
+          'body' => $request->body,
+          'name' => $request->name,
+          'email' => $request->email,
         'created_at' => Carbon::now(),
       ]);
 

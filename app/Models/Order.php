@@ -14,12 +14,16 @@ class Order extends Model
             'value' => 'Pending',
         ],
         1 => [
-            'label' => 'bg-success',
+            'label' => 'bg-info',
             'value' => 'Confirmed',
         ],
         2 => [
             'label' => 'bg-danger',
             'value' => 'Canceled',
+        ],
+        3 => [
+            'label' => 'bg-success',
+            'value' => 'Delivered',
         ]
     ];
 

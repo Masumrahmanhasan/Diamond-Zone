@@ -7,6 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @yield('meta')
+
     <title>{{ config('app.name', 'Diamond Zone') }}</title>
 
     <link rel="icon" type="image/x-icon" href="{{ asset('frontend_asset/images/fav icon white.svg') }}">
@@ -26,13 +28,29 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/xzoom/dist/xzoom.css">
 
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-W7HN9CP');
+    </script>
+
+
     @yield('styles')
 
 
 </head>
 <body>
 
-    <div id="app">
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7HN9CP"
+                  height="0" width="0" style="display:none;visibility:hidden">
+
+    </iframe>
+</noscript>
+
+
+<div id="app">
 
 
         <div class="preloader">
@@ -57,14 +75,13 @@
 
                         <div class="singUp_content d_flex">
 
-                            <form action="" method="POST">
-
+                            <form action="{{ route('shop') }}" method="GET">
                                 <div class="custome_input">
-                                    <input type="text">
+                                    <input type="text" name="q">
 
-                                    <div class="search">
+                                    <button class="search">
                                         <i class="fas fa-search"></i>
-                                    </div>
+                                    </button>
 
                                 </div>
 
@@ -270,13 +287,15 @@
 
     <script>
         @if (session()->has('message'))
-            showToast('warning', 'Warning', {{ session()->get('message') }});
-        @else
+            showToast('success', 'Success', {{ session()->get('message') }});
+        @endif
 
+        @if (session()->has('message'))
+            showToast('warning', 'Warning', {{ session()->get('message') }});
         @endif
 
 
-        function buyNow(id, offer){
+        function buyNow(data, offer){
 
             if(offer == true){
                 offer = 1
@@ -284,19 +303,78 @@
                 offer = 0
             }
 
-            @if (auth()->check() && (auth()->user()->user_type == 'user'))
+            var discount = data.price - (data.price * (data.discount / 100));
 
-                var quantity = $('#quantity').val();
+            var quantity = $('#quantity').val();
+            dataLayer.push({ ecommerce: null });// Clear the previous ecommerce object.
+            dataLayer.push({
+                event    : "add_to_cart",
+                ecommerce: {
+                    items: [{
+                        item_name     : data['name'], // Name or ID is required.
+                        item_id       : data['sku'],
+                        price         : discount,
+                        item_category : data['category']?.['name'] || "",
+                        item_category2: data['subcategory_id'] || "",
+                        item_variant  : "",
+                        item_list_name: "",  // If associated with a list selection.
+                        item_list_id  : "",  // If associated with a list selection.
+                        index         : 0,  // If associated with a list selection.
+                        quantity      : quantity,
+                    }]
+                }
+            })
 
-                $.post('{{ route('checkout.buyNow') }}', {_token: '{{ csrf_token() }}', id:id, quantity: quantity, offer:offer}, function(data){
+            dataLayer.push({ ecommerce: null });// Clear the previous ecommerce object.
+            dataLayer.push({
+                event    : "begin_checkout",
+                ecommerce: {
+                    items: [{
+                        item_name     : data['name'], // Name or ID is required.
+                        item_id       : data['sku'],
+                        price         : discount,
+                        item_category : data['category']?.['name'] || "",
+                        item_category2: data['subcategory_id'] || "",
+                        item_variant  : "",
+                        item_list_name: "",  // If associated with a list selection.
+                        item_list_id  : "",  // If associated with a list selection.
+                        index         : 0,  // If associated with a list selection.
+                        quantity      : quantity,
+                    }]
+                }
+            })
 
-                    $('#checkout-modal-body').html(data);
-                    $('#checkout_modal').modal('show');
 
-                });
-            @else
-                showToast('warning', 'Warning', 'Please Login First');
-            @endif
+
+            $.post('{{ route('checkout.buyNow') }}', {_token: '{{ csrf_token() }}', id:data.id, quantity: quantity, offer:offer}, function(data){
+
+                $('#checkout-modal-body').html(data);
+                $('#checkout_modal').modal('show');
+
+            });
+            // showToast('warning', 'Warning', 'Please Login First');
+
+        }
+
+        function dataCheckout(data){
+            dataLayer.push({ ecommerce: null });// Clear the previous ecommerce object.
+            dataLayer.push({
+                event    : "purchase",
+                ecommerce: {
+                    items: [{
+                        item_name     : data['name'], // Name or ID is required.
+                        item_id       : data['sku'],
+                        price         : discount,
+                        item_category : data['category']?.['name'] || "",
+                        item_category2: data['subcategory_id'] || "",
+                        item_variant  : "",
+                        item_list_name: "",  // If associated with a list selection.
+                        item_list_id  : "",  // If associated with a list selection.
+                        index         : 0,  // If associated with a list selection.
+                        quantity      : quantity,
+                    }]
+                }
+            })
         }
 
         function showToast(status, title, text){
@@ -318,6 +396,14 @@
                 position: 'right top'
             })
         }
+        function checkValue(value){
+            if(value == 'bkash' || value == 'nagad'){
+                $('.input_file').html('<div class=""><input type="hidden" name="payment_type" value="'+value+'"><div class="custom_input mt-4"><label>Phone Number <span>*</span></label> <input type="text" name="payment_number" placeholder="Phone Number" required> </div> <div class="custom_input mt-4"> <label>Transaction Number <span>*</span></label><input type="text" name="trans_id" placeholder="Transaction Number" required> </div> </div>')
+            } else {
+                $('.input_file').html('')
+            }
+        }
+
 
 
     </script>

@@ -42,7 +42,6 @@ class ProductController extends Controller
 
         $this->productField($product, $request);
 
-
         if(Product::where('slug', $product->slug)->count() > 0){
 
             return back()->with('error', 'Another product exists with same slug. Please change the slug!');
@@ -52,11 +51,7 @@ class ProductController extends Controller
 
         return redirect()->route('products.index');
 
-
     }
-
-
-
 
     public function edit($id)
     {

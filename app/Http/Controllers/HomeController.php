@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use App\Models\Offer;
 use App\Models\Order;
@@ -9,6 +10,7 @@ use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use function MongoDB\BSON\toJSON;
 
 class HomeController extends Controller
 {
@@ -41,9 +43,31 @@ class HomeController extends Controller
         return view('theme.home', compact('combo_offers', 'reviews', 'reviewsImage', 'best_sales'));
     }
 
-    public function shop()
+    public function shop(Request $request)
     {
-        $shop_products = Product::all();
+        if($request->q !== null){
+            $shop_products = Product::with('category')->where('name', 'like', '%' . $request->q . '%');
+        } else {
+            $shop_products = Product::with('category');
+        }
+        $sort_by = $request->sort_by;
+        switch ($sort_by) {
+            case 'oldest':
+                $shop_products->orderBy('created_at', 'asc');
+                break;
+            case 'price-asc':
+                $shop_products->orderBy('price', 'asc');
+                break;
+            case 'price-desc':
+                $shop_products->orderBy('price', 'desc');
+                break;
+            default:
+                $shop_products->orderBy('created_at', 'desc');
+                break;
+        }
+
+        $shop_products = $shop_products->get();
+
         return view('theme.product_listing', compact('shop_products'));
     }
 
@@ -56,14 +80,15 @@ class HomeController extends Controller
 
     public function getProductDetailsBySlug($slug)
     {
-        $product = Product::with('category', 'subcategory')->where('slug', $slug)->first();
+        $data = Product::with('category', 'subcategory')->where('slug', $slug)->first();
+
+        $product = collect(new ProductResource($data));
 
         return view('theme.product_details', compact('product'));
     }
 
     public function getOfferDetailsBySlug($slug)
     {
-
         $offer = Offer::where('slug', $slug)->first();
         return view('theme.offer_products', compact('offer'));
     }
@@ -100,7 +125,7 @@ class HomeController extends Controller
             $product = Product::with('category')->find($request->id);
 
             if($product->discount != 0){
-                $subtotal = ($product->price - $product->discount) * $quantity;
+                $subtotal = ($product->price - ( $product->price * ( $product->discount / 100))) * $quantity;
             } else {
                 $subtotal = ($product->price) * $quantity;
             }
@@ -116,13 +141,17 @@ class HomeController extends Controller
     {
 
         $order = new Order;
-        $order->user_id = auth()->user()->id;
+        $order->user_id = auth()->user()->id ?? null;
         $order->order_code = 'DZ-'. mt_rand(10000, 99999);
         $order->quantity = $request->quantity;
         $order->grand_total = $request->total;
         $order->billing_name = $request->name;
         $order->billing_phone = $request->phone;
         $order->billing_email = $request->email;
+        $order->billing_address = $request->address;
+        $order->payment_type = $request->payment_type;
+        $order->payment_phone = $request->payment_phone;
+        $order->trans_id = $request->trans_id;
         $order->billing_address = $request->address;
 
         if($request->offer == 1){
@@ -136,13 +165,9 @@ class HomeController extends Controller
             $orderItem->product_id = $item;
             $orderItem->order_id = $order->id;
             $orderItem->save();
-
         }
 
-        return redirect()->route('user.orders')->with('success' , 'Order Placed SuccessFully');
+        return redirect()->back()->with('success' , 'Order Placed SuccessFully');
     }
-
-
-
 
 }

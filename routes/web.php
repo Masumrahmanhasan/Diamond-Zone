@@ -69,7 +69,6 @@ Route::prefix('admin')->group(function () {
         Route::resource('categories', CategoryController::class);
         Route::resource('subcategories', SubCategoryController::class);
 
-
         // Product  Offer ...
         Route::get('/products/offers', [OfferController::class, 'index'])->name('products.combo_offer');
         Route::get('/products/offer_create', [OfferController::class, 'create'])->name('products.offer_create');

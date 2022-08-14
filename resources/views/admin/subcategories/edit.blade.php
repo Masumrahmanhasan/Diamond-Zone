@@ -11,7 +11,7 @@
 						</div>
 
 				</div>
-				<div class="col-6 mb-4">
+				<div class="col-6 mb-4 mx-auto">
 						<div class="card border-0 shadow components-section">
 								<div class="card-body">
 										<div class="row mb-4">

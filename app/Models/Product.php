@@ -9,7 +9,10 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'sku', 'short_description', 'description', 'intl_info', 'price', 'discount', 'status', 'category_id', 'subcategory_id', 'thumbnail', 'gallary', 'certificate'];
+    protected $fillable = ['name', 'sku', 'short_description',
+        'description', 'intl_info', 'price', 'discount', 'status',
+        'category_id', 'subcategory_id', 'thumbnail', 'gallary',
+        'certificate'];
 
     public function category()
     {
@@ -19,7 +22,11 @@ class Product extends Model
     public function subcategory()
     {
         return $this->belongsTo(SubCategory::class);
+    }
 
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class, 'product_id');
     }
 
 
