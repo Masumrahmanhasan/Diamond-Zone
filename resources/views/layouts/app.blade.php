@@ -35,7 +35,6 @@
         })(window,document,'script','dataLayer','GTM-W7HN9CP');
     </script>
 
-
     @yield('styles')
 
 
@@ -45,7 +44,6 @@
 <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7HN9CP"
                   height="0" width="0" style="display:none;visibility:hidden">
-
     </iframe>
 </noscript>
 
@@ -217,7 +215,6 @@
                                         @foreach ($category->subcategory as $subcategory)
                                             <li><a href="">{{ $subcategory->name }}</a></li>
                                         @endforeach
-
                                     </ul>
                                 @endif
 
@@ -286,8 +283,8 @@
     <script src="https://unpkg.com/xzoom/dist/xzoom.min.js"></script>
 
     <script>
-        @if (session()->has('message'))
-            showToast('success', 'Success', {{ session()->get('message') }});
+        @if (session()->has('success'))
+            showToast('success', 'Success', {{ session()->get('success') }});
         @endif
 
         @if (session()->has('message'))
@@ -296,6 +293,8 @@
 
 
         function buyNow(data, offer){
+
+
 
             if(offer == true){
                 offer = 1
@@ -343,7 +342,6 @@
                     }]
                 }
             })
-
 
 
             $.post('{{ route('checkout.buyNow') }}', {_token: '{{ csrf_token() }}', id:data.id, quantity: quantity, offer:offer}, function(data){

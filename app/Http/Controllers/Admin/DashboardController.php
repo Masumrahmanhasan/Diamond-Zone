@@ -14,7 +14,7 @@ class DashboardController extends Controller
     {
         $category = Category::count();
         $order = Order::count();
-        $product = Product::count();
+        $product = Product::with('category')->get();
 
         return view('admin.dashboard', compact('category', 'order', 'product'));
     }

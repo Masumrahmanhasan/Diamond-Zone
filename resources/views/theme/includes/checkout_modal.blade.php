@@ -10,11 +10,10 @@
             <form action="{{ route('checkout.done') }}" method="POST">
 
                 @csrf
-
                 @if(getType($product) == "array")
-                @foreach ($product as $key => $value)
-                <input type="hidden" name="product_id[]" value="{{ $key }}">
-                @endforeach
+                    @foreach ($product as $key => $value)
+                    <input type="hidden" name="product_id[]" value="{{ $key }}">
+                    @endforeach
                 @else
                 <input type="hidden" name="product_id[]" value="{{ $product->id }}">
                 @endif
@@ -77,8 +76,10 @@
                                 @if (getType($product) == 'array')
                                 <tr>
                                     <td>
+
                                         @foreach ($product as $key => $value)
-                                        <span>{{ $value }}</span><br>
+
+                                            <span>{{ $value['name'] }}</span><br>
                                         @endforeach
                                     </td>
                                     <td>৳ {{ number_format($subtotal, 2) }}</td>
@@ -121,7 +122,7 @@
                                 <div class="checkbox">
 
                                     <div class="checkbox_item">
-                                        <input type="radio" onclick="checkValue('cod')" class="payment_method" name="payment_method" value="cod" id="cod">
+                                        <input type="radio" onclick="checkValue('cod')" class="payment_method" name="payment_type" value="cod" id="cod" checked="checked">
                                         <label for="cod">
 
                                             <span>Cash On Delivery</span>
@@ -129,14 +130,14 @@
                                     </div>
 
                                     <div class="checkbox_item">
-                                        <input type="radio" class="payment_method" onclick="checkValue('bkash')" name="payment_method" value="bkash" id="bkash">
+                                        <input type="radio" class="payment_method" onclick="checkValue('bkash')" name="payment_type" value="bkash" id="bkash">
                                         <label for="bkash">
                                             <span>Bkash</span>
                                         </label>
                                     </div>
 
                                     <div class="checkbox_item">
-                                        <input type="radio" class="payment_method" onclick="checkValue('nagad')" name="payment_method" value="nagad" id="nagad">
+                                        <input type="radio" class="payment_method" onclick="checkValue('nagad')" name="payment_type" value="nagad" id="nagad">
                                         <label for="nagad">
                                             <span>Nagad</span>
                                         </label>

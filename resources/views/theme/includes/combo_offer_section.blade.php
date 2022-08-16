@@ -20,12 +20,18 @@
             <div class="row">
 
                 @foreach ($combo_offers as $offer)
+
+                    @php
+                        $product = \App\Models\Product::whereIn('id', json_decode($offer->products))->get();
+                    @endphp
+
+
                     <div class="col-lg-3 col-sm-4">
 
                         <div class="category_item">
 
                             <div class="img">
-                                <img src="frontend_asset/images/category_item1.png" class="img-fluid w-100" alt="">
+                                <img src="{{ uploaded_asset($product[0]->thumbnail) }}" class="img-fluid w-100" alt="">
                             </div>
 
                             <div class="text">
@@ -34,7 +40,7 @@
 
                                 <div class="add_to_cart d_flex d_justify">
                                     <a href="{{ route('offer.details', $offer->slug) }}">View More</a>
-                                    <a href="">Order Now</a>
+                                    <a onclick="buyNow({{ $offer }}, true)">Order Now</a>
                                 </div>
 
                             </div>

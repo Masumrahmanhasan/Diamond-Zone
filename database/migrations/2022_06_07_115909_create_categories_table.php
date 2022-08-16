@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('featured_image');
+            $table->dateTime('count_down');
             $table->timestamps();
         });
     }

@@ -35,6 +35,7 @@ class CategoryController extends Controller
         Category::create([
             'name' => $request->name,
             'slug' => $request->slug,
+            'count_down' => $request->count_down,
             'featured_image' => $storeFile,
         ]);
         return redirect()->route('categories.index');
@@ -59,6 +60,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->name = $request->name;
         $category->slug = $request->slug;
+        $category->count_down = $request->count_down;
 
         if($request->file('featured_image')){
             $extenstion = $request->file('featured_image')->getClientOriginalExtension();

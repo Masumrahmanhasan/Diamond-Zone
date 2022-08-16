@@ -95,6 +95,7 @@ class HomeController extends Controller
 
     public function checkout(Request $request)
     {
+
         $subtotal = 0;
 
         if(!$request->has('quantity')){
@@ -117,7 +118,7 @@ class HomeController extends Controller
             $product = array();
 
             foreach($products as $item){
-                array_push($product, $item->id = $item->name);
+                array_push($product, $item);
             }
 
         } else {
@@ -132,14 +133,12 @@ class HomeController extends Controller
 
         }
 
-
         return view('theme.includes.checkout_modal', compact('product', 'quantity', 'subtotal', 'offer'));
     }
 
 
     public function checkout_done(Request $request)
     {
-
         $order = new Order;
         $order->user_id = auth()->user()->id ?? null;
         $order->order_code = 'DZ-'. mt_rand(10000, 99999);

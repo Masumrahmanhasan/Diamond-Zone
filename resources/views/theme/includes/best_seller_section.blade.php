@@ -25,7 +25,7 @@
 
             <div class="row">
 
-                @for($i= 1; $i < 9; $i++)
+                @foreach($best_selling_products as $item)
                     <div class="col-lg-3 col-6">
 
                         <div class="category_item">
@@ -38,7 +38,7 @@
                             </a>
 
                             <div class="text">
-                                <h3 class="wh">18k Gold Earrings</h3>
+                                <h3 class="wh">{{ $item->product->name }}</h3>
                                 <p class="wh"><del>৳ 7,900.00</del> ৳ 3,680.00</p>
 
                                 <div class="add_to_cart d_flex d_justify">
@@ -56,7 +56,7 @@
                         </div>
 
                     </div>
-                @endfor
+                @endforeach
 
             </div>
 

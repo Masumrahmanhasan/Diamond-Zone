@@ -37,6 +37,13 @@
 
 														</div>
 
+                                                    <div class="mb-4">
+                                                        <label for="email">Count Down</label>
+                                                        <input type="datetime-local" name="count_down" class="form-control" id="count_down"
+                                                        >
+
+                                                    </div>
+
 														<div class="mb-4">
 																<div class="card card-body border-dashed shadow mb-4 @error('featured_image') border-invalid @enderror">
 
