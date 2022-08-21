@@ -52,6 +52,26 @@
 
         @include('admin.partials._scripts')
 
+        @if(session()->has('success'))
+            <script>
+                Swal.fire(
+                    'Success!',
+                    '{{ session()->get('success') }}',
+                    'success'
+                )
+            </script>
+        @endif
+
+        @if(session()->has('error'))
+            <script>
+                Swal.fire(
+                    'Error!',
+                    '{{ session()->get('error') }}',
+                    'error'
+                )
+            </script>
+        @endif
+
         <script>
             $(document).ready( function () {
                 $('#componentTable').DataTable();

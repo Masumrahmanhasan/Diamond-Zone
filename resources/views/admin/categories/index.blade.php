@@ -58,7 +58,7 @@
                                             </a>
 
                                             <a href="{{ route('categories.destroy', $category->id) }} }}" onclick="event.preventDefault();
-                                                document.getElementById('delete-form').submit();">
+                                                document.getElementById('delete-form-{{ $category->id }}').submit();">
                                                 <svg class="icon icon-xs text-danger ms-1" title="" data-bs-toggle="tooltip" fill="currentColor"
                                                         viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-bs-original-title="Delete" aria-label="Delete">
                                                         <path fill-rule="evenodd"
@@ -68,7 +68,7 @@
                                                 </svg>
                                             </a>
 
-                                            <form id="delete-form" action="{{ route('categories.destroy', $category->id) }} }}" method="POST" class="d-none">
+                                            <form id="delete-form-{{ $category->id }}" action="{{ route('categories.destroy', $category->id) }} }}" method="POST" class="d-none">
                                                 @csrf
                                                 @method("DELETE")
                                             </form>
@@ -84,21 +84,5 @@
 
 						</tbody>
 				</table>
-
-
-				{{-- <div class="card-footer px-3 border-0 d-flex flex-column flex-lg-row align-items-center justify-content-between">
-						<nav aria-label="Page navigation example">
-								<ul class="pagination mb-0">
-										<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-										<li class="page-item"><a class="page-link" href="#">1</a></li>
-										<li class="page-item active"><a class="page-link" href="#">2</a></li>
-										<li class="page-item"><a class="page-link" href="#">3</a></li>
-										<li class="page-item"><a class="page-link" href="#">4</a></li>
-										<li class="page-item"><a class="page-link" href="#">5</a></li>
-										<li class="page-item"><a class="page-link" href="#">Next</a></li>
-								</ul>
-						</nav>
-						<div class="fw-normal small mt-4 mt-lg-0">Showing <b>5</b> out of <b>25</b> entries</div>
-				</div> --}}
 		</div>
 @endsection

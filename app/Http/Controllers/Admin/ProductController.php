@@ -49,7 +49,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success', 'Product Created SuccessFully');
 
     }
 
@@ -68,7 +68,7 @@ class ProductController extends Controller
         $this->productField($product, $request);
         $product->save();
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success', 'Product Updated SuccessFully');
 
     }
 

@@ -51,6 +51,9 @@
                                                                                 is-invalid
                                                                                 @enderror" id="name" type="text"
                                                                                         placeholder="Enter the item's name" required >
+                                                                                @error('name')
+                                                                                <small class="form-text text-danger">{{ $message }}</small>
+                                                                                @enderror
                                                                         </div>
                                                                 </div>
 
@@ -61,6 +64,9 @@
                                                                             is-invalid
                                                                             @enderror" id="name" type="text"
                                                                                     placeholder="Enter the item's Sku" required value="{{ $sku }}">
+                                                                        @error('sku')
+                                                                        <small class="form-text text-danger">{{ $message }}</small>
+                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                         </div>
@@ -78,6 +84,9 @@
                                                                         @endforeach
 
                                                                 </select>
+                                                                @error('category_id')
+                                                                <small class="form-text text-danger">{{ $message }}</small>
+                                                                @enderror
                                                             </div>
 
 
@@ -98,6 +107,9 @@
                                                                                 is-invalid
                                                                                 @enderror" name="short_description" id="short_desc" type="text"
                                                                                 style="height: 142px;" required></textarea>
+                                                                            @error('short_description')
+                                                                            <small class="form-text text-danger">{{ $message }}</small>
+                                                                            @enderror
                                                                         </div>
                                                                 </div>
                                                         </div>
@@ -112,6 +124,10 @@
                                                                             is-invalid
                                                                             @enderror" id="name" type="text"
                                                                                     placeholder="Enter the item's Price" required data-parsley-type="integer" data-parsley-pattern="[0-9]+$" data-parsley-trigger="keyup" >
+                                                                        @error('price')
+                                                                        <small class="form-text text-danger">{{ $message }}</small>
+                                                                        @enderror
+
                                                                     </div>
                                                             </div>
 
@@ -130,6 +146,9 @@
                                                                             <label for="excerpt">Description</label>
                                                                             <textarea class="form-control" name="description" id="editor1" type="text" placeholder="Write Something here"
                                                                             ></textarea>
+                                                                        @error('description')
+                                                                        <small class="form-text text-danger">{{ $message }}</small>
+                                                                        @enderror
                                                                     </div>
                                                             </div>
                                                     </div>
@@ -159,6 +178,9 @@
                                                                         </div>
                                                                         <div class="form-control file-amount">Choose File</div>
                                                                         <input type="hidden" name="thumbnail" class="selected-files">
+                                                                        @error('thumbnail')
+                                                                        <small class="form-text text-danger">{{ $message }}</small>
+                                                                        @enderror
                                                                     </div>
                                                                     <div class="file-preview box sm">
                                                                     </div>
@@ -184,6 +206,9 @@
                                                                     </div>
                                                                     <div class="form-control file-amount">Choose File</div>
                                                                     <input type="hidden" name="gallary" class="selected-files">
+                                                                    @error('gallary')
+                                                                    <small class="form-text text-danger">{{ $message }}</small>
+                                                                    @enderror
                                                                 </div>
                                                                 <div class="file-preview box sm">
                                                                 </div>

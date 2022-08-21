@@ -38,7 +38,7 @@ class CategoryController extends Controller
             'count_down' => $request->count_down,
             'featured_image' => $storeFile,
         ]);
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', 'Category Created SuccessFully');
 
     }
 
@@ -72,7 +72,7 @@ class CategoryController extends Controller
 
         $category->save();
 
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', 'Category Updated SuccessFully');
 
 
     }

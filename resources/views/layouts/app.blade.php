@@ -282,19 +282,22 @@
 
     <script src="https://unpkg.com/xzoom/dist/xzoom.min.js"></script>
 
-    <script>
-        @if (session()->has('success'))
+    @if (session()->has('success'))
+        <script>
             showToast('success', 'Success', {{ session()->get('success') }});
-        @endif
+        </script>
+    @endif
 
-        @if (session()->has('message'))
+    @if (session()->has('message'))
+        <script>
             showToast('warning', 'Warning', {{ session()->get('message') }});
-        @endif
+        </script>
+    @endif
+
+    <script>
 
 
         function buyNow(data, offer){
-
-
 
             if(offer == true){
                 offer = 1

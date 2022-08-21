@@ -30,30 +30,30 @@
 
                         <!-- Name -->
                         <div class="custom_input">
-                            <h3>Billing details</h3>
+                            <h3>অর্ডারটি কনফার্ম করতে আপনার নাম, ঠিকানা, মোবাইল নাম্বার, লিখে অর্ডার কনফার্ম করুন বাটনে ক্লিক করুন</h3>
                         </div>
 
                         <!-- Name -->
                         <div class="custom_input">
-                            <label>Name <span>*</span></label>
+                            <label>আপনার নাম<span>*</span></label>
                             <input type="text" name="name" placeholder="Enter Your Name">
                         </div>
 
                         <!-- Address -->
                         <div class="custom_input">
-                            <label>Address <span>*</span></label>
+                            <label>আপনার ঠিকানা<span>*</span></label>
                             <input type="text" name="address" placeholder="Address">
                         </div>
 
                         <!-- Phone Number -->
                         <div class="custom_input">
-                            <label>Phone Number <span>*</span></label>
+                            <label>আপনার মোবাইল<span>*</span></label>
                             <input type="text" name="phone" placeholder="Phone Number">
                         </div>
 
-                        <!-- Email -->
+
                         <div class="custom_input">
-                            <label>Email (Optional)</label>
+                            <label>আপনার ইমেইল (Optional)</label>
                             <input type="text" name="email" placeholder="Enter Your Email">
                         </div>
 

@@ -358,7 +358,7 @@ a.navbar-brand img {
 }
 
 .mobileMenu a {
-    background: var(--bg_color2);
+    background: #fff;
     padding: 5px 12px;
     border-radius: 3px;
     font-size: 20px;
